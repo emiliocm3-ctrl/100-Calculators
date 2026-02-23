@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Sitemap location — update domain when deployed
-Sitemap: https://100calculators.com/sitemap.xml
+Sitemap: https://100-calculators.vercel.app/sitemap.xml
 
 # Block crawling of development/internal paths
 Disallow: /js/

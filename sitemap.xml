@@ -2,167 +2,167 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Homepage -->
   <url>
-    <loc>https://100calculators.com/</loc>
+    <loc>https://100-calculators.vercel.app/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <!-- Home Improvement & DIY -->
   <url>
-    <loc>https://100calculators.com/calculators/tile-grout-calculator/</loc>
+    <loc>https://100-calculators.vercel.app/calculators/tile-grout-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://100calculators.com/calculators/paint-quantity-calculator/</loc>
+    <loc>https://100-calculators.vercel.app/calculators/paint-quantity-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://100calculators.com/calculators/mulch-gravel-calculator/</loc>
+    <loc>https://100-calculators.vercel.app/calculators/mulch-gravel-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://100calculators.com/calculators/ac-btu-calculator/</loc>
+    <loc>https://100-calculators.vercel.app/calculators/ac-btu-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://100calculators.com/calculators/wallpaper-roll-calculator/</loc>
+    <loc>https://100-calculators.vercel.app/calculators/wallpaper-roll-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://100calculators.com/calculators/laminate-flooring-calculator/</loc>
+    <loc>https://100-calculators.vercel.app/calculators/laminate-flooring-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://100calculators.com/calculators/concrete-slab-calculator/</loc>
+    <loc>https://100-calculators.vercel.app/calculators/concrete-slab-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://100calculators.com/calculators/grass-seed-calculator/</loc>
+    <loc>https://100-calculators.vercel.app/calculators/grass-seed-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://100calculators.com/calculators/potting-soil-calculator/</loc>
+    <loc>https://100-calculators.vercel.app/calculators/potting-soil-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Business & Finance -->
   <url>
-    <loc>https://100calculators.com/calculators/meeting-cost-calculator/</loc>
+    <loc>https://100-calculators.vercel.app/calculators/meeting-cost-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://100calculators.com/calculators/freelance-rate-calculator/</loc>
+    <loc>https://100-calculators.vercel.app/calculators/freelance-rate-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://100calculators.com/calculators/cpm-calculator/</loc>
+    <loc>https://100-calculators.vercel.app/calculators/cpm-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://100calculators.com/calculators/youtube-money-calculator/</loc>
+    <loc>https://100-calculators.vercel.app/calculators/youtube-money-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://100calculators.com/calculators/stripe-fee-calculator/</loc>
+    <loc>https://100-calculators.vercel.app/calculators/stripe-fee-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Fitness & Health -->
   <url>
-    <loc>https://100calculators.com/calculators/one-rep-max-calculator/</loc>
+    <loc>https://100-calculators.vercel.app/calculators/one-rep-max-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://100calculators.com/calculators/water-intake-calculator/</loc>
+    <loc>https://100-calculators.vercel.app/calculators/water-intake-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://100calculators.com/calculators/protein-intake-calculator/</loc>
+    <loc>https://100-calculators.vercel.app/calculators/protein-intake-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://100calculators.com/calculators/sleep-cycle-calculator/</loc>
+    <loc>https://100-calculators.vercel.app/calculators/sleep-cycle-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Lifestyle & Events -->
   <url>
-    <loc>https://100calculators.com/calculators/wedding-alcohol-calculator/</loc>
+    <loc>https://100-calculators.vercel.app/calculators/wedding-alcohol-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://100calculators.com/calculators/pizza-party-calculator/</loc>
+    <loc>https://100-calculators.vercel.app/calculators/pizza-party-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://100calculators.com/calculators/pet-age-calculator/</loc>
+    <loc>https://100-calculators.vercel.app/calculators/pet-age-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://100calculators.com/calculators/coffee-water-ratio-calculator/</loc>
+    <loc>https://100-calculators.vercel.app/calculators/coffee-water-ratio-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://100calculators.com/calculators/candle-wax-calculator/</loc>
+    <loc>https://100-calculators.vercel.app/calculators/candle-wax-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://100calculators.com/calculators/wedding-cake-calculator/</loc>
+    <loc>https://100-calculators.vercel.app/calculators/wedding-cake-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://100calculators.com/calculators/turkey-thaw-calculator/</loc>
+    <loc>https://100-calculators.vercel.app/calculators/turkey-thaw-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://100calculators.com/calculators/knitting-yarn-calculator/</loc>
+    <loc>https://100-calculators.vercel.app/calculators/knitting-yarn-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://100calculators.com/calculators/electricity-cost-calculator/</loc>
+    <loc>https://100-calculators.vercel.app/calculators/electricity-cost-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Niche Hobbies -->
   <url>
-    <loc>https://100calculators.com/calculators/aquarium-volume-calculator/</loc>
+    <loc>https://100-calculators.vercel.app/calculators/aquarium-volume-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://100calculators.com/calculators/epoxy-resin-calculator/</loc>
+    <loc>https://100-calculators.vercel.app/calculators/epoxy-resin-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://100calculators.com/calculators/3d-print-cost-calculator/</loc>
+    <loc>https://100-calculators.vercel.app/calculators/3d-print-cost-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
