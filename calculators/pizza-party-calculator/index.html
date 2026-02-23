@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pizza Party Calculator — How Many Pizzas Do I Need?</title>
+  <meta name="description" content="Calculate exactly how many large pizzas to order for your party. Enter the number of adults and kids, appetite level, and get the perfect order.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="../../" class="site-logo">
+        <span class="logo-icon">=</span>
+        100 Calculators
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav class="breadcrumb">
+      <a href="../../">Home</a>
+      <span class="sep">/</span>
+      <a href="../../#lifestyle">Lifestyle &amp; Events</a>
+      <span class="sep">/</span>
+      <span>Pizza Party Calculator</span>
+    </nav>
+
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+
+    <div class="page-header">
+      <span class="badge">Lifestyle &amp; Events</span>
+      <h1>Pizza Party Calculator</h1>
+      <p class="subtitle">Never under-order (or over-order) again. Get the exact number of large pizzas for any crowd.</p>
+    </div>
+
+    <div class="calc-card">
+      <h2>Your Party Details</h2>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="adults">Number of Adults</label>
+          <input type="number" id="adults" value="10" min="0" max="500" step="1">
+        </div>
+        <div class="form-group">
+          <label for="kids">Number of Kids</label>
+          <input type="number" id="kids" value="4" min="0" max="200" step="1">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Appetite Level</label>
+        <div class="toggle-group" data-for="appetite">
+          <button type="button" class="toggle-btn" data-value="light">Light</button>
+          <button type="button" class="toggle-btn active" data-value="average">Average</button>
+          <button type="button" class="toggle-btn" data-value="hungry">Hungry</button>
+        </div>
+        <input type="hidden" id="appetite" value="average">
+        <span class="hint">Light = 2 slices/adult, Average = 3, Hungry = 4</span>
+      </div>
+
+      <div class="form-group">
+        <label>Pizza Size</label>
+        <div class="toggle-group" data-for="pizza-size">
+          <button type="button" class="toggle-btn" data-value="medium">Medium (12")</button>
+          <button type="button" class="toggle-btn active" data-value="large">Large (14")</button>
+          <button type="button" class="toggle-btn" data-value="xlarge">XL (16")</button>
+        </div>
+        <input type="hidden" id="pizza-size" value="large">
+        <span class="hint">Medium = 8 slices, Large = 10, XL = 12</span>
+      </div>
+
+      <div class="result-display" id="result-box">
+        <div class="result-label">Pizzas to Order</div>
+        <div class="result-value" id="result-pizzas">—</div>
+        <div class="result-unit">pizzas</div>
+        <div class="result-note" id="result-note">Rounded up so nobody goes hungry</div>
+      </div>
+
+      <div class="results-grid">
+        <div class="result-item">
+          <div class="result-item-label">Total Slices</div>
+          <div class="result-item-value" id="result-slices">—</div>
+          <div class="result-item-unit">slices needed</div>
+        </div>
+        <div class="result-item">
+          <div class="result-item-label">Slices Per Pizza</div>
+          <div class="result-item-value" id="result-spp">—</div>
+          <div class="result-item-unit">slices</div>
+        </div>
+        <div class="result-item">
+          <div class="result-item-label">Estimated Cost</div>
+          <div class="result-item-value" id="result-cost">—</div>
+          <div class="result-item-unit" id="result-cost-note">@ $15/pizza</div>
+        </div>
+        <div class="result-item">
+          <div class="result-item-label">Leftover Slices</div>
+          <div class="result-item-value" id="result-leftover">—</div>
+          <div class="result-item-unit">extra slices</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-box">
+      <span class="cta-icon">&#127829;</span>
+      <div class="cta-content">
+        <p><strong>Hosting a big one?</strong> Don't forget plates, napkins, and a pizza cutter that can handle the job.</p>
+        <a href="#" class="cta-link">See Top-Rated Pizza Party Supplies on Amazon &rarr;</a>
+      </div>
+    </div>
+
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+
+    <article class="article-content">
+      <h2>How to Calculate Pizza for a Party: The Complete Guide</h2>
+      <p>Ordering pizza for a group sounds simple until you're standing at the counter trying to do math in your head while ten hungry people stare at you. Order too few and you're the villain. Order too many and you're eating cold pepperoni for a week. This guide gives you the formula, the psychology, and the pro tips to nail it every time.</p>
+
+      <h2>The Standard Pizza Formula</h2>
+      <p>The catering industry uses a simple rule of thumb that works surprisingly well across most situations:</p>
+
+      <div class="formula-box">
+        Pizzas = (Adults &times; Slices per Adult + Kids &times; Slices per Kid) &divide; Slices per Pizza
+      </div>
+
+      <p>The key variable is <strong>slices per person</strong>. Here's what the numbers look like in practice:</p>
+      <ul>
+        <li><strong>Light eaters</strong> (lunch event, lots of sides): 2 slices per adult, 1 slice per kid</li>
+        <li><strong>Average appetite</strong> (standard dinner party): 3 slices per adult, 1.5 slices per kid</li>
+        <li><strong>Hungry crowd</strong> (game day, teen party, no sides): 4 slices per adult, 2 slices per kid</li>
+      </ul>
+
+      <p>Kids under 12 typically eat about half what an adult eats. If your party is mostly teenagers, count them as adults — they'll eat just as much, possibly more.</p>
+
+      <h2>Pizza Size Matters More Than You Think</h2>
+      <p>Not all pizzas are created equal. A 16-inch pizza has <strong>78% more area</strong> than a 12-inch pizza, even though it only looks a few inches bigger. Here's the math:</p>
+      <ul>
+        <li><strong>Small (10")</strong>: ~78 sq inches — 6 slices — good for 1-2 people</li>
+        <li><strong>Medium (12")</strong>: ~113 sq inches — 8 slices — good for 2-3 people</li>
+        <li><strong>Large (14")</strong>: ~154 sq inches — 10 slices — good for 3-4 people</li>
+        <li><strong>Extra Large (16")</strong>: ~201 sq inches — 12 slices — good for 4-5 people</li>
+      </ul>
+
+      <div class="tip-box">
+        <p><strong>Pro Tip:</strong> Always order large or extra-large pizzas for parties. The cost per square inch drops dramatically as the pizza gets bigger. Two larges give you more pizza than three mediums, usually for less money.</p>
+      </div>
+
+      <h2>The Variety Factor</h2>
+      <p>When ordering for a group, variety matters. A good rule is the <strong>"3-2-1 Rule"</strong> for every 6 pizzas:</p>
+      <ul>
+        <li><strong>3 pizzas:</strong> Crowd-pleasers (pepperoni, cheese, meat lovers)</li>
+        <li><strong>2 pizzas:</strong> Specialty or veggie options</li>
+        <li><strong>1 pizza:</strong> Wild card (BBQ chicken, Hawaiian, white pizza)</li>
+      </ul>
+      <p>This ratio keeps everyone happy while preventing the "nobody touched the anchovy pizza" problem.</p>
+
+      <h2>Common Mistakes When Ordering Pizza</h2>
+
+      <h3>1. Forgetting About Sides and Appetizers</h3>
+      <p>If you're serving wings, breadsticks, salad, or chips before the pizza arrives, people will eat less pizza. With substantial appetizers, you can safely reduce your pizza count by 15-20%.</p>
+
+      <h3>2. Ignoring the Time of Day</h3>
+      <p>Lunch parties require about 20% less pizza than dinner parties. People eat lighter during the day. Late-night events (after 9 PM) swing the other way — add 10-15% more.</p>
+
+      <h3>3. Not Accounting for Dietary Restrictions</h3>
+      <p>Always ask about dietary needs before ordering. At minimum, have at least one cheese/veggie option. For groups over 20, consider one gluten-free pizza — about 1 in 100 people has celiac disease, but many more prefer gluten-free.</p>
+
+      <div class="warning-box">
+        <p><strong>Watch Out:</strong> Don't assume "vegetarian" means "diet." Cheese pizza and veggie-loaded pizzas are popular with everyone. If you only order one veggie pie for 30 people, it will vanish first while the meat lovers sits untouched.</p>
+      </div>
+
+      <h2>How Much Does Pizza for a Party Cost?</h2>
+      <p>Pizza is one of the most cost-effective ways to feed a crowd. Here are typical prices in the US (2024-2025):</p>
+      <ul>
+        <li><strong>Budget chains</strong> (Domino's, Little Caesars): $8-12 per large</li>
+        <li><strong>Mid-range chains</strong> (Papa John's, Pizza Hut): $12-18 per large</li>
+        <li><strong>Local pizzerias</strong>: $15-25 per large</li>
+        <li><strong>Premium/artisan</strong>: $20-35 per large</li>
+      </ul>
+      <p>For a party of 20 with average appetites, expect to spend $45-90 at a chain or $75-150 at a local shop. That's roughly <strong>$3-7 per person</strong> — hard to beat.</p>
+
+      <h3>Money-Saving Tips</h3>
+      <ul>
+        <li>Check for <strong>party deals</strong> — most chains offer bulk discounts for 5+ pizzas</li>
+        <li>Order <strong>carryout</strong> instead of delivery to save $5-10 in fees and tips</li>
+        <li>Place your order <strong>2+ hours early</strong> for large orders so the kitchen isn't rushed</li>
+        <li>Ask about <strong>sheet pizzas</strong> — many local shops sell large rectangular pizzas that feed more people per dollar</li>
+      </ul>
+
+      <p>Use the calculator above to get your exact number, pick your variety, and enjoy a stress-free pizza party where everyone leaves full and happy.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p>
+    </div>
+  </footer>
+
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      const SLICES_PER_ADULT = { light: 2, average: 3, hungry: 4 };
+      const KID_FACTOR = 0.5;
+      const SLICES_PER_PIZZA = { medium: 8, large: 10, xlarge: 12 };
+      const COST_PER_PIZZA = { medium: 12, large: 15, xlarge: 18 };
+
+      function calculate() {
+        const adults = CalcCore.getVal('adults');
+        const kids = CalcCore.getVal('kids');
+        const appetite = CalcCore.getToggleVal('appetite') || 'average';
+        const size = CalcCore.getToggleVal('pizza-size') || 'large';
+
+        const slicesAdult = SLICES_PER_ADULT[appetite] || 3;
+        const slicesKid = Math.round(slicesAdult * KID_FACTOR * 10) / 10;
+        const spp = SLICES_PER_PIZZA[size] || 10;
+        const price = COST_PER_PIZZA[size] || 15;
+
+        const totalSlices = Math.ceil(adults * slicesAdult + kids * slicesKid);
+        const pizzas = Math.ceil(totalSlices / spp);
+        const leftover = pizzas * spp - totalSlices;
+        const cost = pizzas * price;
+
+        CalcCore.setResult('result-pizzas', CalcCore.fmt.number(pizzas));
+        CalcCore.setResult('result-slices', CalcCore.fmt.number(totalSlices));
+        CalcCore.setResult('result-spp', spp);
+        CalcCore.setResult('result-cost', CalcCore.fmt.currency(cost, 0));
+        CalcCore.setResult('result-cost-note', '@ ' + CalcCore.fmt.currency(price, 0) + '/pizza');
+        CalcCore.setResult('result-leftover', CalcCore.fmt.number(leftover));
+      }
+
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+
+  <!-- Sticky Footer Ad (mobile) -->
+  <div id="ad-sticky-footer" class="ad-sticky-footer">
+    <button class="ad-sticky-close" aria-label="Close ad">&times;</button>
+    <div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div>
+  </div>
+
+  <script src="../../js/ads.js"></script>
+</body>
+</html>

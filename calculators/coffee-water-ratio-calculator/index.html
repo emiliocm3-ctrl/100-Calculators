@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coffee to Water Ratio Calculator — Perfect Brew Every Time</title>
+  <meta name="description" content="Calculate the exact grams of coffee beans and water for any brewing method. French Press, Pour Over, AeroPress, Espresso, and more.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="../../" class="site-logo">
+        <span class="logo-icon">=</span>
+        100 Calculators
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav class="breadcrumb">
+      <a href="../../">Home</a>
+      <span class="sep">/</span>
+      <a href="../../#lifestyle">Lifestyle &amp; Events</a>
+      <span class="sep">/</span>
+      <span>Coffee-to-Water Ratio</span>
+    </nav>
+
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+
+    <div class="page-header">
+      <span class="badge">Lifestyle</span>
+      <h1>Coffee-to-Water Ratio Calculator</h1>
+      <p class="subtitle">Dial in the perfect brew. Get the exact grams of coffee and milliliters of water for any method and cup count.</p>
+    </div>
+
+    <div class="calc-card">
+      <h2>Your Brew Setup</h2>
+
+      <div class="form-group">
+        <label>Brewing Method</label>
+        <div class="toggle-group" data-for="method">
+          <button type="button" class="toggle-btn active" data-value="pourover">Pour Over</button>
+          <button type="button" class="toggle-btn" data-value="french">French Press</button>
+          <button type="button" class="toggle-btn" data-value="aeropress">AeroPress</button>
+          <button type="button" class="toggle-btn" data-value="espresso">Espresso</button>
+        </div>
+        <input type="hidden" id="method" value="pourover">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="cups">Number of Cups</label>
+          <input type="range" id="cups" min="1" max="12" value="2" step="1">
+          <div class="range-labels">
+            <span>1 cup</span>
+            <span id="cups-val">2</span>
+            <span>12 cups</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="cup-size">Cup Size</label>
+          <div class="input-with-unit">
+            <input type="number" id="cup-size" value="240" min="60" max="500" step="10">
+            <span class="unit">ml</span>
+          </div>
+          <span class="hint">Standard mug ≈ 240ml (8 oz)</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Strength</label>
+        <div class="toggle-group" data-for="strength">
+          <button type="button" class="toggle-btn" data-value="mild">Mild</button>
+          <button type="button" class="toggle-btn active" data-value="medium">Medium</button>
+          <button type="button" class="toggle-btn" data-value="strong">Strong</button>
+        </div>
+        <input type="hidden" id="strength" value="medium">
+      </div>
+
+      <div class="result-display" id="result-box">
+        <div class="result-label">Coffee Needed</div>
+        <div class="result-value" id="result-coffee">—</div>
+        <div class="result-unit">grams of coffee</div>
+      </div>
+
+      <div class="results-grid">
+        <div class="result-item">
+          <div class="result-item-label">Water</div>
+          <div class="result-item-value" id="result-water">—</div>
+          <div class="result-item-unit">ml</div>
+        </div>
+        <div class="result-item">
+          <div class="result-item-label">Ratio</div>
+          <div class="result-item-value" id="result-ratio">—</div>
+          <div class="result-item-unit">coffee : water</div>
+        </div>
+        <div class="result-item">
+          <div class="result-item-label">Tablespoons</div>
+          <div class="result-item-value" id="result-tbsp">—</div>
+          <div class="result-item-unit">level tbsp</div>
+        </div>
+        <div class="result-item">
+          <div class="result-item-label">Water (oz)</div>
+          <div class="result-item-value" id="result-water-oz">—</div>
+          <div class="result-item-unit">fl oz</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-box">
+      <span class="cta-icon">&#9749;</span>
+      <div class="cta-content">
+        <p><strong>Upgrade your brew.</strong> A digital scale makes the biggest difference in coffee quality.</p>
+        <a href="#" class="cta-link">Best Coffee Scales on Amazon &rarr;</a>
+      </div>
+    </div>
+
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+
+    <article class="article-content">
+      <h2>The Science of Coffee-to-Water Ratios</h2>
+      <p>Great coffee isn't about expensive beans or fancy equipment — it's about the ratio. The relationship between how much coffee you use and how much water you brew with determines whether your cup is weak dishwater, a perfect extraction, or an undrinkably bitter mess. This guide explains the ratios for every major brewing method and how to adjust them to your taste.</p>
+
+      <h2>The Golden Ratio</h2>
+      <p>The Specialty Coffee Association (SCA) recommends a "Golden Ratio" as the standard starting point for most brewing methods:</p>
+
+      <div class="formula-box">
+        1 gram of coffee : 15–18 grams of water (1:15 to 1:18)
+      </div>
+
+      <p>This range produces a "balanced" cup — not too weak, not too strong — with good extraction of the coffee's flavor compounds. Within this range:</p>
+      <ul>
+        <li><strong>1:15</strong> — Strong, bold, intense. Good for dark roasts and those who like their coffee with authority.</li>
+        <li><strong>1:16</strong> — The sweet spot for most specialty coffee. Balanced and flavorful.</li>
+        <li><strong>1:17</strong> — Lighter, more nuanced. Lets delicate flavors shine through.</li>
+        <li><strong>1:18</strong> — Mild and smooth. Good for light roasts and those who prefer a gentler cup.</li>
+      </ul>
+
+      <h2>Ratios by Brewing Method</h2>
+      <p>Different brewing methods extract coffee differently, so the ideal ratio varies:</p>
+
+      <h3>Pour Over (V60, Chemex, Kalita)</h3>
+      <p>Recommended ratio: <strong>1:15 to 1:17</strong>. Pour overs produce a clean, bright cup. The paper filter removes oils and fine particles, so a slightly higher dose (1:15) can add body without bitterness. Start with 1:16 and adjust.</p>
+
+      <h3>French Press</h3>
+      <p>Recommended ratio: <strong>1:14 to 1:16</strong>. French press uses a metal mesh filter that lets oils and fine particles through, creating a fuller body. Use a slightly higher coffee dose than pour over. The longer steep time (4 minutes) means the water extracts more, so you don't need to push the ratio too far.</p>
+
+      <h3>AeroPress</h3>
+      <p>Recommended ratio: <strong>1:12 to 1:16</strong>. The AeroPress is uniquely versatile. At 1:12 it produces a concentrated brew similar to espresso; at 1:16 it's more like a pour over. Most recipes use 1:14 for a balanced cup.</p>
+
+      <h3>Espresso</h3>
+      <p>Recommended ratio: <strong>1:1.5 to 1:2.5</strong> (by weight). Espresso is a completely different beast — high pressure, fine grind, small volume. A standard "double shot" uses 18-20g of coffee to produce 36-45g of liquid espresso in 25-30 seconds.</p>
+
+      <div class="tip-box">
+        <p><strong>Pro Tip:</strong> Always measure by weight (grams), not volume (scoops or tablespoons). A "scoop" of finely-ground coffee weighs more than a scoop of coarsely-ground coffee. A $10 kitchen scale will improve your coffee more than a $200 grinder upgrade.</p>
+      </div>
+
+      <h2>Why Grams Matter More Than Scoops</h2>
+      <p>One "standard" tablespoon of coffee weighs about 5 grams — but this varies wildly depending on grind size, bean density, and how tightly you pack the scoop. Whole beans weigh differently than ground coffee. Light roasts are denser than dark roasts. Using a scale eliminates all this guesswork and ensures you get the same delicious cup every single time.</p>
+
+      <h2>Common Mistakes</h2>
+      <h3>1. Using Boiling Water</h3>
+      <p>Water at 100°C (212°F) scorches the coffee, creating bitter compounds. The ideal brewing temperature is <strong>90-96°C (195-205°F)</strong>. If you don't have a temperature-controlled kettle, just let the water sit for 30 seconds after boiling.</p>
+
+      <h3>2. Ignoring Grind Size</h3>
+      <p>The ratio is only half the equation. Grind size controls <strong>extraction speed</strong>. Too fine + too long = over-extraction (bitter). Too coarse + too short = under-extraction (sour). Match your grind to your method:</p>
+      <ul>
+        <li>French Press: Coarse (like sea salt)</li>
+        <li>Pour Over: Medium-fine (like table salt)</li>
+        <li>AeroPress: Fine to medium (depends on recipe)</li>
+        <li>Espresso: Very fine (like powdered sugar)</li>
+      </ul>
+
+      <div class="warning-box">
+        <p><strong>Watch Out:</strong> Pre-ground "drip coffee" from the store is ground for automatic drip machines. It's too fine for French Press (will be muddy/bitter) and too coarse for espresso (will be sour/watery). Buy whole beans and grind fresh for best results.</p>
+      </div>
+
+      <h2>Adjusting to Your Taste</h2>
+      <p>The calculator gives you the standard starting point. From there, adjust in small increments:</p>
+      <ul>
+        <li><strong>Too weak?</strong> Add 1-2g more coffee (don't reduce water — you'll get less volume)</li>
+        <li><strong>Too strong?</strong> Remove 1-2g of coffee</li>
+        <li><strong>Bitter?</strong> Try a coarser grind or cooler water before changing the ratio</li>
+        <li><strong>Sour/acidic?</strong> Try a finer grind or hotter water</li>
+      </ul>
+
+      <p>Coffee brewing is both science and art. Use the calculator above to get your baseline numbers, then experiment from there. Once you find your perfect ratio, you'll wonder how you ever made coffee without it.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p>
+    </div>
+  </footer>
+
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      // Ratios by method & strength (coffee : water by weight)
+      // Higher number = more water per gram of coffee = weaker
+      const RATIOS = {
+        pourover:  { mild: 18, medium: 16, strong: 15 },
+        french:    { mild: 16, medium: 15, strong: 14 },
+        aeropress: { mild: 16, medium: 14, strong: 12 },
+        espresso:  { mild: 2.5, medium: 2, strong: 1.5 },
+      };
+
+      const CUP_ML_ESPRESSO = 30; // a "cup" of espresso = 30ml shot
+
+      function calculate() {
+        const method = CalcCore.getToggleVal('method') || 'pourover';
+        const strength = CalcCore.getToggleVal('strength') || 'medium';
+        const cups = CalcCore.getVal('cups');
+        let cupSize = CalcCore.getVal('cup-size');
+
+        const isEspresso = method === 'espresso';
+        if (isEspresso) cupSize = CUP_ML_ESPRESSO;
+
+        const ratio = RATIOS[method]?.[strength] ?? 16;
+        const totalWaterMl = cups * cupSize;
+        const totalWaterG = totalWaterMl; // 1ml water ≈ 1g
+        const coffeeG = totalWaterG / ratio;
+        const tbsp = coffeeG / 5; // ~5g per level tbsp
+
+        CalcCore.setResult('result-coffee', CalcCore.fmt.number(coffeeG, 1));
+        CalcCore.setResult('result-water', CalcCore.fmt.number(totalWaterMl));
+        CalcCore.setResult('result-ratio', '1 : ' + ratio);
+        CalcCore.setResult('result-tbsp', CalcCore.fmt.number(tbsp, 1));
+        CalcCore.setResult('result-water-oz', CalcCore.fmt.number(totalWaterMl / 29.574, 1));
+
+        // Update cup size input hint for espresso
+        const cupSizeInput = document.getElementById('cup-size');
+        if (isEspresso) {
+          cupSizeInput.value = CUP_ML_ESPRESSO;
+          cupSizeInput.disabled = true;
+        } else {
+          cupSizeInput.disabled = false;
+        }
+      }
+
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+
+  <!-- Sticky Footer Ad (mobile) -->
+  <div id="ad-sticky-footer" class="ad-sticky-footer">
+    <button class="ad-sticky-close" aria-label="Close ad">&times;</button>
+    <div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div>
+  </div>
+
+  <script src="../../js/ads.js"></script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>One-Rep Max (1RM) Calculator — Estimate Your Max Lift</title>
+  <meta name="description" content="Estimate your one-rep max using the Epley formula. Enter the weight and reps you lifted to get your estimated 1RM and percentage chart.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <header class="site-header"><div class="container"><a href="../../" class="site-logo"><span class="logo-icon">=</span> 100 Calculators</a></div></header>
+  <main class="container">
+    <nav class="breadcrumb"><a href="../../">Home</a><span class="sep">/</span><a href="../../#fitness">Fitness &amp; Health</a><span class="sep">/</span><span>One-Rep Max</span></nav>
+
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+    <div class="page-header">
+      <span class="badge">Fitness &amp; Health</span>
+      <h1>One-Rep Max (1RM) Calculator</h1>
+      <p class="subtitle">Estimate your maximum lift from submaximal reps. Safer than actually testing your 1RM.</p>
+    </div>
+    <div class="calc-card">
+      <h2>Your Lift</h2>
+      <div class="form-row">
+        <div class="form-group"><label for="weight">Weight Lifted</label><div class="input-with-unit"><input type="number" id="weight" value="185" min="1" max="2000" step="5"><span class="unit" id="w-unit">lbs</span></div></div>
+        <div class="form-group"><label for="reps">Reps Completed</label><input type="number" id="reps" value="5" min="1" max="30" step="1"></div>
+      </div>
+      <div class="form-group">
+        <label>Units</label>
+        <div class="toggle-group" data-for="units"><button type="button" class="toggle-btn active" data-value="lbs">Lbs</button><button type="button" class="toggle-btn" data-value="kg">Kg</button></div>
+        <input type="hidden" id="units" value="lbs">
+      </div>
+
+      <div class="result-display">
+        <div class="result-label">Estimated 1RM</div>
+        <div class="result-value" id="result-1rm">—</div>
+        <div class="result-unit" id="result-unit">lbs</div>
+      </div>
+
+      <!-- Percentage chart -->
+      <div id="pct-chart" class="mt-lg"></div>
+    </div>
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+    <article class="article-content">
+      <h2>How to Estimate Your One-Rep Max</h2>
+      <p>Your <strong>one-rep max (1RM)</strong> is the heaviest weight you can lift for a single repetition with proper form. It's the foundation of percentage-based training programs — but actually testing your 1RM is risky, especially without a spotter. The solution? Estimate it from a submaximal set using a proven formula.</p>
+
+      <h2>The Epley Formula</h2>
+      <div class="formula-box">1RM = Weight × (1 + Reps ÷ 30)</div>
+      <p>If you bench press 185 lbs for 5 reps: 185 × (1 + 5/30) = 185 × 1.167 = <strong>~216 lbs</strong>. This formula is most accurate for sets of 2–10 reps. Beyond 10 reps, accuracy drops because muscular endurance becomes a larger factor than raw strength.</p>
+
+      <h2>Using Your 1RM for Training</h2>
+      <p>Most strength programs prescribe weights as a percentage of 1RM:</p>
+      <ul>
+        <li><strong>90–100%:</strong> Maximal strength (1–3 reps) — powerlifting peaks</li>
+        <li><strong>80–90%:</strong> Strength (3–5 reps) — the bread and butter of strength training</li>
+        <li><strong>70–80%:</strong> Hypertrophy (6–12 reps) — bodybuilding range</li>
+        <li><strong>60–70%:</strong> Muscular endurance (12–20 reps)</li>
+        <li><strong>50–60%:</strong> Speed/power work, warm-up sets</li>
+      </ul>
+
+      <div class="tip-box">
+        <p><strong>Pro Tip:</strong> Use your estimated 1RM as a <strong>training max</strong>, not a competition max. Many programs (like 5/3/1) recommend using 85–90% of your estimated 1RM as your "training max" to leave room for progress and prevent burnout.</p>
+      </div>
+
+      <h2>Other 1RM Formulas</h2>
+      <p>The Epley formula is the most widely used, but other validated formulas exist:</p>
+      <ul>
+        <li><strong>Brzycki:</strong> 1RM = Weight × 36 ÷ (37 – Reps). More conservative, especially at higher rep ranges.</li>
+        <li><strong>Lander:</strong> 1RM = (100 × Weight) ÷ (101.3 – 2.67123 × Reps)</li>
+        <li><strong>Lombardi:</strong> 1RM = Weight × Reps^0.10</li>
+      </ul>
+      <p>All formulas give similar results in the 2–6 rep range and diverge beyond 10 reps. Our calculator uses Epley because it's simple, well-researched, and matches real-world results for most lifters.</p>
+
+      <h2>Common Mistakes</h2>
+      <h3>1. Using Sloppy Reps</h3>
+      <p>The formula assumes proper form on every rep. If your last 2 reps are half-reps or required a spotter, the estimate will be inflated. Only count full-range, unassisted reps.</p>
+
+      <h3>2. Testing After Fatigue</h3>
+      <p>Your submaximal set should be fresh — first working set of the day, not after 5 sets of heavy squats. Accumulated fatigue lowers your rep count and underestimates your true 1RM.</p>
+
+      <div class="warning-box">
+        <p><strong>Watch Out:</strong> A 1RM estimate is just that — an estimate. Never load a bar with your estimated max and attempt it cold. If you need a true 1RM for competition, work up gradually (singles at 85%, 90%, 95%) with a spotter or safety bars in place.</p>
+      </div>
+
+      <p>Use the calculator above to estimate your 1RM and get a full percentage chart for programming your training. Lift smart, lift safe.</p>
+    </article>
+  </main>
+  <footer class="site-footer"><div class="container"><p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p></div></footer>
+
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      const PCTS = [100, 95, 90, 85, 80, 75, 70, 65, 60];
+      const REPS_AT = ['1', '2–3', '3–5', '5–6', '7–8', '9–10', '11–13', '14–16', '17–20'];
+      const COLORS = ['#dc2626','#ef4444','#f59e0b','#d97706','#2563eb','#3b82f6','#7c3aed','#8b5cf6','#a78bfa'];
+
+      function calculate() {
+        const w = CalcCore.getVal('weight');
+        const r = CalcCore.getVal('reps');
+        const unit = CalcCore.getToggleVal('units') || 'lbs';
+        document.getElementById('w-unit').textContent = unit;
+        document.getElementById('result-unit').textContent = unit;
+
+        const oneRM = r === 1 ? w : w * (1 + r / 30);
+
+        CalcCore.setResult('result-1rm', CalcCore.fmt.number(Math.round(oneRM)));
+
+        // Build percentage chart
+        const items = PCTS.map((p, i) => ({
+          label: p + '% — ' + REPS_AT[i] + ' reps',
+          value: Math.round(oneRM * p / 100),
+          display: CalcCore.fmt.number(Math.round(oneRM * p / 100)) + ' ' + unit,
+          color: COLORS[i],
+        }));
+        CalcCore.drawBars('pct-chart', items);
+      }
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+
+  <!-- Sticky Footer Ad (mobile) -->
+  <div id="ad-sticky-footer" class="ad-sticky-footer">
+    <button class="ad-sticky-close" aria-label="Close ad">&times;</button>
+    <div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div>
+  </div>
+
+  <script src="../../js/ads.js"></script>
+</body>
+</html>

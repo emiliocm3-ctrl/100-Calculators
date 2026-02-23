@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Water Intake Calculator — How Much Water Should I Drink?</title>
+  <meta name="description" content="Calculate your recommended daily water intake based on body weight and activity level. Simple, science-backed hydration guide.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <header class="site-header"><div class="container"><a href="../../" class="site-logo"><span class="logo-icon">=</span> 100 Calculators</a></div></header>
+  <main class="container">
+    <nav class="breadcrumb"><a href="../../">Home</a><span class="sep">/</span><a href="../../#fitness">Fitness &amp; Health</a><span class="sep">/</span><span>Water Intake</span></nav>
+
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+    <div class="page-header">
+      <span class="badge">Fitness &amp; Health</span>
+      <h1>Daily Water Intake Calculator</h1>
+      <p class="subtitle">Find out how much water you should drink based on your weight and activity level.</p>
+    </div>
+    <div class="calc-card">
+      <h2>Your Details</h2>
+      <div class="form-row">
+        <div class="form-group"><label for="body-weight">Body Weight</label><div class="input-with-unit"><input type="number" id="body-weight" value="160" min="50" max="500" step="1"><span class="unit" id="bw-unit">lbs</span></div></div>
+        <div class="form-group"><label for="exercise">Exercise Duration (daily)</label><div class="input-with-unit"><input type="number" id="exercise" value="30" min="0" max="300" step="15"><span class="unit">min</span></div></div>
+      </div>
+      <div class="form-group">
+        <label>Units</label>
+        <div class="toggle-group" data-for="units"><button type="button" class="toggle-btn active" data-value="imperial">Lbs / oz</button><button type="button" class="toggle-btn" data-value="metric">Kg / ml</button></div>
+        <input type="hidden" id="units" value="imperial">
+      </div>
+      <div class="form-group">
+        <label>Climate</label>
+        <div class="toggle-group" data-for="climate"><button type="button" class="toggle-btn" data-value="cool">Cool</button><button type="button" class="toggle-btn active" data-value="moderate">Moderate</button><button type="button" class="toggle-btn" data-value="hot">Hot / Humid</button></div>
+        <input type="hidden" id="climate" value="moderate">
+      </div>
+
+      <div class="result-display">
+        <div class="result-label">Daily Water Intake</div>
+        <div class="result-value" id="result-water">—</div>
+        <div class="result-unit" id="result-unit">fl oz</div>
+      </div>
+      <div class="results-grid">
+        <div class="result-item"><div class="result-item-label">Glasses (8 oz)</div><div class="result-item-value" id="result-glasses">—</div></div>
+        <div class="result-item"><div class="result-item-label">Liters</div><div class="result-item-value" id="result-liters">—</div></div>
+        <div class="result-item"><div class="result-item-label">Water Bottles (16.9oz)</div><div class="result-item-value" id="result-bottles">—</div></div>
+        <div class="result-item"><div class="result-item-label">Base + Exercise</div><div class="result-item-value" id="result-breakdown">—</div></div>
+      </div>
+    </div>
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+    <article class="article-content">
+      <h2>How Much Water Do You Actually Need?</h2>
+      <p>The old "8 glasses a day" rule is a decent starting point, but it ignores body size, activity level, and climate. A 120-pound office worker and a 220-pound construction worker in Arizona have very different hydration needs. This guide explains the science-backed formula and how to adjust it for your situation.</p>
+
+      <h2>The Formula</h2>
+      <div class="formula-box">Base Intake = Body Weight (lbs) × 0.5 = ounces<br>Exercise Add-on = 12 oz for every 30 min of exercise</div>
+      <p>A 160-pound person who exercises 30 minutes daily: (160 × 0.5) + 12 = <strong>92 oz</strong> ≈ 11.5 cups or about 2.7 liters. Hot and humid weather adds another 10–20%.</p>
+
+      <h2>Signs of Dehydration</h2>
+      <ul>
+        <li><strong>Mild (1–2%):</strong> Thirst, dry mouth, slightly darker urine, mild headache</li>
+        <li><strong>Moderate (3–5%):</strong> Fatigue, dizziness, reduced athletic performance, dark urine</li>
+        <li><strong>Severe (>5%):</strong> Rapid heartbeat, confusion, minimal urine — seek medical attention</li>
+      </ul>
+
+      <div class="tip-box">
+        <p><strong>Pro Tip:</strong> The simplest hydration check is <strong>urine color</strong>. Pale straw = well hydrated. Dark yellow = drink more. Clear and colorless = you may be over-hydrating (yes, that's a thing).</p>
+      </div>
+
+      <h2>Does Coffee Count?</h2>
+      <p>Yes, mostly. While caffeine is a mild diuretic, the water in coffee and tea more than offsets the fluid lost. A cup of coffee hydrates you about 80% as much as a cup of water. Soda and juice count too, though plain water is always the healthiest choice.</p>
+
+      <h2>Common Mistakes</h2>
+      <h3>1. Chugging Instead of Sipping</h3>
+      <p>Your body absorbs water best when consumed steadily throughout the day. Drinking 40 oz at once just sends most of it straight to your bladder. Spread your intake evenly.</p>
+
+      <div class="warning-box">
+        <p><strong>Watch Out:</strong> Drinking extreme amounts of water (hyponatremia) can be dangerous. If you're consuming more than 1 liter per hour during intense exercise, add electrolytes to prevent sodium dilution. This is rare but can be life-threatening.</p>
+      </div>
+
+      <p>Use the calculator above to find your target, then carry a water bottle with you. Most people are mildly dehydrated without knowing it — especially in air-conditioned offices.</p>
+    </article>
+  </main>
+  <footer class="site-footer"><div class="container"><p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p></div></footer>
+
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      const CLIMATE_MULT = { cool: 0.9, moderate: 1.0, hot: 1.15 };
+      function calculate() {
+        const isMetric = CalcCore.getToggleVal('units') === 'metric';
+        let bw = CalcCore.getVal('body-weight');
+        const exMins = CalcCore.getVal('exercise');
+        const climate = CalcCore.getToggleVal('climate') || 'moderate';
+
+        document.getElementById('bw-unit').textContent = isMetric ? 'kg' : 'lbs';
+        if (isMetric) bw *= 2.20462; // convert to lbs for formula
+
+        const baseOz = bw * 0.5;
+        const exerciseOz = (exMins / 30) * 12;
+        const totalOz = (baseOz + exerciseOz) * (CLIMATE_MULT[climate] || 1);
+        const liters = totalOz * 0.02957;
+        const glasses = totalOz / 8;
+        const bottles = totalOz / 16.9;
+
+        if (isMetric) {
+          CalcCore.setResult('result-water', CalcCore.fmt.number(totalOz * 29.57, 0));
+          CalcCore.setResult('result-unit', 'ml');
+        } else {
+          CalcCore.setResult('result-water', CalcCore.fmt.number(totalOz, 0));
+          CalcCore.setResult('result-unit', 'fl oz');
+        }
+        CalcCore.setResult('result-glasses', CalcCore.fmt.number(glasses, 1));
+        CalcCore.setResult('result-liters', CalcCore.fmt.number(liters, 1) + ' L');
+        CalcCore.setResult('result-bottles', CalcCore.fmt.number(bottles, 1));
+        CalcCore.setResult('result-breakdown', CalcCore.fmt.number(baseOz, 0) + ' + ' + CalcCore.fmt.number(exerciseOz, 0) + ' oz');
+      }
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+
+  <!-- Sticky Footer Ad (mobile) -->
+  <div id="ad-sticky-footer" class="ad-sticky-footer">
+    <button class="ad-sticky-close" aria-label="Close ad">&times;</button>
+    <div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div>
+  </div>
+
+  <script src="../../js/ads.js"></script>
+</body>
+</html>

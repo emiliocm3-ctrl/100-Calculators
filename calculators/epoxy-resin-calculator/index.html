@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Epoxy Resin Calculator — Resin &amp; Hardener Ratio</title>
+  <meta name="description" content="Calculate the exact amount of epoxy resin and hardener for your mold or project. Input dimensions, get precise measurements with zero waste.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="../../" class="site-logo">
+        <span class="logo-icon">=</span>
+        100 Calculators
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav class="breadcrumb">
+      <a href="../../">Home</a>
+      <span class="sep">/</span>
+      <a href="../../#hobbies">Niche Hobbies</a>
+      <span class="sep">/</span>
+      <span>Epoxy Resin Calculator</span>
+    </nav>
+
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+
+    <div class="page-header">
+      <span class="badge">Niche Hobbies</span>
+      <h1>Epoxy Resin Calculator</h1>
+      <p class="subtitle">Get the exact resin-to-hardener ratio for any mold. No wasted material, no failed pours.</p>
+    </div>
+
+    <div class="calc-card">
+      <h2>Your Project Details</h2>
+
+      <div class="form-group">
+        <label>Mold Shape</label>
+        <div class="toggle-group" data-for="mold-shape">
+          <button type="button" class="toggle-btn active" data-value="rectangular">Rectangular</button>
+          <button type="button" class="toggle-btn" data-value="cylindrical">Cylindrical</button>
+          <button type="button" class="toggle-btn" data-value="custom">Custom Volume</button>
+        </div>
+        <input type="hidden" id="mold-shape" value="rectangular">
+      </div>
+
+      <div id="dims-rect">
+        <div class="form-row form-row--3">
+          <div class="form-group">
+            <label for="rect-length">Length</label>
+            <div class="input-with-unit">
+              <input type="number" id="rect-length" value="12" min="0.1" max="200" step="0.25">
+              <span class="unit">in</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="rect-width">Width</label>
+            <div class="input-with-unit">
+              <input type="number" id="rect-width" value="6" min="0.1" max="200" step="0.25">
+              <span class="unit">in</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="rect-depth">Depth</label>
+            <div class="input-with-unit">
+              <input type="number" id="rect-depth" value="1.5" min="0.1" max="100" step="0.25">
+              <span class="unit">in</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="dims-cyl" style="display:none">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cyl-diameter">Diameter</label>
+            <div class="input-with-unit">
+              <input type="number" id="cyl-diameter" value="4" min="0.1" max="200" step="0.25">
+              <span class="unit">in</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="cyl-depth">Height / Depth</label>
+            <div class="input-with-unit">
+              <input type="number" id="cyl-depth" value="3" min="0.1" max="100" step="0.25">
+              <span class="unit">in</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="dims-custom" style="display:none">
+        <div class="form-group">
+          <label for="custom-vol">Total Volume</label>
+          <div class="input-with-unit">
+            <input type="number" id="custom-vol" value="20" min="0.1" max="5000" step="0.1">
+            <span class="unit">fl oz</span>
+          </div>
+          <span class="hint">Enter the volume of your mold in fluid ounces</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Mix Ratio (Resin : Hardener)</label>
+        <div class="toggle-group" data-for="mix-ratio">
+          <button type="button" class="toggle-btn active" data-value="1:1">1 : 1</button>
+          <button type="button" class="toggle-btn" data-value="2:1">2 : 1</button>
+          <button type="button" class="toggle-btn" data-value="3:1">3 : 1</button>
+          <button type="button" class="toggle-btn" data-value="4:1">4 : 1</button>
+        </div>
+        <input type="hidden" id="mix-ratio" value="1:1">
+        <span class="hint">Check your resin brand — most art resins are 1:1, many industrial epoxies are 2:1</span>
+      </div>
+
+      <div class="form-group">
+        <label for="waste-factor">Waste / Overpour Factor</label>
+        <input type="range" id="waste-factor" min="0" max="30" value="10" step="5">
+        <div class="range-labels">
+          <span>0%</span>
+          <span id="waste-factor-val">10</span>
+          <span>30%</span>
+        </div>
+      </div>
+
+      <div class="result-display" id="result-box">
+        <div class="result-label">Total Mixed Epoxy Needed</div>
+        <div class="result-value" id="result-total">—</div>
+        <div class="result-unit">fl oz (total mix)</div>
+      </div>
+
+      <!-- Donut chart for resin vs hardener -->
+      <div class="chart-container">
+        <div class="donut-chart">
+          <canvas id="mix-chart" width="200" height="200"></canvas>
+          <div id="mix-chart-center" class="chart-center"></div>
+        </div>
+      </div>
+      <div id="mix-chart-legend" class="chart-legend"></div>
+
+      <div class="results-grid">
+        <div class="result-item">
+          <div class="result-item-label">Resin</div>
+          <div class="result-item-value" id="result-resin">—</div>
+          <div class="result-item-unit">fl oz</div>
+        </div>
+        <div class="result-item">
+          <div class="result-item-label">Hardener</div>
+          <div class="result-item-value" id="result-hardener">—</div>
+          <div class="result-item-unit">fl oz</div>
+        </div>
+        <div class="result-item">
+          <div class="result-item-label">Volume (ml)</div>
+          <div class="result-item-value" id="result-ml">—</div>
+          <div class="result-item-unit">ml total</div>
+        </div>
+        <div class="result-item">
+          <div class="result-item-label">Mold Volume</div>
+          <div class="result-item-value" id="result-mold-vol">—</div>
+          <div class="result-item-unit">fl oz (before waste)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-box">
+      <span class="cta-icon">&#128167;</span>
+      <div class="cta-content">
+        <p><strong>Starting a resin project?</strong> Crystal-clear art resin makes all the difference.</p>
+        <a href="#" class="cta-link">Best Epoxy Resin Kits on Amazon &rarr;</a>
+      </div>
+    </div>
+
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+
+    <article class="article-content">
+      <h2>How to Calculate Epoxy Resin for Any Project</h2>
+      <p>Epoxy resin is expensive, and getting the amount wrong means either running short mid-pour (which ruins the project) or wasting material that hardens in the cup. This guide explains how to calculate the exact amount of resin and hardener for any mold shape, how mix ratios work, and the mistakes that ruin projects before they even cure.</p>
+
+      <h2>The Volume Formula</h2>
+      <p>The first step is calculating the volume of your mold. Every shape has its own formula:</p>
+
+      <div class="formula-box">
+        Rectangle: L &times; W &times; D<br>
+        Cylinder: &pi; &times; (D/2)² &times; H<br>
+        Then: Volume (in³) &divide; 1.805 = fl oz
+      </div>
+
+      <p>The conversion factor is key: <strong>1 fluid ounce = 1.805 cubic inches</strong>. Most resin is sold and measured in fluid ounces (or milliliters), so you need to convert from your physical dimensions.</p>
+
+      <h2>Understanding Mix Ratios</h2>
+      <p>Epoxy resin is a <strong>two-part system</strong>: resin (Part A) and hardener (Part B). The ratio between them determines the chemical reaction that causes curing. Getting this ratio wrong doesn't just mean weak results — it can mean the epoxy never cures at all.</p>
+
+      <h3>Common Ratios</h3>
+      <ul>
+        <li><strong>1:1</strong> — Most art resins, craft resins, and table-top coating resins. Equal parts resin and hardener by volume. The simplest to measure.</li>
+        <li><strong>2:1</strong> — Many deep-pour and industrial epoxies. Two parts resin to one part hardener. Common for river tables and thick castings.</li>
+        <li><strong>3:1 and 4:1</strong> — Some specialized industrial and marine epoxies. Less common for craft use.</li>
+      </ul>
+
+      <div class="warning-box">
+        <p><strong>Watch Out:</strong> Some manufacturers specify ratios by <strong>weight</strong>, not volume. Resin and hardener have different densities, so 1:1 by volume is NOT the same as 1:1 by weight. Always check your product label for whether the ratio is volumetric or gravimetric.</p>
+      </div>
+
+      <h2>Why the Waste Factor Matters</h2>
+      <p>You should always mix more resin than the calculated mold volume. Here's why:</p>
+      <ul>
+        <li><strong>Mixing cup residue:</strong> 5-10% of your resin sticks to the walls and bottom of the mixing container</li>
+        <li><strong>Stir stick:</strong> Another 1-2% clings to your mixing tool</li>
+        <li><strong>Uneven mold surfaces:</strong> Natural materials like wood have pores and gaps that absorb resin</li>
+        <li><strong>Overflow control:</strong> It's better to have a little excess than to run short</li>
+      </ul>
+      <p>A <strong>10% overpour factor</strong> is standard for most projects. For porous materials like wood, go 15-20%. For precise silicone molds, 5% may suffice.</p>
+
+      <h2>Step-by-Step: Your First Pour</h2>
+      <ol>
+        <li><strong>Calculate volume</strong> using the calculator above</li>
+        <li><strong>Measure accurately</strong> — use graduated mixing cups, not eyeballing</li>
+        <li><strong>Pour resin first</strong>, then add hardener. Scrape the sides of each container</li>
+        <li><strong>Mix slowly</strong> for 3-5 minutes. Scrape sides and bottom of the cup. Fast stirring introduces bubbles</li>
+        <li><strong>Let it rest</strong> 2-3 minutes after mixing to let bubbles rise</li>
+        <li><strong>Pour slowly</strong> from one spot. Use a heat gun or torch to pop surface bubbles</li>
+      </ol>
+
+      <div class="tip-box">
+        <p><strong>Pro Tip:</strong> For deep pours (over 1 inch), use "deep pour" resin formulated for thick castings. Standard art resin generates too much heat in thick layers, which can cause cracking, yellowing, or even smoking. Deep pour resins cure more slowly and stay cooler.</p>
+      </div>
+
+      <h2>Common Mistakes</h2>
+      <h3>1. Mixing Ratio Errors</h3>
+      <p>Even small errors compound. If your ratio is 1:1 but you pour 10% more hardener, the epoxy may cure sticky, soft, or not at all. Use a scale or graduated cups — never estimate.</p>
+
+      <h3>2. Rushing the Cure</h3>
+      <p>Most art resins take 24-72 hours to fully cure. Adding heat can speed surface curing but may leave the interior soft. Follow the manufacturer's cure time. Patience is literally the difference between success and failure.</p>
+
+      <h3>3. Working in Cold or Humid Conditions</h3>
+      <p>Epoxy cures best between 70-80°F (21-27°C) at low humidity. Cold temperatures slow curing dramatically. High humidity can cause "blushing" — a cloudy, waxy surface film. If your workspace is cold, warm the resin bottles in warm water before mixing.</p>
+
+      <p>Use the calculator above to get your precise measurements, double-check your mix ratio on the product label, and pour with confidence. The difference between a stunning resin piece and a sticky mess is just a few ounces of accuracy.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p>
+    </div>
+  </footer>
+
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      const CU_IN_PER_FL_OZ = 1.80469;
+      const ML_PER_FL_OZ = 29.5735;
+
+      function showShape(shape) {
+        document.getElementById('dims-rect').style.display = shape === 'rectangular' ? '' : 'none';
+        document.getElementById('dims-cyl').style.display = shape === 'cylindrical' ? '' : 'none';
+        document.getElementById('dims-custom').style.display = shape === 'custom' ? '' : 'none';
+      }
+
+      function parseRatio(ratioStr) {
+        const parts = (ratioStr || '1:1').split(':');
+        return { resinParts: parseFloat(parts[0]), hardenerParts: parseFloat(parts[1]) };
+      }
+
+      function calculate() {
+        const shape = CalcCore.getToggleVal('mold-shape') || 'rectangular';
+        const ratioStr = CalcCore.getToggleVal('mix-ratio') || '1:1';
+        const wastePct = CalcCore.getVal('waste-factor');
+        const { resinParts, hardenerParts } = parseRatio(ratioStr);
+        const totalParts = resinParts + hardenerParts;
+
+        showShape(shape);
+
+        let volumeFlOz = 0;
+
+        if (shape === 'rectangular') {
+          const l = CalcCore.getVal('rect-length');
+          const w = CalcCore.getVal('rect-width');
+          const d = CalcCore.getVal('rect-depth');
+          volumeFlOz = (l * w * d) / CU_IN_PER_FL_OZ;
+        } else if (shape === 'cylindrical') {
+          const dia = CalcCore.getVal('cyl-diameter');
+          const dep = CalcCore.getVal('cyl-depth');
+          volumeFlOz = (Math.PI * Math.pow(dia / 2, 2) * dep) / CU_IN_PER_FL_OZ;
+        } else {
+          volumeFlOz = CalcCore.getVal('custom-vol');
+        }
+
+        const totalWithWaste = volumeFlOz * (1 + wastePct / 100);
+        const resinOz = totalWithWaste * (resinParts / totalParts);
+        const hardenerOz = totalWithWaste * (hardenerParts / totalParts);
+        const totalMl = totalWithWaste * ML_PER_FL_OZ;
+
+        CalcCore.setResult('result-total', CalcCore.fmt.number(totalWithWaste, 1));
+        CalcCore.setResult('result-resin', CalcCore.fmt.number(resinOz, 1));
+        CalcCore.setResult('result-hardener', CalcCore.fmt.number(hardenerOz, 1));
+        CalcCore.setResult('result-ml', CalcCore.fmt.number(totalMl, 0));
+        CalcCore.setResult('result-mold-vol', CalcCore.fmt.number(volumeFlOz, 1));
+
+        // Draw donut chart
+        CalcCore.drawDonut('mix-chart', [
+          { value: resinOz, color: '#2563eb', label: 'Resin', display: CalcCore.fmt.number(resinOz, 1) + ' oz' },
+          { value: hardenerOz, color: '#f59e0b', label: 'Hardener', display: CalcCore.fmt.number(hardenerOz, 1) + ' oz' },
+        ], {
+          size: 200,
+          thickness: 0.6,
+          centerText: ratioStr,
+          centerLabel: 'ratio',
+        });
+      }
+
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+
+  <!-- Sticky Footer Ad (mobile) -->
+  <div id="ad-sticky-footer" class="ad-sticky-footer">
+    <button class="ad-sticky-close" aria-label="Close ad">&times;</button>
+    <div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div>
+  </div>
+
+  <script src="../../js/ads.js"></script>
+</body>
+</html>

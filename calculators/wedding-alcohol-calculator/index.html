@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Alcohol Calculator — How Much Booze for Your Reception?</title>
+  <meta name="description" content="Plan the perfect bar for your wedding reception. Calculate exactly how many bottles of wine, cases of beer, and bottles of spirits you need based on guest count, duration, and drinking preferences.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="../../" class="site-logo">
+        <span class="logo-icon">=</span>
+        100 Calculators
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav class="breadcrumb">
+      <a href="../../">Home</a>
+      <span class="sep">/</span>
+      <a href="../../#lifestyle-events">Lifestyle &amp; Events</a>
+      <span class="sep">/</span>
+      <span>Wedding Alcohol Calculator</span>
+    </nav>
+
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+
+    <div class="page-header">
+      <span class="badge">Lifestyle &amp; Events</span>
+      <h1>Wedding Alcohol Calculator</h1>
+      <p class="subtitle">Plan the perfect bar — figure out exactly how many bottles of wine, beer, and spirits you need for your big day.</p>
+    </div>
+
+    <!-- Calculator Card -->
+    <div class="calc-card">
+      <h2>Plan Your Wedding Bar</h2>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="guests">Number of Guests</label>
+          <div class="input-with-unit">
+            <input type="number" id="guests" value="100" min="1" max="1000" step="1">
+            <span class="unit">guests</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="duration">Event Duration</label>
+          <div class="input-with-unit">
+            <input type="number" id="duration" value="5" min="1" max="12" step="0.5">
+            <span class="unit">hours</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Drinking Level</label>
+        <div class="toggle-group" data-for="drinking-level">
+          <button type="button" class="toggle-btn" data-value="light">Light</button>
+          <button type="button" class="toggle-btn active" data-value="average">Average</button>
+          <button type="button" class="toggle-btn" data-value="heavy">Heavy</button>
+        </div>
+        <input type="hidden" id="drinking-level" value="average">
+        <span class="hint">Drinks per person per hour: Light 0.5 · Average 1.0 · Heavy 1.5</span>
+      </div>
+
+      <div class="form-group">
+        <label for="non-drinkers">Non-Drinkers: <strong id="non-drinkers-val">15</strong>%</label>
+        <input type="range" id="non-drinkers" min="0" max="50" value="15" step="1">
+        <div class="range-labels">
+          <span>0%</span>
+          <span>25%</span>
+          <span>50%</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Beverage Mix</label>
+        <div class="toggle-group" data-for="bev-mix">
+          <button type="button" class="toggle-btn" data-value="wine-heavy">Wine-Heavy</button>
+          <button type="button" class="toggle-btn active" data-value="balanced">Balanced</button>
+          <button type="button" class="toggle-btn" data-value="beer-heavy">Beer-Heavy</button>
+        </div>
+        <input type="hidden" id="bev-mix" value="balanced">
+        <span class="hint" id="bev-mix-hint">33% wine · 34% beer · 33% spirits</span>
+      </div>
+
+      <!-- Primary Result -->
+      <div class="result-display" id="result-box">
+        <div class="result-label">Total Drinks Needed</div>
+        <div class="result-value" id="result-total-drinks">—</div>
+        <div class="result-unit">total bottles &amp; cases</div>
+        <div class="result-note" id="result-note">For <span id="result-drinking-guests">—</span> drinking guests over <span id="result-hours">—</span> hours</div>
+      </div>
+
+      <!-- Donut Chart -->
+      <div class="chart-container">
+        <div class="donut-chart">
+          <canvas id="drink-chart" width="200" height="200"></canvas>
+          <div id="drink-chart-center" class="chart-center"></div>
+        </div>
+      </div>
+      <div id="drink-chart-legend" class="chart-legend"></div>
+
+      <!-- Secondary Results Grid -->
+      <div class="results-grid">
+        <div class="result-item">
+          <div class="result-item-label">Wine Bottles</div>
+          <div class="result-item-value" id="result-wine">—</div>
+          <div class="result-item-unit">bottles</div>
+        </div>
+        <div class="result-item">
+          <div class="result-item-label">Beer (Cans/Bottles)</div>
+          <div class="result-item-value" id="result-beer">—</div>
+          <div class="result-item-unit" id="result-beer-unit">cans/bottles</div>
+        </div>
+        <div class="result-item">
+          <div class="result-item-label">Spirit Bottles (750ml)</div>
+          <div class="result-item-value" id="result-spirits">—</div>
+          <div class="result-item-unit">bottles</div>
+        </div>
+        <div class="result-item">
+          <div class="result-item-label">Estimated Cost</div>
+          <div class="result-item-value" id="result-cost">—</div>
+          <div class="result-item-unit">approximate total</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-box">
+      <span class="cta-icon">&#127870;</span>
+      <div class="cta-content">
+        <p><strong>Stock your bar!</strong> Get everything you need — glasses, ice buckets, cocktail napkins, and bar tools for your wedding reception.</p>
+        <a href="#" class="cta-link">Shop Bar Supplies &rarr;</a>
+      </div>
+    </div>
+
+    <!-- Ad Placeholder -->
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+
+    <!-- Article Content -->
+    <article class="article-content">
+      <h2>How to Calculate Alcohol for a Wedding Reception</h2>
+      <p>One of the most stressful parts of planning a wedding isn't picking the venue or choosing the flowers — it's figuring out exactly how much alcohol to buy. Order too little and the bar runs dry before the last dance. Order too much and you're stuck with cases of leftover Chardonnay. This guide walks you through the professional bartender formula and gives you everything you need to stock the perfect wedding bar.</p>
+
+      <h2>The Standard Formula Bartenders Use</h2>
+      <p>Professional event bartenders and caterers use a straightforward formula to estimate alcohol for any gathering. It's based on three core variables: <strong>number of drinking guests</strong>, <strong>event duration in hours</strong>, and <strong>average drinks per person per hour</strong>.</p>
+
+      <div class="formula-box">
+        Total Drinks = Drinking Guests &times; Duration (hrs) &times; Drinks per Hour
+      </div>
+
+      <p>From the total drink count, you split the drinks into categories (wine, beer, and spirits) based on the crowd's preferences, then convert each category into purchasable units — wine bottles, beer cases, and spirit bottles.</p>
+
+      <ul>
+        <li><strong>Wine:</strong> 1 bottle = 5 glasses (standard 750ml bottle poured at 5 oz each)</li>
+        <li><strong>Beer:</strong> 1 case = 24 cans or bottles (12 oz each)</li>
+        <li><strong>Spirits:</strong> 1 bottle (750ml) = 16 standard drinks (1.5 oz pours)</li>
+      </ul>
+
+      <p>This formula accounts for the natural drinking rhythm of events. Guests typically drink more during cocktail hour and slow down as the evening progresses, but the average holds remarkably well across thousands of events.</p>
+
+      <h2>Drinks Per Person Per Hour by Drinking Level</h2>
+      <p>Not every wedding crowd is the same. A Sunday brunch reception will consume far less alcohol than a Saturday night dance party. Here's how professional caterers classify drinking levels:</p>
+
+      <ul>
+        <li><strong>Light (0.5 drinks/hr):</strong> Daytime events, brunch receptions, religious gatherings, or older guest demographics. Guests sip casually and many switch to water or soft drinks after the first hour.</li>
+        <li><strong>Average (1.0 drink/hr):</strong> The industry standard for most evening wedding receptions. This is the safe default and works for 70-80% of weddings.</li>
+        <li><strong>Heavy (1.5 drinks/hr):</strong> Late-night parties, younger crowds (mid-20s to early-30s), or events where the host has explicitly encouraged a party atmosphere. If your wedding has a band, a dance floor, and goes past midnight, plan for this.</li>
+      </ul>
+
+      <div class="tip-box">
+        <p><strong>Pro Tip:</strong> When in doubt, plan for "average" but buy your spirits and wine from a retailer that allows returns on unopened bottles. This gives you insurance without waste.</p>
+      </div>
+
+      <h2>Open Bar vs. Beer-and-Wine-Only Calculations</h2>
+      <p>A <strong>full open bar</strong> (wine, beer, and spirits) uses the split percentages in the calculator above — typically a balanced mix of one-third each, or weighted toward the crowd's preferences. This is the most expensive option but gives guests the most choice.</p>
+
+      <p>A <strong>beer-and-wine-only</strong> bar simplifies things considerably. If you're skipping spirits entirely, redistribute the spirit percentage into wine and beer. A typical split becomes 60% wine and 40% beer (or 50/50 for a younger crowd). You'll need roughly the same total number of drinks — just served differently.</p>
+
+      <p>For a <strong>signature cocktail bar</strong> (two pre-mixed cocktails plus beer and wine), estimate that 30-40% of guests will choose the signature drinks. Batch-mix your cocktails in advance and allocate the remaining total to beer and wine. Signature cocktails typically use 1.5 oz of spirits per drink, so divide total signature drinks by 16 for the number of 750ml bottles needed.</p>
+
+      <h2>How to Estimate Non-Drinkers</h2>
+      <p>Every wedding has guests who won't touch alcohol — whether for health, religious, or personal reasons. The industry standard estimate is <strong>10-20% non-drinkers</strong>, and here's how to refine that number for your specific event:</p>
+
+      <ul>
+        <li><strong>10% or less:</strong> If your guest list skews young (25-40), predominantly social drinkers, and you're hosting an evening reception with dancing.</li>
+        <li><strong>15% (default):</strong> The safe middle ground for most weddings. This accounts for designated drivers, pregnant guests, and those who simply prefer soft drinks.</li>
+        <li><strong>20-30%:</strong> Family-heavy weddings with children (count all under-21 guests), religious communities, or afternoon events.</li>
+        <li><strong>30-50%:</strong> Dry-leaning communities, events with a large number of elderly guests, or cultures where alcohol consumption is less common.</li>
+      </ul>
+
+      <p>Don't forget to stock plenty of non-alcoholic options for these guests: sparkling water, sodas, mocktails, and juice. Budget roughly 2-3 non-alcoholic drinks per non-drinking guest for the full event.</p>
+
+      <h2>Seasonal Considerations</h2>
+      <p>The time of year significantly affects what your guests will drink:</p>
+
+      <h3>Summer Weddings (June–August)</h3>
+      <p>Guests gravitate toward <strong>cold beer, white wine, and light cocktails</strong>. Increase your beer allocation by 10-15% and decrease spirits accordingly. Ros&eacute; and sparkling wines are extremely popular. Also budget for significantly more ice — plan for <strong>1.5 lbs of ice per guest</strong> (up from the usual 1 lb) since it melts faster in the heat.</p>
+
+      <h3>Winter Weddings (November–February)</h3>
+      <p>Expect higher consumption of <strong>red wine, whiskey, and dark spirits</strong>. Shift your mix toward more wine and spirits and slightly less beer. Warm cocktails like mulled wine or spiked cider are a crowd-pleaser and can reduce your spirit bottle count since they use less alcohol per serving.</p>
+
+      <h3>Spring &amp; Fall</h3>
+      <p>These are the most balanced seasons. Stick with the standard formula and a balanced mix. The moderate temperatures mean no strong skew in any direction.</p>
+
+      <h2>Common Mistakes That Kill Wedding Bars</h2>
+
+      <h3>1. Forgetting Cocktail Hour</h3>
+      <p>The biggest oversight in wedding alcohol planning is treating cocktail hour as separate from the reception. Cocktail hour is typically the <strong>heaviest drinking period</strong> of the entire event — guests are socializing, settling in, and the drinks are flowing freely. Make sure your event duration includes cocktail hour. If your cocktail hour is 1 hour and dinner/dancing is 4 hours, your total duration is 5 hours.</p>
+
+      <h3>2. Not Enough Ice</h3>
+      <p>Ice is the unsung hero of any bar. You need it for chilling bottles, filling glasses, and keeping beer cold. The rule of thumb is <strong>1 to 1.5 pounds of ice per guest</strong>. For 100 guests, that's 100-150 lbs of ice. Buy it the morning of the event and store it in clean coolers or trash cans lined with plastic bags.</p>
+
+      <h3>3. Ignoring the Champagne Toast</h3>
+      <p>If you're doing a champagne toast, that's a separate calculation. One bottle of champagne yields about <strong>6 flute pours</strong>. For 100 guests, you need roughly 17 bottles. If you're on a budget, substitute sparkling wine (Prosecco or Cava) which tastes similar at a fraction of the cost.</p>
+
+      <div class="warning-box">
+        <p><strong>Don't Forget:</strong> Always have a plan for responsible alcohol service. Designate a bartender or friend to watch for over-served guests, provide a water station, and arrange transportation options (shuttle, rideshare codes) for guests who shouldn't drive.</p>
+      </div>
+
+      <h2>Money-Saving Tips for Your Wedding Bar</h2>
+      <p>Alcohol is one of the largest line items in a wedding budget, but smart shopping can save you hundreds or even thousands of dollars:</p>
+
+      <ul>
+        <li><strong>Buy returnable cases:</strong> Many liquor stores and wine shops allow you to return <strong>unopened</strong> bottles and cases for a full refund. Buy 10-15% more than you need and return what's left.</li>
+        <li><strong>Shop at wholesale clubs:</strong> Costco, Sam's Club, and Total Wine offer significant discounts on bulk purchases. Costco's Kirkland brand wines are consistently well-reviewed and cost a fraction of comparable labels.</li>
+        <li><strong>Skip top-shelf spirits:</strong> In a mixed drink, most guests can't tell the difference between a $25 bottle and a $50 bottle. Invest in mid-range spirits and save the premium stuff for sipping-only options.</li>
+        <li><strong>Buy in-season wines:</strong> Wine prices fluctuate. Ask your wine shop which regions are offering good value this year.</li>
+        <li><strong>Consider kegs:</strong> For beer-heavy events, a keg is dramatically cheaper per serving than canned or bottled beer. One standard keg (15.5 gallons) serves about 165 twelve-ounce pours — nearly 7 cases' worth at roughly half the price.</li>
+        <li><strong>Batch your cocktails:</strong> Pre-mixed cocktails served from pitchers or dispensers reduce waste, speed up service, and let you control portions precisely.</li>
+      </ul>
+
+      <div class="tip-box">
+        <p><strong>Budget Hack:</strong> For a 100-guest wedding with an average drinking level and balanced mix, expect to spend roughly <strong>$1,200–$1,800</strong> on alcohol alone (not including bartender fees, mixers, or garnishes). Our calculator's cost estimate uses $8 per wine bottle, $30 per beer case, and $25 per spirit bottle as baseline prices — adjust for your local market.</p>
+      </div>
+
+      <h2>Putting It All Together</h2>
+      <p>Planning your wedding bar doesn't have to be stressful. Use the calculator above to get your baseline numbers, then adjust based on your specific crowd, season, and budget. Remember: it's always better to have a few extra bottles than to run out mid-reception. Buy from retailers with return policies, stock plenty of ice and non-alcoholic options, and don't forget that champagne toast. Your guests will remember a great party — and a great bar is a big part of that.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p>
+    </div>
+  </footer>
+
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      const DRINKS_PER_HOUR = { light: 0.5, average: 1.0, heavy: 1.5 };
+
+      const BEV_MIX = {
+        'wine-heavy': { wine: 0.50, beer: 0.20, spirits: 0.30 },
+        'balanced':    { wine: 0.33, beer: 0.34, spirits: 0.33 },
+        'beer-heavy':  { wine: 0.20, beer: 0.50, spirits: 0.30 },
+      };
+
+      const BEV_HINTS = {
+        'wine-heavy': '50% wine · 20% beer · 30% spirits',
+        'balanced':    '33% wine · 34% beer · 33% spirits',
+        'beer-heavy':  '20% wine · 50% beer · 30% spirits',
+      };
+
+      const GLASSES_PER_WINE_BOTTLE = 5;
+      const BEERS_PER_CASE = 24;
+      const DRINKS_PER_SPIRIT_BOTTLE = 16;
+
+      const COST_WINE_BOTTLE = 8;
+      const COST_BEER_CASE = 30;
+      const COST_SPIRIT_BOTTLE = 25;
+
+      function calculate() {
+        const guests = CalcCore.getVal('guests');
+        const duration = CalcCore.getVal('duration');
+        const level = CalcCore.getToggleVal('drinking-level') || 'average';
+        const nonDrinkersPct = CalcCore.getVal('non-drinkers');
+        const mixKey = CalcCore.getToggleVal('bev-mix') || 'balanced';
+
+        // Update beverage mix hint
+        CalcCore.setResult('bev-mix-hint', BEV_HINTS[mixKey] || BEV_HINTS.balanced);
+
+        const dph = DRINKS_PER_HOUR[level] || 1.0;
+        const mix = BEV_MIX[mixKey] || BEV_MIX.balanced;
+
+        // Core calculations
+        const drinkingGuests = Math.round(guests * (1 - nonDrinkersPct / 100));
+        const totalDrinks = drinkingGuests * duration * dph;
+
+        const wineDrinks = totalDrinks * mix.wine;
+        const beerDrinks = totalDrinks * mix.beer;
+        const spiritDrinks = totalDrinks * mix.spirits;
+
+        const wineBottles = Math.ceil(wineDrinks / GLASSES_PER_WINE_BOTTLE);
+        const beerCans = Math.ceil(beerDrinks);
+        const beerCases = Math.ceil(beerDrinks / BEERS_PER_CASE);
+        const spiritBottles = Math.ceil(spiritDrinks / DRINKS_PER_SPIRIT_BOTTLE);
+
+        // Cost estimate
+        const totalCost = (wineBottles * COST_WINE_BOTTLE)
+                        + (beerCases * COST_BEER_CASE)
+                        + (spiritBottles * COST_SPIRIT_BOTTLE);
+
+        // Primary result: total purchasable units
+        const totalUnits = wineBottles + beerCases + spiritBottles;
+        CalcCore.setResult('result-total-drinks', CalcCore.fmt.number(totalUnits));
+        CalcCore.setResult('result-drinking-guests', CalcCore.fmt.number(drinkingGuests));
+        CalcCore.setResult('result-hours', duration);
+
+        // Secondary results
+        CalcCore.setResult('result-wine', CalcCore.fmt.number(wineBottles));
+        CalcCore.setResult('result-beer', CalcCore.fmt.number(beerCans));
+        CalcCore.setResult('result-spirits', CalcCore.fmt.number(spiritBottles));
+        CalcCore.setResult('result-cost', CalcCore.fmt.currency(totalCost, 0));
+
+        // Donut chart
+        CalcCore.drawDonut('drink-chart', [
+          { value: wineBottles, color: '#722F37', label: 'Wine', display: wineBottles + ' bottles' },
+          { value: beerCases,   color: '#D4A017', label: 'Beer', display: beerCases + ' cases' },
+          { value: spiritBottles, color: '#4A90D9', label: 'Spirits', display: spiritBottles + ' bottles' },
+        ], {
+          size: 200,
+          thickness: 0.65,
+          centerText: CalcCore.fmt.number(Math.round(totalDrinks)),
+          centerLabel: 'total drinks',
+        });
+      }
+
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+
+  <!-- Sticky Footer Ad (mobile) -->
+  <div id="ad-sticky-footer" class="ad-sticky-footer">
+    <button class="ad-sticky-close" aria-label="Close ad">&times;</button>
+    <div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div>
+  </div>
+
+  <script src="../../js/ads.js"></script>
+</body>
+</html>

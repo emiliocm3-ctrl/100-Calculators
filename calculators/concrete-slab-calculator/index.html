@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Concrete Slab Calculator — Bags, Yards &amp; Volume</title>
+  <meta name="description" content="Calculate cubic yards and number of concrete bags (60lb or 80lb) for any slab, patio, or sidewalk project.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <header class="site-header"><div class="container"><a href="../../" class="site-logo"><span class="logo-icon">=</span> 100 Calculators</a></div></header>
+
+  <main class="container">
+    <nav class="breadcrumb"><a href="../../">Home</a><span class="sep">/</span><a href="../../#home-improvement">Home Improvement</a><span class="sep">/</span><span>Concrete Slab</span></nav>
+
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+    <div class="page-header">
+      <span class="badge">Home Improvement</span>
+      <h1>Concrete Slab Calculator</h1>
+      <p class="subtitle">Figure out exactly how many bags or yards of concrete you need for any slab, patio, or sidewalk.</p>
+    </div>
+
+    <div class="calc-card">
+      <h2>Slab Dimensions</h2>
+      <div class="form-row form-row--3">
+        <div class="form-group"><label for="slab-length">Length</label><div class="input-with-unit"><input type="number" id="slab-length" value="10" min="0.5" max="200" step="0.5"><span class="unit">ft</span></div></div>
+        <div class="form-group"><label for="slab-width">Width</label><div class="input-with-unit"><input type="number" id="slab-width" value="10" min="0.5" max="200" step="0.5"><span class="unit">ft</span></div></div>
+        <div class="form-group"><label for="slab-depth">Thickness</label><div class="input-with-unit"><input type="number" id="slab-depth" value="4" min="1" max="24" step="0.5"><span class="unit">in</span></div></div>
+      </div>
+      <div class="form-group">
+        <label>Bag Size</label>
+        <div class="toggle-group" data-for="bag-size">
+          <button type="button" class="toggle-btn" data-value="40">40 lb</button>
+          <button type="button" class="toggle-btn" data-value="60">60 lb</button>
+          <button type="button" class="toggle-btn active" data-value="80">80 lb</button>
+        </div>
+        <input type="hidden" id="bag-size" value="80">
+      </div>
+
+      <div class="result-display">
+        <div class="result-label">Concrete Needed</div>
+        <div class="result-value" id="result-yards">—</div>
+        <div class="result-unit">cubic yards</div>
+        <div class="result-note" id="result-note">Includes 10% overfill</div>
+      </div>
+      <div class="results-grid">
+        <div class="result-item"><div class="result-item-label">Bags Needed</div><div class="result-item-value" id="result-bags">—</div><div class="result-item-unit" id="result-bag-label">80 lb bags</div></div>
+        <div class="result-item"><div class="result-item-label">Volume</div><div class="result-item-value" id="result-cuft">—</div><div class="result-item-unit">cubic feet</div></div>
+        <div class="result-item"><div class="result-item-label">Slab Area</div><div class="result-item-value" id="result-area">—</div><div class="result-item-unit">sq ft</div></div>
+        <div class="result-item"><div class="result-item-label">Estimated Weight</div><div class="result-item-value" id="result-weight">—</div><div class="result-item-unit">lbs</div></div>
+      </div>
+    </div>
+
+    <div class="cta-box">
+      <span class="cta-icon">&#129521;</span>
+      <div class="cta-content">
+        <p><strong>Mixing concrete?</strong> A good mixer saves your back and produces a better result.</p>
+        <a href="#" class="cta-link">Best Concrete Mixers on Amazon &rarr;</a>
+      </div>
+    </div>
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+
+    <article class="article-content">
+      <h2>How to Calculate Concrete for a Slab</h2>
+      <p>Concrete is sold in two ways: pre-mixed bags (40, 60, or 80 lbs) for small projects, or by the cubic yard from a ready-mix truck for larger pours. Knowing the volume you need — and which delivery method makes sense — is the first step to a successful pour. This guide covers the formula, real-world tips, and the crossover point where bags stop making sense.</p>
+
+      <h2>The Volume Formula</h2>
+      <div class="formula-box">Volume (cu ft) = Length (ft) × Width (ft) × Thickness (in) ÷ 12<br>Cubic Yards = Volume (cu ft) ÷ 27</div>
+      <p>A 10 ft × 10 ft × 4 inch slab: 10 × 10 × (4/12) = <strong>33.3 cubic feet</strong> = 1.23 cubic yards. With the standard 10% overfill, you need about 1.36 cubic yards.</p>
+
+      <h2>Bags vs. Ready-Mix Truck</h2>
+      <p>The crossover point is roughly <strong>1 cubic yard</strong> (about 27 cubic feet). Below that, bags are practical. Above that, a ready-mix truck is faster, cheaper per yard, and produces better results because the entire slab is poured from a single batch.</p>
+      <ul>
+        <li><strong>80 lb bag</strong> yields ~0.6 cubic feet when mixed (about 45 bags per cubic yard)</li>
+        <li><strong>60 lb bag</strong> yields ~0.45 cubic feet (about 60 bags per cubic yard)</li>
+        <li><strong>40 lb bag</strong> yields ~0.3 cubic feet (about 90 bags per cubic yard)</li>
+      </ul>
+
+      <div class="tip-box">
+        <p><strong>Pro Tip:</strong> For slabs over 1.5 cubic yards, always order ready-mix. Mixing 70+ bags by hand is exhausting, takes hours, and risks cold joints (where partially-set concrete meets fresh concrete, creating a weak seam).</p>
+      </div>
+
+      <h2>Why 4 Inches Is the Standard Thickness</h2>
+      <p>Most residential slabs — patios, sidewalks, garage floors — are poured at 4 inches thick. This provides adequate strength for foot traffic and light vehicles. Driveways should be <strong>5–6 inches</strong> to handle car weight. Post footings and structural foundations may require 8–12 inches.</p>
+
+      <h2>Common Mistakes</h2>
+      <h3>1. Not Accounting for Subgrade</h3>
+      <p>The ground under your slab is rarely perfectly level. Low spots, soft areas, and excavation irregularities mean you'll use more concrete than the simple L × W × D calculation suggests. The 10% overfill factor covers this.</p>
+
+      <h3>2. Forgetting Rebar or Wire Mesh</h3>
+      <p>Concrete is strong in compression but weak in tension. Rebar or welded wire mesh prevents cracking from ground movement. For a 4" slab, #3 rebar on 18" centers or 6×6 welded wire mesh is standard.</p>
+
+      <div class="warning-box">
+        <p><strong>Watch Out:</strong> Concrete sets fast — you have about 90 minutes of working time in warm weather. Have all your forms, tools, and helpers ready before the truck arrives. There is no "pause" button on a concrete pour.</p>
+      </div>
+
+      <h2>How Much Does Concrete Cost?</h2>
+      <ul>
+        <li><strong>Bags:</strong> $4.50–$6.50 per 80 lb bag (~$180–$300 per cubic yard)</li>
+        <li><strong>Ready-mix truck:</strong> $120–$180 per cubic yard (minimum delivery of 1 yard, short-load fees for under 5 yards)</li>
+      </ul>
+      <p>For our 10×10×4 slab (1.36 cy): bags cost about $280, ready-mix about $200–250 delivered. The truck wins on both cost and quality for anything above 1 cubic yard.</p>
+
+      <p>Punch your dimensions into the calculator above, choose your bag size, and get the exact number you need.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer"><div class="container"><p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p></div></footer>
+
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      // Cubic feet per bag by weight
+      const CUFT_PER_BAG = { '40': 0.30, '60': 0.45, '80': 0.60 };
+      const CONCRETE_DENSITY = 150; // lbs per cu ft (standard mixed concrete)
+      const WASTE = 1.10;
+
+      function calculate() {
+        const len = CalcCore.getVal('slab-length');
+        const wid = CalcCore.getVal('slab-width');
+        const depth = CalcCore.getVal('slab-depth');
+        const bagSize = CalcCore.getToggleVal('bag-size') || '80';
+
+        const cuFt = len * wid * (depth / 12);
+        const cuFtWaste = cuFt * WASTE;
+        const cuYards = cuFtWaste / 27;
+        const bagsNeeded = Math.ceil(cuFtWaste / CUFT_PER_BAG[bagSize]);
+        const weight = Math.round(cuFtWaste * CONCRETE_DENSITY);
+        const area = len * wid;
+
+        CalcCore.setResult('result-yards', CalcCore.fmt.number(cuYards, 2));
+        CalcCore.setResult('result-bags', CalcCore.fmt.number(bagsNeeded));
+        CalcCore.setResult('result-bag-label', bagSize + ' lb bags');
+        CalcCore.setResult('result-cuft', CalcCore.fmt.number(cuFtWaste, 1));
+        CalcCore.setResult('result-area', CalcCore.fmt.number(area, 0));
+        CalcCore.setResult('result-weight', CalcCore.fmt.number(weight));
+      }
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+
+  <!-- Sticky Footer Ad (mobile) -->
+  <div id="ad-sticky-footer" class="ad-sticky-footer">
+    <button class="ad-sticky-close" aria-label="Close ad">&times;</button>
+    <div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div>
+  </div>
+
+  <script src="../../js/ads.js"></script>
+</body>
+</html>

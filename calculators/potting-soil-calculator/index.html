@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Potting Soil Calculator — Quarts &amp; Liters for Any Pot</title>
+  <meta name="description" content="Calculate exactly how much potting soil you need for round, square, or tapered pots and planters. Get quarts, liters, and number of bags.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <header class="site-header"><div class="container"><a href="../../" class="site-logo"><span class="logo-icon">=</span> 100 Calculators</a></div></header>
+  <main class="container">
+    <nav class="breadcrumb"><a href="../../">Home</a><span class="sep">/</span><a href="../../#home-improvement">Home Improvement</a><span class="sep">/</span><span>Potting Soil</span></nav>
+
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+    <div class="page-header">
+      <span class="badge">Home Improvement</span>
+      <h1>Potting Soil Calculator</h1>
+      <p class="subtitle">Round, square, or tapered — get the exact quarts of soil for your pots and planters.</p>
+    </div>
+    <div class="calc-card">
+      <h2>Pot Details</h2>
+      <div class="form-group">
+        <label>Pot Shape</label>
+        <div class="toggle-group" data-for="pot-shape">
+          <button type="button" class="toggle-btn active" data-value="round">Round</button>
+          <button type="button" class="toggle-btn" data-value="square">Square</button>
+          <button type="button" class="toggle-btn" data-value="tapered">Tapered Round</button>
+        </div>
+        <input type="hidden" id="pot-shape" value="round">
+      </div>
+      <div class="form-row" id="dims-round">
+        <div class="form-group"><label for="diameter">Pot Diameter</label><div class="input-with-unit"><input type="number" id="diameter" value="12" min="1" max="60" step="0.5"><span class="unit">in</span></div></div>
+        <div class="form-group"><label for="depth">Pot Depth</label><div class="input-with-unit"><input type="number" id="depth" value="10" min="1" max="48" step="0.5"><span class="unit">in</span></div></div>
+      </div>
+      <div class="form-row" id="dims-square" style="display:none">
+        <div class="form-group"><label for="sq-side">Side Length</label><div class="input-with-unit"><input type="number" id="sq-side" value="12" min="1" max="60" step="0.5"><span class="unit">in</span></div></div>
+        <div class="form-group"><label for="sq-depth">Depth</label><div class="input-with-unit"><input type="number" id="sq-depth" value="10" min="1" max="48" step="0.5"><span class="unit">in</span></div></div>
+      </div>
+      <div class="form-row form-row--3" id="dims-tapered" style="display:none">
+        <div class="form-group"><label for="top-dia">Top Diameter</label><div class="input-with-unit"><input type="number" id="top-dia" value="14" min="1" max="60" step="0.5"><span class="unit">in</span></div></div>
+        <div class="form-group"><label for="bot-dia">Bottom Diameter</label><div class="input-with-unit"><input type="number" id="bot-dia" value="9" min="1" max="60" step="0.5"><span class="unit">in</span></div></div>
+        <div class="form-group"><label for="tap-depth">Depth</label><div class="input-with-unit"><input type="number" id="tap-depth" value="12" min="1" max="48" step="0.5"><span class="unit">in</span></div></div>
+      </div>
+      <div class="form-group">
+        <label for="num-pots">Number of Pots</label>
+        <input type="number" id="num-pots" value="1" min="1" max="200" step="1">
+      </div>
+
+      <div class="result-display">
+        <div class="result-label">Potting Soil Needed</div>
+        <div class="result-value" id="result-quarts">—</div>
+        <div class="result-unit">quarts (dry)</div>
+      </div>
+      <div class="results-grid">
+        <div class="result-item"><div class="result-item-label">Per Pot</div><div class="result-item-value" id="result-per-pot">—</div><div class="result-item-unit">quarts</div></div>
+        <div class="result-item"><div class="result-item-label">Liters</div><div class="result-item-value" id="result-liters">—</div><div class="result-item-unit">L</div></div>
+        <div class="result-item"><div class="result-item-label">Cubic Feet</div><div class="result-item-value" id="result-cuft">—</div><div class="result-item-unit">cu ft</div></div>
+        <div class="result-item"><div class="result-item-label">Bags (8 qt)</div><div class="result-item-value" id="result-bags">—</div><div class="result-item-unit">bags</div></div>
+      </div>
+    </div>
+    <div class="cta-box">
+      <span class="cta-icon">&#127810;</span>
+      <div class="cta-content">
+        <p><strong>Need quality soil?</strong> A well-draining mix is essential for potted plants.</p>
+        <a href="#" class="cta-link">Best Potting Soil on Amazon &rarr;</a>
+      </div>
+    </div>
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+    <article class="article-content">
+      <h2>How to Calculate Potting Soil for Any Container</h2>
+      <p>If you've ever filled a planter and either run out halfway or had a mountain of leftover soil, you're not alone. Potting soil is sold by dry quarts or cubic feet, but pots are measured by diameter. The conversion math isn't intuitive, and the internet is full of conflicting charts. This guide gives you the actual formula — plus the shortcuts that make container gardening easier.</p>
+
+      <h2>The Volume Formulas</h2>
+      <p>Container volume depends on shape:</p>
+      <div class="formula-box">Round: V = π × (Diameter/2)² × Depth<br>Square: V = Side² × Depth<br>Tapered: V = (π × Depth / 3) × (R₁² + R₁R₂ + R₂²)</div>
+      <p>The result is in cubic inches. Convert to quarts by dividing by <strong>57.75</strong> (1 dry quart = 57.75 cubic inches). Convert to liters by dividing cubic inches by 61.02.</p>
+
+      <h2>Quick Reference: Common Pot Sizes</h2>
+      <ul>
+        <li><strong>6" pot:</strong> ~1.5 quarts</li>
+        <li><strong>8" pot:</strong> ~3.5 quarts</li>
+        <li><strong>10" pot:</strong> ~6 quarts</li>
+        <li><strong>12" pot:</strong> ~10 quarts</li>
+        <li><strong>14" pot:</strong> ~15 quarts</li>
+        <li><strong>16" pot:</strong> ~20 quarts</li>
+        <li><strong>18" pot:</strong> ~28 quarts</li>
+      </ul>
+      <p>These assume standard proportions (depth ≈ diameter × 0.75). Deep pots need more; shallow bowls need less.</p>
+
+      <div class="tip-box">
+        <p><strong>Pro Tip:</strong> For large pots (16"+), fill the bottom 1/3 with empty plastic bottles, packing peanuts, or a layer of landscape fabric over gravel. This saves soil, reduces weight, and improves drainage — plants don't need 18 inches of root depth.</p>
+      </div>
+
+      <h2>Understanding Soil Bag Sizes</h2>
+      <ul>
+        <li><strong>8 quart bag:</strong> Fills one 12" pot or two 8" pots</li>
+        <li><strong>16 quart bag:</strong> Fills one 14" pot</li>
+        <li><strong>1 cubic foot (≈25.7 quarts):</strong> Fills two 14" pots or one 18" pot</li>
+        <li><strong>2 cubic foot bag:</strong> Fills about four 14" pots</li>
+      </ul>
+
+      <h2>Common Mistakes</h2>
+      <h3>1. Using Garden Soil in Pots</h3>
+      <p>Garden soil compacts in containers, suffocating roots and holding too much water. Always use a <strong>potting mix</strong> — it's lighter, drains better, and is formulated for containers.</p>
+
+      <h3>2. Not Accounting for Settling</h3>
+      <p>Fresh potting soil settles 10–15% after the first few waterings. Fill pots to the top rim at planting time — they'll settle to the right level within a week.</p>
+
+      <div class="warning-box">
+        <p><strong>Watch Out:</strong> "Moisture control" potting mixes hold extra water. They're great for forgetful waterers but can cause root rot in plants that prefer dry conditions (succulents, lavender, rosemary). Match the soil to the plant.</p>
+      </div>
+
+      <p>Use the calculator above for the exact number of quarts, then pick up the right bag size. Your plants will thank you for well-draining, properly-portioned soil.</p>
+    </article>
+  </main>
+  <footer class="site-footer"><div class="container"><p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p></div></footer>
+
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      const CUIN_PER_QUART = 67.2; // US dry quart
+      const CUIN_PER_LITER = 61.02;
+      const CUIN_PER_CUFT = 1728;
+
+      function showShape(s) {
+        document.getElementById('dims-round').style.display = s === 'round' ? '' : 'none';
+        document.getElementById('dims-square').style.display = s === 'square' ? '' : 'none';
+        document.getElementById('dims-tapered').style.display = s === 'tapered' ? '' : 'none';
+      }
+
+      function calculate() {
+        const shape = CalcCore.getToggleVal('pot-shape') || 'round';
+        const numPots = CalcCore.getVal('num-pots');
+        showShape(shape);
+
+        let volCuIn = 0;
+        if (shape === 'round') {
+          const d = CalcCore.getVal('diameter');
+          const h = CalcCore.getVal('depth');
+          volCuIn = Math.PI * Math.pow(d / 2, 2) * h;
+        } else if (shape === 'square') {
+          const s = CalcCore.getVal('sq-side');
+          const h = CalcCore.getVal('sq-depth');
+          volCuIn = s * s * h;
+        } else {
+          const r1 = CalcCore.getVal('top-dia') / 2;
+          const r2 = CalcCore.getVal('bot-dia') / 2;
+          const h = CalcCore.getVal('tap-depth');
+          volCuIn = (Math.PI * h / 3) * (r1 * r1 + r1 * r2 + r2 * r2);
+        }
+
+        const perPotQt = volCuIn / CUIN_PER_QUART;
+        const totalQt = perPotQt * numPots;
+        const totalL = (volCuIn * numPots) / CUIN_PER_LITER;
+        const totalCuFt = (volCuIn * numPots) / CUIN_PER_CUFT;
+        const bags8 = Math.ceil(totalQt / 8);
+
+        CalcCore.setResult('result-quarts', CalcCore.fmt.number(totalQt, 1));
+        CalcCore.setResult('result-per-pot', CalcCore.fmt.number(perPotQt, 1));
+        CalcCore.setResult('result-liters', CalcCore.fmt.number(totalL, 1));
+        CalcCore.setResult('result-cuft', CalcCore.fmt.number(totalCuFt, 2));
+        CalcCore.setResult('result-bags', CalcCore.fmt.number(bags8));
+      }
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+
+  <!-- Sticky Footer Ad (mobile) -->
+  <div id="ad-sticky-footer" class="ad-sticky-footer">
+    <button class="ad-sticky-close" aria-label="Close ad">&times;</button>
+    <div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div>
+  </div>
+
+  <script src="../../js/ads.js"></script>
+</body>
+</html>

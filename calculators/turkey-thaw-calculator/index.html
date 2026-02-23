@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Turkey Thaw Time Calculator — Fridge or Cold Water</title>
+  <meta name="description" content="Calculate how long to thaw your turkey safely. Fridge or cold water method — with start dates so you don't panic on Thanksgiving.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <header class="site-header"><div class="container"><a href="../../" class="site-logo"><span class="logo-icon">=</span> 100 Calculators</a></div></header>
+  <main class="container">
+    <nav class="breadcrumb"><a href="../../">Home</a><span class="sep">/</span><a href="../../#lifestyle">Lifestyle</a><span class="sep">/</span><span>Turkey Thaw Time</span></nav>
+
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+    <div class="page-header">
+      <span class="badge">Seasonal</span>
+      <h1>Turkey Thaw Time Calculator</h1>
+      <p class="subtitle">Don't panic on Thanksgiving. Find out exactly when to start thawing your turkey — fridge or cold water method.</p>
+    </div>
+    <div class="calc-card">
+      <h2>Your Turkey</h2>
+      <div class="form-group"><label for="weight">Turkey Weight</label><div class="input-with-unit"><input type="number" id="weight" value="15" min="4" max="30" step="0.5"><span class="unit">lbs</span></div></div>
+      <div class="form-group">
+        <label>Thaw Method</label>
+        <div class="toggle-group" data-for="method"><button type="button" class="toggle-btn active" data-value="fridge">Refrigerator (Safe, Slow)</button><button type="button" class="toggle-btn" data-value="water">Cold Water (Faster)</button></div>
+        <input type="hidden" id="method" value="fridge">
+      </div>
+
+      <div class="result-display">
+        <div class="result-label">Total Thaw Time</div>
+        <div class="result-value" id="result-time">—</div>
+        <div class="result-unit" id="result-unit">days</div>
+      </div>
+      <div class="results-grid">
+        <div class="result-item"><div class="result-item-label">Hours</div><div class="result-item-value" id="result-hours">—</div></div>
+        <div class="result-item"><div class="result-item-label">Start By</div><div class="result-item-value" id="result-start" style="font-size:1rem">—</div><div class="result-item-unit">before cook day</div></div>
+        <div class="result-item"><div class="result-item-label">Servings</div><div class="result-item-value" id="result-servings">—</div><div class="result-item-unit">~1 lb per person</div></div>
+        <div class="result-item"><div class="result-item-label">Cook Time (est.)</div><div class="result-item-value" id="result-cook">—</div><div class="result-item-unit">at 325°F</div></div>
+      </div>
+    </div>
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+    <article class="article-content">
+      <h2>How to Safely Thaw a Turkey</h2>
+      <p>A frozen turkey must be thawed safely to prevent bacteria growth in the "danger zone" (40°F–140°F). There are two USDA-approved methods: refrigerator thawing (slow and safe) and cold water thawing (faster but requires attention). This guide covers both methods, timing, and what to do if you're running out of time.</p>
+
+      <h2>Method 1: Refrigerator Thawing (Recommended)</h2>
+      <div class="formula-box">Fridge Time = Turkey Weight (lbs) × 24 hours ÷ 4<br>= 1 day for every 4 lbs</div>
+      <p>A 15-pound turkey needs about <strong>3.75 days</strong> (roughly 4 days) in the refrigerator at 40°F or below. The turkey stays at a safe temperature the entire time and can remain in the fridge for 1–2 additional days after thawing.</p>
+
+      <h2>Method 2: Cold Water Thawing (Faster)</h2>
+      <div class="formula-box">Water Time = Turkey Weight (lbs) × 30 minutes</div>
+      <p>A 15-pound turkey takes about <strong>7.5 hours</strong> in cold water. Submerge the wrapped turkey in cold tap water and change the water every 30 minutes to keep it cold. Cook immediately after thawing.</p>
+
+      <div class="tip-box">
+        <p><strong>Pro Tip:</strong> The USDA says a thawed turkey can stay in the fridge for up to 2 days before cooking. So there's no harm in starting the fridge thaw a day early — but there's a big penalty for starting a day late.</p>
+      </div>
+
+      <h2>Emergency: Forgot to Thaw?</h2>
+      <p>You can cook a frozen turkey — it just takes about <strong>50% longer</strong>. A 15-pound frozen turkey at 325°F takes roughly 5–5.5 hours instead of the usual 3.5–4 hours. Remove the giblet bag after the first 2 hours when the cavity thaws enough. Use a meat thermometer — the breast must reach 165°F.</p>
+
+      <h2>How Big a Turkey Do I Need?</h2>
+      <ul>
+        <li><strong>Light eaters / lots of sides:</strong> 3/4 lb per person</li>
+        <li><strong>Standard Thanksgiving:</strong> 1 lb per person</li>
+        <li><strong>Want leftovers:</strong> 1.5 lbs per person</li>
+      </ul>
+
+      <div class="warning-box">
+        <p><strong>Watch Out:</strong> NEVER thaw a turkey on the counter at room temperature. The outer layers enter the bacterial danger zone (40–140°F) while the center is still frozen. This is the #1 cause of Thanksgiving food poisoning.</p>
+      </div>
+
+      <p>Use the calculator above to find your thaw start date, and mark it on your calendar. Future-you will be grateful.</p>
+    </article>
+  </main>
+  <footer class="site-footer"><div class="container"><p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p></div></footer>
+
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      function calculate() {
+        const wt = CalcCore.getVal('weight');
+        const method = CalcCore.getToggleVal('method') || 'fridge';
+
+        let totalHours;
+        if (method === 'fridge') {
+          totalHours = (wt / 4) * 24;
+        } else {
+          totalHours = (wt * 30) / 60;
+        }
+
+        const days = totalHours / 24;
+        const servings = Math.round(wt);
+        // Rough cook time: 13 min/lb for unstuffed at 325°F
+        const cookHours = (wt * 13) / 60;
+
+        if (method === 'fridge') {
+          CalcCore.setResult('result-time', CalcCore.fmt.number(Math.ceil(days)));
+          CalcCore.setResult('result-unit', 'days in the fridge');
+          CalcCore.setResult('result-start', Math.ceil(days) + ' days before cook day');
+        } else {
+          CalcCore.setResult('result-time', CalcCore.fmt.number(totalHours, 1));
+          CalcCore.setResult('result-unit', 'hours in cold water');
+          CalcCore.setResult('result-start', 'Morning of cook day (' + CalcCore.fmt.number(totalHours, 1) + 'h before)');
+        }
+
+        CalcCore.setResult('result-hours', CalcCore.fmt.number(totalHours, 1) + 'h');
+        CalcCore.setResult('result-servings', CalcCore.fmt.number(servings) + ' people');
+        CalcCore.setResult('result-cook', CalcCore.fmt.number(cookHours, 1) + ' hours');
+      }
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+
+  <!-- Sticky Footer Ad (mobile) -->
+  <div id="ad-sticky-footer" class="ad-sticky-footer">
+    <button class="ad-sticky-close" aria-label="Close ad">&times;</button>
+    <div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div>
+  </div>
+
+  <script src="../../js/ads.js"></script>
+</body>
+</html>

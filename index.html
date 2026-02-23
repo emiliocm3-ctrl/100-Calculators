@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>100 Calculators — Free Tools for Every Project</title>
+  <meta name="description" content="Free, instant calculators for home improvement, business, fitness, cooking, hobbies, and more. No sign-ups, no ads-walls — just the answers you need.">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .hero {
+      text-align: center;
+      padding: var(--space-3xl) 0 var(--space-2xl);
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 6vw, 3.4rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: var(--space-md);
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero .tagline {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: var(--text-secondary);
+      max-width: 560px;
+      margin: 0 auto var(--space-xl);
+      line-height: 1.5;
+    }
+    .hero .stat-bar {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-xl);
+      flex-wrap: wrap;
+    }
+    .hero .stat {
+      text-align: center;
+    }
+    .hero .stat .num {
+      font-family: var(--font-mono);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+    .hero .stat .lbl {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .search-box {
+      max-width: 480px;
+      margin: 0 auto var(--space-2xl);
+      position: relative;
+    }
+    .search-box input {
+      width: 100%;
+      height: 56px;
+      padding: 0 var(--space-lg) 0 52px;
+      font-size: 1rem;
+      border: var(--border-w) solid var(--border-strong);
+      border-radius: 99px;
+      background: var(--card-bg);
+      box-shadow: var(--shadow-md);
+      font-family: var(--font-body);
+      color: var(--text);
+    }
+    .search-box input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-light), var(--shadow-md);
+    }
+    .search-box .search-icon {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container container--wide">
+      <a href="/" class="site-logo">
+        <span class="logo-icon">=</span>
+        100 Calculators
+      </a>
+      <nav class="site-nav">
+        <a href="#home-improvement">Home</a>
+        <a href="#business">Business</a>
+        <a href="#fitness">Fitness</a>
+        <a href="#lifestyle">Lifestyle</a>
+        <a href="#hobbies">Hobbies</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <h1>The <span>right number</span>,<br>right when you need it.</h1>
+        <p class="tagline">Free, instant calculators for home improvement, business, fitness, parties, hobbies, and more. No sign-ups. No ads-walls. Just answers.</p>
+        <div class="stat-bar">
+          <div class="stat">
+            <div class="num">30</div>
+            <div class="lbl">Calculators</div>
+          </div>
+          <div class="stat">
+            <div class="num">6</div>
+            <div class="lbl">Categories</div>
+          </div>
+          <div class="stat">
+            <div class="num">0</div>
+            <div class="lbl">Sign-ups Required</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Search -->
+    <div class="container container--wide">
+      <div class="search-box">
+        <span class="search-icon">&#128269;</span>
+        <input type="text" id="calc-search" placeholder="Search calculators... (e.g. paint, concrete, protein, youtube)">
+      </div>
+    </div>
+
+    <!-- Categories -->
+    <div class="container container--wide">
+
+      <!-- Home Improvement -->
+      <section class="category-section" id="home-improvement">
+        <h2><span class="cat-icon">&#128736;</span> Home Improvement &amp; DIY</h2>
+        <div class="calc-grid">
+          <a href="calculators/tile-grout-calculator/" class="calc-grid-item" data-search="tile grout grouting ceramic porcelain">
+            <span class="grid-icon">&#9642;&#65039;</span>
+            <h3>Tile Grout Calculator</h3>
+            <p>Find out exactly how much grout you need based on tile size, gap width, and area.</p>
+            <span class="grid-tag">High Intent</span>
+          </a>
+          <a href="calculators/paint-quantity-calculator/" class="calc-grid-item" data-search="paint wall room gallon interior exterior">
+            <span class="grid-icon">&#127912;</span>
+            <h3>Paint Quantity Calculator</h3>
+            <p>Calculate gallons of paint needed for any room, minus windows and doors.</p>
+            <span class="grid-tag">High Intent</span>
+          </a>
+          <a href="calculators/mulch-gravel-calculator/" class="calc-grid-item" data-search="mulch gravel garden landscaping bags yard cubic">
+            <span class="grid-icon">&#127793;</span>
+            <h3>Mulch &amp; Gravel Calculator</h3>
+            <p>Input garden dimensions and depth to find the number of bags or cubic yards needed.</p>
+            <span class="grid-tag">High Intent</span>
+          </a>
+          <a href="calculators/ac-btu-calculator/" class="calc-grid-item" data-search="air conditioner btu cooling room ac hvac">
+            <span class="grid-icon">&#10052;&#65039;</span>
+            <h3>AC BTU Calculator</h3>
+            <p>Determine the right air conditioner size based on room dimensions and conditions.</p>
+            <span class="grid-tag">High Intent</span>
+          </a>
+          <a href="calculators/wallpaper-roll-calculator/" class="calc-grid-item" data-search="wallpaper roll pattern repeat wall strips">
+            <span class="grid-icon">&#127744;</span>
+            <h3>Wallpaper Roll Calculator</h3>
+            <p>Account for pattern repeats and calculate the exact number of rolls for any wall.</p>
+            <span class="grid-tag">High Intent</span>
+          </a>
+          <a href="calculators/laminate-flooring-calculator/" class="calc-grid-item" data-search="laminate flooring floor plank box hardwood vinyl">
+            <span class="grid-icon">&#129717;</span>
+            <h3>Laminate Flooring Calculator</h3>
+            <p>Find out how many boxes of laminate you need, including waste factor.</p>
+            <span class="grid-tag">High Intent</span>
+          </a>
+          <a href="calculators/concrete-slab-calculator/" class="calc-grid-item" data-search="concrete slab cement bags patio sidewalk driveway">
+            <span class="grid-icon">&#129521;</span>
+            <h3>Concrete Slab Calculator</h3>
+            <p>Calculate cubic yards and number of bags (60lb or 80lb) for any slab.</p>
+            <span class="grid-tag">High Intent</span>
+          </a>
+          <a href="calculators/grass-seed-calculator/" class="calc-grid-item" data-search="grass seed lawn overseeding new yard turf">
+            <span class="grid-icon">&#127807;</span>
+            <h3>Grass Seed Calculator</h3>
+            <p>How much seed for a new lawn vs. overseeding? Get the exact pounds needed.</p>
+            <span class="grid-tag">High Intent</span>
+          </a>
+          <a href="calculators/potting-soil-calculator/" class="calc-grid-item" data-search="potting soil pot planter container garden quart liter">
+            <span class="grid-icon">&#127810;</span>
+            <h3>Potting Soil Calculator</h3>
+            <p>Calculate quarts of soil for round, square, or tapered pots and planters.</p>
+            <span class="grid-tag">High Intent</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Business & Finance -->
+      <section class="category-section" id="business">
+        <h2><span class="cat-icon">&#128188;</span> Business &amp; Finance</h2>
+        <div class="calc-grid">
+          <a href="calculators/meeting-cost-calculator/" class="calc-grid-item" data-search="meeting cost salary waste time productivity">
+            <span class="grid-icon">&#128176;</span>
+            <h3>Meeting Cost Calculator</h3>
+            <p>See how much money that meeting is burning through — in real time.</p>
+            <span class="grid-tag">Viral</span>
+          </a>
+          <a href="calculators/freelance-rate-calculator/" class="calc-grid-item" data-search="freelance hourly rate consultant pricing income">
+            <span class="grid-icon">&#128181;</span>
+            <h3>Freelance Hourly Rate</h3>
+            <p>Find your minimum rate to cover taxes, expenses, and hit your income goal.</p>
+            <span class="grid-tag">High Intent</span>
+          </a>
+          <a href="calculators/cpm-calculator/" class="calc-grid-item" data-search="cpm cost per mille impressions advertising facebook google ads">
+            <span class="grid-icon">&#128200;</span>
+            <h3>CPM Calculator</h3>
+            <p>Calculate cost per thousand impressions for any ad campaign.</p>
+            <span class="grid-tag">B2B</span>
+          </a>
+          <a href="calculators/youtube-money-calculator/" class="calc-grid-item" data-search="youtube money earnings revenue views rpm adsense creator">
+            <span class="grid-icon">&#9654;&#65039;</span>
+            <h3>YouTube Money Calculator</h3>
+            <p>Estimate your YouTube earnings based on views, niche, and RPM.</p>
+            <span class="grid-tag">Viral</span>
+          </a>
+          <a href="calculators/stripe-fee-calculator/" class="calc-grid-item" data-search="stripe paypal fee payment processing credit card invoice">
+            <span class="grid-icon">&#128179;</span>
+            <h3>Stripe/PayPal Fee Calculator</h3>
+            <p>Know exactly how much lands in your bank after payment processing fees.</p>
+            <span class="grid-tag">High Intent</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Fitness & Health -->
+      <section class="category-section" id="fitness">
+        <h2><span class="cat-icon">&#128170;</span> Fitness &amp; Health</h2>
+        <div class="calc-grid">
+          <a href="calculators/one-rep-max-calculator/" class="calc-grid-item" data-search="one rep max 1rm weightlifting strength bench squat deadlift">
+            <span class="grid-icon">&#127947;&#65039;</span>
+            <h3>One-Rep Max (1RM)</h3>
+            <p>Estimate your max lift from submaximal reps using the Epley formula.</p>
+            <span class="grid-tag">High Traffic</span>
+          </a>
+          <a href="calculators/water-intake-calculator/" class="calc-grid-item" data-search="water intake hydration daily ounces glasses drink">
+            <span class="grid-icon">&#128167;</span>
+            <h3>Daily Water Intake</h3>
+            <p>How much water should you drink? Based on weight and activity level.</p>
+            <span class="grid-tag">High Traffic</span>
+          </a>
+          <a href="calculators/protein-intake-calculator/" class="calc-grid-item" data-search="protein intake grams muscle building diet macro nutrition">
+            <span class="grid-icon">&#129385;</span>
+            <h3>Protein Intake Calculator</h3>
+            <p>Calculate your daily protein target based on weight and fitness goals.</p>
+            <span class="grid-tag">High Traffic</span>
+          </a>
+          <a href="calculators/sleep-cycle-calculator/" class="calc-grid-item" data-search="sleep cycle wake time rem alarm clock bedtime">
+            <span class="grid-icon">&#128164;</span>
+            <h3>Sleep Cycle Calculator</h3>
+            <p>Find the best bedtimes to wake up feeling rested — based on 90-min REM cycles.</p>
+            <span class="grid-tag">Viral</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Lifestyle & Viral -->
+      <section class="category-section" id="lifestyle">
+        <h2><span class="cat-icon">&#127881;</span> Lifestyle &amp; Events</h2>
+        <div class="calc-grid">
+          <a href="calculators/wedding-alcohol-calculator/" class="calc-grid-item" data-search="wedding alcohol wine beer spirits drinks party reception">
+            <span class="grid-icon">&#127863;</span>
+            <h3>Wedding Alcohol Calculator</h3>
+            <p>Plan the perfect bar — calculate bottles of wine, beer, and spirits for your guest count.</p>
+            <span class="grid-tag">Viral</span>
+          </a>
+          <a href="calculators/pizza-party-calculator/" class="calc-grid-item" data-search="pizza party food order slices">
+            <span class="grid-icon">&#127829;</span>
+            <h3>Pizza Party Calculator</h3>
+            <p>Never under-order again. Get the exact number of large pizzas for your crowd.</p>
+            <span class="grid-tag">Viral</span>
+          </a>
+          <a href="calculators/pet-age-calculator/" class="calc-grid-item" data-search="pet dog cat age years human converter">
+            <span class="grid-icon">&#128054;</span>
+            <h3>Pet Age Calculator</h3>
+            <p>Convert your dog or cat's age into human years using the latest veterinary science.</p>
+            <span class="grid-tag">Fun</span>
+          </a>
+          <a href="calculators/coffee-water-ratio-calculator/" class="calc-grid-item" data-search="coffee water ratio beans french press v60 pour over brew">
+            <span class="grid-icon">&#9749;</span>
+            <h3>Coffee-to-Water Ratio</h3>
+            <p>Dial in the perfect brew — grams of beans and water for any method and cup count.</p>
+            <span class="grid-tag">Fun</span>
+          </a>
+          <a href="calculators/candle-wax-calculator/" class="calc-grid-item" data-search="candle wax soy fragrance oil making diy jars">
+            <span class="grid-icon">&#128367;</span>
+            <h3>Candle Wax Calculator</h3>
+            <p>Calculate wax, fragrance oil, and wicks for any number of candle jars.</p>
+            <span class="grid-tag">Maker</span>
+          </a>
+          <a href="calculators/wedding-cake-calculator/" class="calc-grid-item" data-search="wedding cake tier servings guests baker">
+            <span class="grid-icon">&#127874;</span>
+            <h3>Wedding Cake Calculator</h3>
+            <p>Find the right number of tiers and sizes to serve all your guests.</p>
+            <span class="grid-tag">Viral</span>
+          </a>
+          <a href="calculators/turkey-thaw-calculator/" class="calc-grid-item" data-search="turkey thaw defrost thanksgiving christmas frozen">
+            <span class="grid-icon">&#129411;</span>
+            <h3>Turkey Thaw Time</h3>
+            <p>How long to thaw your turkey? Fridge or cold water — get the safe times.</p>
+            <span class="grid-tag">Seasonal</span>
+          </a>
+          <a href="calculators/knitting-yarn-calculator/" class="calc-grid-item" data-search="knitting yarn crochet scarf sweater skeins fiber">
+            <span class="grid-icon">&#129526;</span>
+            <h3>Knitting Yarn Calculator</h3>
+            <p>Estimate how many skeins you need for a scarf, sweater, blanket, or hat.</p>
+            <span class="grid-tag">Maker</span>
+          </a>
+          <a href="calculators/electricity-cost-calculator/" class="calc-grid-item" data-search="electricity cost appliance watt kwh power bill gaming pc">
+            <span class="grid-icon">&#9889;</span>
+            <h3>Electricity Cost Calculator</h3>
+            <p>How much does your gaming PC, space heater, or any appliance cost to run?</p>
+            <span class="grid-tag">High Intent</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Niche Hobbies -->
+      <section class="category-section" id="hobbies">
+        <h2><span class="cat-icon">&#129513;</span> Niche Hobbies</h2>
+        <div class="calc-grid">
+          <a href="calculators/aquarium-volume-calculator/" class="calc-grid-item" data-search="aquarium fish tank volume salt saltwater freshwater gallon liter">
+            <span class="grid-icon">&#128032;</span>
+            <h3>Aquarium Volume &amp; Salt</h3>
+            <p>Calculate water volume and salt mix for any rectangular, bow-front, or cylindrical tank.</p>
+            <span class="grid-tag">Niche</span>
+          </a>
+          <a href="calculators/epoxy-resin-calculator/" class="calc-grid-item" data-search="epoxy resin hardener ratio mold casting art">
+            <span class="grid-icon">&#128167;</span>
+            <h3>Epoxy Resin Calculator</h3>
+            <p>Get the exact resin-to-hardener ratio for your mold volume. No wasted material.</p>
+            <span class="grid-tag">Niche</span>
+          </a>
+          <a href="calculators/3d-print-cost-calculator/" class="calc-grid-item" data-search="3d print printing cost filament electricity pla abs">
+            <span class="grid-icon">&#9881;&#65039;</span>
+            <h3>3D Print Cost Calculator</h3>
+            <p>Estimate the true cost of a print — filament, electricity, and machine wear.</p>
+            <span class="grid-tag">Niche</span>
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 100 Calculators. Free tools, zero tracking.</p>
+    </div>
+  </footer>
+
+  <!-- Search Filter Script -->
+  <script>
+    (function() {
+      const input = document.getElementById('calc-search');
+      const items = document.querySelectorAll('.calc-grid-item');
+      const sections = document.querySelectorAll('.category-section');
+      input.addEventListener('input', function() {
+        const q = this.value.toLowerCase().trim();
+        items.forEach(item => {
+          const text = (item.textContent + ' ' + (item.dataset.search || '')).toLowerCase();
+          item.style.display = (!q || text.includes(q)) ? '' : 'none';
+        });
+        sections.forEach(sec => {
+          const visible = sec.querySelectorAll('.calc-grid-item:not([style*="display: none"])');
+          sec.style.display = visible.length ? '' : 'none';
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>

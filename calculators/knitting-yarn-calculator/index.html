@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Knitting Yarn Calculator — How Many Skeins Do I Need?</title>
+  <meta name="description" content="Calculate how many skeins or yards of yarn you need for a scarf, sweater, blanket, hat, or socks. Based on project type, size, and yarn weight.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <header class="site-header"><div class="container"><a href="../../" class="site-logo"><span class="logo-icon">=</span> 100 Calculators</a></div></header>
+  <main class="container">
+    <nav class="breadcrumb"><a href="../../">Home</a><span class="sep">/</span><a href="../../#lifestyle">Lifestyle</a><span class="sep">/</span><span>Knitting Yarn</span></nav>
+
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+    <div class="page-header">
+      <span class="badge">Maker / DIY</span>
+      <h1>Knitting Yarn Calculator</h1>
+      <p class="subtitle">How many skeins for a sweater? A blanket? Find out based on your project, size, and yarn weight.</p>
+    </div>
+    <div class="calc-card">
+      <h2>Project Details</h2>
+      <div class="form-group">
+        <label>Project Type</label>
+        <div class="toggle-group" data-for="project">
+          <button type="button" class="toggle-btn" data-value="scarf">Scarf</button>
+          <button type="button" class="toggle-btn active" data-value="sweater">Sweater</button>
+          <button type="button" class="toggle-btn" data-value="blanket">Blanket</button>
+          <button type="button" class="toggle-btn" data-value="hat">Hat</button>
+          <button type="button" class="toggle-btn" data-value="socks">Socks</button>
+        </div>
+        <input type="hidden" id="project" value="sweater">
+      </div>
+      <div class="form-group">
+        <label>Size</label>
+        <div class="toggle-group" data-for="size">
+          <button type="button" class="toggle-btn" data-value="xs">XS</button>
+          <button type="button" class="toggle-btn" data-value="s">S</button>
+          <button type="button" class="toggle-btn active" data-value="m">M</button>
+          <button type="button" class="toggle-btn" data-value="l">L</button>
+          <button type="button" class="toggle-btn" data-value="xl">XL</button>
+        </div>
+        <input type="hidden" id="size" value="m">
+      </div>
+      <div class="form-group">
+        <label>Yarn Weight</label>
+        <div class="toggle-group" data-for="yarn-weight">
+          <button type="button" class="toggle-btn" data-value="fingering">Fingering</button>
+          <button type="button" class="toggle-btn" data-value="dk">DK</button>
+          <button type="button" class="toggle-btn active" data-value="worsted">Worsted</button>
+          <button type="button" class="toggle-btn" data-value="bulky">Bulky</button>
+        </div>
+        <input type="hidden" id="yarn-weight" value="worsted">
+      </div>
+      <div class="form-group"><label for="skein-yards">Yards Per Skein</label><div class="input-with-unit"><input type="number" id="skein-yards" value="220" min="50" max="1000" step="10"><span class="unit">yards</span></div><span class="hint">Check the ball band — varies by brand</span></div>
+
+      <div class="result-display">
+        <div class="result-label">Total Yarn Needed</div>
+        <div class="result-value" id="result-yards">—</div>
+        <div class="result-unit">yards</div>
+      </div>
+      <div class="results-grid">
+        <div class="result-item"><div class="result-item-label">Skeins</div><div class="result-item-value" id="result-skeins">—</div><div class="result-item-unit">round up!</div></div>
+        <div class="result-item"><div class="result-item-label">Meters</div><div class="result-item-value" id="result-meters">—</div></div>
+        <div class="result-item"><div class="result-item-label">Project</div><div class="result-item-value" id="result-project" style="font-size:1rem">—</div></div>
+        <div class="result-item"><div class="result-item-label">Weight Class</div><div class="result-item-value" id="result-weight-class" style="font-size:1rem">—</div></div>
+      </div>
+    </div>
+    <div class="cta-box">
+      <span class="cta-icon">&#129526;</span>
+      <div class="cta-content">
+        <p><strong>Need beautiful yarn?</strong> Merino wool is worth the splurge for garments.</p>
+        <a href="#" class="cta-link">Best Knitting Yarn on Amazon &rarr;</a>
+      </div>
+    </div>
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+    <article class="article-content">
+      <h2>How to Estimate Yarn for Any Knitting Project</h2>
+      <p>Running out of yarn three-quarters through a sweater is a knitter's nightmare — especially if the dye lot is discontinued. This guide provides yardage estimates for common projects by size and yarn weight, plus tips for buying the right amount.</p>
+
+      <h2>Yardage Estimates by Project</h2>
+      <p>These are average estimates in <strong>worsted weight</strong> yarn. Lighter yarn needs more yardage; heavier yarn needs less.</p>
+      <ul>
+        <li><strong>Scarf:</strong> 300–400 yards</li>
+        <li><strong>Hat:</strong> 150–250 yards</li>
+        <li><strong>Socks (pair):</strong> 350–450 yards</li>
+        <li><strong>Sweater (adult M):</strong> 1,200–1,500 yards</li>
+        <li><strong>Blanket (throw):</strong> 2,500–3,500 yards</li>
+      </ul>
+
+      <h2>How Yarn Weight Affects Yardage</h2>
+      <p>Thinner yarn has more yards per ounce but requires more total yardage because the fabric is thinner:</p>
+      <ul>
+        <li><strong>Fingering (sock weight):</strong> Multiply worsted estimate × 1.5–1.7</li>
+        <li><strong>DK (light worsted):</strong> Multiply × 1.2</li>
+        <li><strong>Worsted:</strong> Baseline estimate</li>
+        <li><strong>Bulky:</strong> Multiply × 0.7–0.8</li>
+      </ul>
+
+      <div class="tip-box">
+        <p><strong>Pro Tip:</strong> Always buy <strong>one extra skein</strong> beyond what you calculate. Differences in gauge, tension, and stitch pattern can easily consume 10% more yarn. An unused skein can usually be returned or used for matching accessories.</p>
+      </div>
+
+      <h2>Common Mistakes</h2>
+      <h3>1. Buying by Weight Instead of Yardage</h3>
+      <p>A 100g skein of fingering yarn might have 400 yards, while a 100g skein of bulky has 110 yards. Always go by <strong>yardage</strong>, not weight.</p>
+
+      <h3>2. Forgetting About Gauge Swatches</h3>
+      <p>Your gauge swatch uses yarn. If you're making one (and you should for garments), account for 20–50 yards of swatch material.</p>
+
+      <div class="warning-box">
+        <p><strong>Watch Out:</strong> Dye lots matter. Yarn dyed in different batches can have subtle color differences visible in finished projects. Buy all your skeins from the same dye lot. If you can't, alternate skeins every few rows to blend any differences.</p>
+      </div>
+
+      <p>Use the calculator above to get your yardage estimate, then buy that extra skein for safety. Happy knitting!</p>
+    </article>
+  </main>
+  <footer class="site-footer"><div class="container"><p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p></div></footer>
+
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      // Base yardage in worsted weight, by project and size
+      const BASE = {
+        scarf:   { xs: 250, s: 300, m: 350, l: 400, xl: 450 },
+        sweater: { xs: 900, s: 1100, m: 1350, l: 1550, xl: 1800 },
+        blanket: { xs: 1800, s: 2200, m: 2800, l: 3400, xl: 4000 },
+        hat:     { xs: 120, s: 150, m: 200, l: 230, xl: 260 },
+        socks:   { xs: 300, s: 350, m: 400, l: 430, xl: 470 },
+      };
+      // Yarn weight multiplier (relative to worsted)
+      const WEIGHT_MULT = { fingering: 1.6, dk: 1.2, worsted: 1.0, bulky: 0.75 };
+      const WEIGHT_LABELS = { fingering: 'Fingering (#1)', dk: 'DK (#3)', worsted: 'Worsted (#4)', bulky: 'Bulky (#5)' };
+      const PROJECT_LABELS = { scarf: 'Scarf', sweater: 'Adult Sweater', blanket: 'Blanket/Throw', hat: 'Hat/Beanie', socks: 'Socks (pair)' };
+
+      function calculate() {
+        const project = CalcCore.getToggleVal('project') || 'sweater';
+        const size = CalcCore.getToggleVal('size') || 'm';
+        const weight = CalcCore.getToggleVal('yarn-weight') || 'worsted';
+        const skeinYards = CalcCore.getVal('skein-yards');
+
+        const base = BASE[project]?.[size] ?? 1350;
+        const mult = WEIGHT_MULT[weight] ?? 1.0;
+        const totalYards = Math.round(base * mult);
+        const skeins = Math.ceil(totalYards / skeinYards);
+        const meters = Math.round(totalYards * 0.9144);
+
+        CalcCore.setResult('result-yards', CalcCore.fmt.number(totalYards));
+        CalcCore.setResult('result-skeins', CalcCore.fmt.number(skeins));
+        CalcCore.setResult('result-meters', CalcCore.fmt.number(meters) + ' m');
+        CalcCore.setResult('result-project', PROJECT_LABELS[project] + ' (' + size.toUpperCase() + ')');
+        CalcCore.setResult('result-weight-class', WEIGHT_LABELS[weight] || weight);
+      }
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+
+  <!-- Sticky Footer Ad (mobile) -->
+  <div id="ad-sticky-footer" class="ad-sticky-footer">
+    <button class="ad-sticky-close" aria-label="Close ad">&times;</button>
+    <div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div>
+  </div>
+
+  <script src="../../js/ads.js"></script>
+</body>
+</html>

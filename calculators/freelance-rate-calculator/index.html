@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Freelance Hourly Rate Calculator — What Should I Charge?</title>
+  <meta name="description" content="Calculate your minimum freelance hourly rate to cover taxes, expenses, and hit your income goal. Essential for consultants and self-employed professionals.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <header class="site-header"><div class="container"><a href="../../" class="site-logo"><span class="logo-icon">=</span> 100 Calculators</a></div></header>
+  <main class="container">
+    <nav class="breadcrumb"><a href="../../">Home</a><span class="sep">/</span><a href="../../#business">Business &amp; Finance</a><span class="sep">/</span><span>Freelance Rate</span></nav>
+
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+    <div class="page-header">
+      <span class="badge">Business &amp; Finance</span>
+      <h1>Freelance Hourly Rate Calculator</h1>
+      <p class="subtitle">Find your minimum rate to cover taxes, expenses, and actually hit your income goal.</p>
+    </div>
+    <div class="calc-card">
+      <h2>Your Numbers</h2>
+      <div class="form-row">
+        <div class="form-group"><label for="target-income">Desired Annual Income (take-home)</label><div class="input-with-unit"><input type="number" id="target-income" value="80000" min="10000" max="2000000" step="1000"><span class="unit">$</span></div></div>
+        <div class="form-group"><label for="monthly-expenses">Monthly Business Expenses</label><div class="input-with-unit"><input type="number" id="monthly-expenses" value="500" min="0" max="50000" step="50"><span class="unit">$/mo</span></div><span class="hint">Software, tools, co-working, insurance</span></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label for="billable-hours">Billable Hours / Week</label><div class="input-with-unit"><input type="number" id="billable-hours" value="30" min="5" max="60" step="1"><span class="unit">hrs</span></div><span class="hint">Typical: 25–35 (rest is admin, sales, etc.)</span></div>
+        <div class="form-group"><label for="weeks-off">Weeks Off / Year</label><div class="input-with-unit"><input type="number" id="weeks-off" value="4" min="0" max="20" step="1"><span class="unit">wks</span></div></div>
+      </div>
+      <div class="form-group">
+        <label for="tax-rate">Estimated Tax Rate</label>
+        <input type="range" id="tax-rate" min="15" max="45" value="30" step="1">
+        <div class="range-labels"><span>15%</span><span id="tax-rate-val">30</span><span>45%</span></div>
+        <span class="hint">Self-employment + income tax. US freelancers: 25-35% typical.</span>
+      </div>
+
+      <div class="result-display">
+        <div class="result-label">Minimum Hourly Rate</div>
+        <div class="result-value" id="result-rate">—</div>
+        <div class="result-unit">per hour</div>
+      </div>
+      <div class="results-grid">
+        <div class="result-item"><div class="result-item-label">Gross Annual Needed</div><div class="result-item-value" id="result-gross">—</div></div>
+        <div class="result-item"><div class="result-item-label">Annual Taxes</div><div class="result-item-value" id="result-taxes">—</div></div>
+        <div class="result-item"><div class="result-item-label">Annual Expenses</div><div class="result-item-value" id="result-expenses">—</div></div>
+        <div class="result-item"><div class="result-item-label">Billable Hours / Year</div><div class="result-item-value" id="result-hours">—</div></div>
+      </div>
+    </div>
+    <div class="cta-box">
+      <span class="cta-icon">&#128181;</span>
+      <div class="cta-content">
+        <p><strong>Tracking time?</strong> Accurate time tracking is the foundation of profitable freelancing.</p>
+        <a href="#" class="cta-link">Best Time Tracking Apps for Freelancers &rarr;</a>
+      </div>
+    </div>
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+    <article class="article-content">
+      <h2>How to Calculate Your Freelance Rate</h2>
+      <p>Most new freelancers pick a number that "feels right" — often whatever their last job paid, divided by 40. This is a recipe for burnout and financial stress. As a freelancer, you don't work 2,080 billable hours per year. You also pay your own taxes, benefits, and business expenses. Here's how to calculate a rate that actually works.</p>
+
+      <h2>The Formula</h2>
+      <div class="formula-box">Hourly Rate = (Target Income + Annual Expenses) ÷ (1 – Tax Rate) ÷ Annual Billable Hours</div>
+      <p>Let's break that down for someone who wants $80K take-home with $6K in annual expenses, 30% tax rate, and 1,440 billable hours (30 hrs/wk × 48 weeks):</p>
+      <p>($80,000 + $6,000) ÷ 0.70 ÷ 1,440 = <strong>$85.32/hour</strong></p>
+
+      <h2>Why Your Rate Is Higher Than You Think</h2>
+      <h3>Billable Hours ≠ Working Hours</h3>
+      <p>A 40-hour work week does not produce 40 billable hours. You spend time on:</p>
+      <ul>
+        <li><strong>Sales and proposals:</strong> 3–5 hours/week</li>
+        <li><strong>Admin and bookkeeping:</strong> 2–3 hours/week</li>
+        <li><strong>Marketing and networking:</strong> 2–4 hours/week</li>
+        <li><strong>Professional development:</strong> 1–2 hours/week</li>
+      </ul>
+      <p>Realistically, <strong>25–32 billable hours per week</strong> is the norm for a full-time freelancer.</p>
+
+      <h3>You Don't Work 52 Weeks</h3>
+      <p>Between vacation, holidays, sick days, and gaps between projects, most freelancers work 44–48 weeks per year. Using 52 weeks in your calculation means you're setting yourself up to miss your income target.</p>
+
+      <div class="tip-box">
+        <p><strong>Pro Tip:</strong> This calculator gives your <strong>minimum</strong> rate — the floor below which you're losing money. Your actual rate should be higher to account for value delivered, market rates, and the ability to save for retirement (no employer 401k match!).</p>
+      </div>
+
+      <h2>Common Mistakes</h2>
+      <h3>1. Comparing to Salaried Equivalents</h3>
+      <p>A $75K salary with benefits is worth roughly $95K–$110K in total compensation. Your freelance rate needs to cover that full amount, not just the salary number.</p>
+
+      <h3>2. Forgetting Self-Employment Tax</h3>
+      <p>In the US, self-employment tax (Social Security + Medicare) is 15.3% on top of income tax. An employee only pays half that — the employer covers the rest. This alone adds $6,000–$12,000+ per year to your tax burden.</p>
+
+      <div class="warning-box">
+        <p><strong>Watch Out:</strong> Lowballing your rate to win clients attracts price-sensitive customers who demand the most work for the least pay. Charge what you're worth — clients who value quality will pay for it.</p>
+      </div>
+
+      <h2>Rate Benchmarks by Field (2024–2025 US)</h2>
+      <ul>
+        <li><strong>Writing/Content:</strong> $50–$150/hr</li>
+        <li><strong>Graphic Design:</strong> $65–$150/hr</li>
+        <li><strong>Web Development:</strong> $75–$200/hr</li>
+        <li><strong>Marketing/Strategy:</strong> $100–$250/hr</li>
+        <li><strong>Management Consulting:</strong> $150–$400/hr</li>
+      </ul>
+
+      <p>Use the calculator above to find your personal floor, then research market rates for your skill and experience level. Your rate should be at least your calculated minimum — ideally well above it.</p>
+    </article>
+  </main>
+  <footer class="site-footer"><div class="container"><p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p></div></footer>
+
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      function calculate() {
+        const income = CalcCore.getVal('target-income');
+        const monthExp = CalcCore.getVal('monthly-expenses');
+        const billableHrs = CalcCore.getVal('billable-hours');
+        const weeksOff = CalcCore.getVal('weeks-off');
+        const taxPct = CalcCore.getVal('tax-rate') / 100;
+
+        const annualExp = monthExp * 12;
+        const workWeeks = 52 - weeksOff;
+        const annualBillable = billableHrs * workWeeks;
+        const grossNeeded = (income + annualExp) / (1 - taxPct);
+        const taxes = grossNeeded - income - annualExp;
+        const hourlyRate = annualBillable > 0 ? grossNeeded / annualBillable : 0;
+
+        CalcCore.setResult('result-rate', CalcCore.fmt.currency(hourlyRate, 0));
+        CalcCore.setResult('result-gross', CalcCore.fmt.currency(grossNeeded, 0));
+        CalcCore.setResult('result-taxes', CalcCore.fmt.currency(taxes, 0));
+        CalcCore.setResult('result-expenses', CalcCore.fmt.currency(annualExp, 0));
+        CalcCore.setResult('result-hours', CalcCore.fmt.number(annualBillable) + ' hrs');
+      }
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+
+  <!-- Sticky Footer Ad (mobile) -->
+  <div id="ad-sticky-footer" class="ad-sticky-footer">
+    <button class="ad-sticky-close" aria-label="Close ad">&times;</button>
+    <div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div>
+  </div>
+
+  <script src="../../js/ads.js"></script>
+</body>
+</html>

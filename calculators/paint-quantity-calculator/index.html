@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paint Quantity Calculator — How Much Paint Do I Need?</title>
+  <meta name="description" content="Calculate exactly how many gallons of paint you need for any room. Input wall dimensions, subtract windows and doors, and get the precise amount.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="../../" class="site-logo">
+        <span class="logo-icon">=</span>
+        100 Calculators
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav class="breadcrumb">
+      <a href="../../">Home</a>
+      <span class="sep">/</span>
+      <a href="../../#home-improvement">Home Improvement</a>
+      <span class="sep">/</span>
+      <span>Paint Quantity Calculator</span>
+    </nav>
+
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+
+    <div class="page-header">
+      <span class="badge">Home Improvement</span>
+      <h1>Paint Quantity Calculator</h1>
+      <p class="subtitle">Stop guessing at the paint store. Calculate the exact number of gallons for your walls, ceiling, or project.</p>
+    </div>
+
+    <!-- Calculator Card -->
+    <div class="calc-card">
+      <h2>Enter Your Room Details</h2>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="room-length">Room Length</label>
+          <div class="input-with-unit">
+            <input type="number" id="room-length" value="12" min="1" max="200" step="0.5">
+            <span class="unit" id="room-length-unit">ft</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="room-width">Room Width</label>
+          <div class="input-with-unit">
+            <input type="number" id="room-width" value="10" min="1" max="200" step="0.5">
+            <span class="unit" id="room-width-unit">ft</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="wall-height">Wall Height</label>
+        <div class="input-with-unit">
+          <input type="number" id="wall-height" value="8" min="1" max="30" step="0.5">
+          <span class="unit" id="wall-height-unit">ft</span>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="num-doors">Number of Doors</label>
+          <div class="input-with-unit">
+            <input type="number" id="num-doors" value="2" min="0" max="20" step="1">
+            <span class="unit">doors</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="num-windows">Number of Windows</label>
+          <div class="input-with-unit">
+            <input type="number" id="num-windows" value="2" min="0" max="20" step="1">
+            <span class="unit">windows</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Number of Coats</label>
+        <div class="toggle-group" data-for="num-coats">
+          <button type="button" class="toggle-btn" data-value="1">1 Coat</button>
+          <button type="button" class="toggle-btn active" data-value="2">2 Coats</button>
+          <button type="button" class="toggle-btn" data-value="3">3 Coats</button>
+        </div>
+        <input type="hidden" id="num-coats" value="2">
+      </div>
+
+      <div class="form-group">
+        <label>Units</label>
+        <div class="toggle-group" data-for="units">
+          <button type="button" class="toggle-btn active" data-value="imperial">Imperial (ft)</button>
+          <button type="button" class="toggle-btn" data-value="metric">Metric (m)</button>
+        </div>
+        <input type="hidden" id="units" value="imperial">
+      </div>
+
+      <div class="form-group">
+        <label>Paint Type</label>
+        <div class="toggle-group" data-for="paint-type">
+          <button type="button" class="toggle-btn active" data-value="standard">Standard</button>
+          <button type="button" class="toggle-btn" data-value="premium">Premium</button>
+        </div>
+        <input type="hidden" id="paint-type" value="standard">
+      </div>
+
+      <!-- Primary Result -->
+      <div class="result-display" id="result-box">
+        <div class="result-label">Paint Needed</div>
+        <div class="result-value" id="result-value">—</div>
+        <div class="result-unit" id="result-unit">gallons</div>
+        <div class="result-note" id="result-note">Includes 10% waste factor</div>
+      </div>
+
+      <!-- Secondary Results -->
+      <div class="results-grid">
+        <div class="result-item">
+          <div class="result-item-label">Paintable Area</div>
+          <div class="result-item-value" id="result-area">—</div>
+          <div class="result-item-unit" id="result-area-unit">sq ft</div>
+        </div>
+        <div class="result-item">
+          <div class="result-item-label">Quarts Needed</div>
+          <div class="result-item-value" id="result-quarts">—</div>
+          <div class="result-item-unit">quarts</div>
+        </div>
+        <div class="result-item">
+          <div class="result-item-label">Estimated Cost</div>
+          <div class="result-item-value" id="result-cost">—</div>
+          <div class="result-item-unit" id="result-cost-label">@ $35/gal</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-box">
+      <span class="cta-icon">&#128722;</span>
+      <div class="cta-content">
+        <p><strong>Ready to buy?</strong> Find the perfect paint for your project at a great price.</p>
+        <a href="#" class="cta-link">Shop Top-Rated Paint on Amazon &rarr;</a>
+      </div>
+    </div>
+
+    <!-- Ad Placeholder -->
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+
+    <!-- Article Content -->
+    <article class="article-content">
+      <h2>How to Calculate Paint for a Room: Complete Guide</h2>
+      <p>One of the most common questions homeowners face before starting a painting project is: "How much paint do I actually need?" Buy too little and you're making an inconvenient mid-project trip to the store — possibly ending up with a slightly different batch shade. Buy too much and you've wasted money on gallons that will sit in the garage for years. This guide walks you through the formula behind our calculator, explains how coverage rates work, and shares professional tips so you get a flawless result on the first try.</p>
+
+      <h2>The Formula Explained Step by Step</h2>
+      <p>Calculating paint quantity is surprisingly straightforward once you know the four key measurements: <strong>room length</strong>, <strong>room width</strong>, <strong>wall height</strong>, and the <strong>number of openings</strong> (doors and windows). Here is the formula professionals use:</p>
+
+      <div class="formula-box">
+        Gallons = [(2 &times; (Length + Width) &times; Height) &minus; (Doors &times; 21) &minus; (Windows &times; 15)] &times; Coats &times; 1.10 &divide; Coverage Rate
+      </div>
+
+      <h3>Step 1: Calculate Total Wall Area</h3>
+      <p>Start by finding the perimeter of the room. Add the room length and width, then multiply by two. This gives you the total linear length of all four walls. Multiply that perimeter by the wall height to get the <strong>gross wall area</strong>. For a 12 ft &times; 10 ft room with 8 ft ceilings, the wall area is: 2 &times; (12 + 10) &times; 8 = <strong>352 square feet</strong>.</p>
+
+      <h3>Step 2: Subtract Doors and Windows</h3>
+      <p>Not every square foot of wall gets painted. A standard interior door takes up about <strong>21 square feet</strong> (3 ft &times; 7 ft), and a standard window is roughly <strong>15 square feet</strong> (3 ft &times; 5 ft). Subtract these from the gross wall area. With 2 doors and 2 windows: 352 &minus; (2 &times; 21) &minus; (2 &times; 15) = <strong>280 square feet</strong> of paintable area.</p>
+
+      <h3>Step 3: Factor in Number of Coats</h3>
+      <p>Most paint jobs require <strong>two coats</strong> for even coverage and true color. If you're making a dramatic color change (light to dark or dark to light), you'll likely need three coats. Multiply your paintable area by the number of coats: 280 &times; 2 = <strong>560 square feet</strong> total coverage needed.</p>
+
+      <h3>Step 4: Add Waste Factor</h3>
+      <p>Professional painters always add a <strong>10% waste factor</strong> to account for paint left in the tray, on rollers, touch-ups, and minor spills. This brings our total to: 560 &times; 1.10 = <strong>616 square feet</strong>.</p>
+
+      <h3>Step 5: Divide by Coverage Rate</h3>
+      <p>Finally, divide by the paint's coverage rate to get gallons. Standard interior paint covers roughly 350 sq ft per gallon. So: 616 &divide; 350 = <strong>1.8 gallons</strong>. In practice, you'd buy 2 gallons.</p>
+
+      <h2>How Coverage Rates Work</h2>
+      <p>The coverage rate — measured in square feet per gallon — tells you how far one gallon of paint will spread. This number depends heavily on the <strong>quality</strong> and <strong>type</strong> of paint you choose:</p>
+      <ul>
+        <li><strong>Standard paint (350 sq ft/gal):</strong> Budget and mid-range paints. They work well but may require more coats for full opacity, especially over dark colors.</li>
+        <li><strong>Premium paint (400 sq ft/gal):</strong> Higher-quality paints with more pigment and better binders. They spread farther, cover in fewer coats, and resist wear over time.</li>
+      </ul>
+      <p>Always check the label on the can — the manufacturer prints the expected coverage rate right on it. Our calculator uses 350 sq ft/gal for standard and 400 sq ft/gal for premium as realistic defaults.</p>
+
+      <h2>How Paint Finish Affects Coverage</h2>
+      <p>The sheen or finish of your paint also plays a role in how far it goes and how it performs:</p>
+      <ul>
+        <li><strong>Flat / Matte:</strong> Best for ceilings and low-traffic rooms. Hides imperfections well. Slightly lower coverage because the finish absorbs more light.</li>
+        <li><strong>Eggshell:</strong> The most popular choice for living rooms and bedrooms. A soft sheen that balances durability with a smooth look. Coverage is average.</li>
+        <li><strong>Satin:</strong> Ideal for kitchens, bathrooms, and hallways. More washable than eggshell. Slightly better coverage due to its smoother film.</li>
+        <li><strong>Semi-Gloss:</strong> Common for trim, doors, and cabinets. Very durable and easy to clean. Good coverage with a noticeable sheen.</li>
+        <li><strong>High-Gloss:</strong> Extremely durable and reflective. Used for accents, furniture, and high-traffic surfaces. Coverage per gallon tends to be slightly higher because the paint forms a thin, even film.</li>
+      </ul>
+
+      <div class="tip-box">
+        <p><strong>Pro Tip:</strong> If you're painting over a dark color with a lighter shade, ask the paint store to tint your primer close to your final color. A tinted primer can eliminate the need for a third coat and save you both time and money.</p>
+      </div>
+
+      <h2>Common Mistakes That Waste Paint (and Money)</h2>
+
+      <h3>1. Forgetting to Account for Multiple Coats</h3>
+      <p>The single biggest mistake is calculating for one coat and buying that amount. Nearly every paint job requires at least two coats. One coat leaves streaks, uneven color, and visible roller marks — especially with lighter colors over darker surfaces. Always multiply your area by the number of coats <em>before</em> dividing by coverage.</p>
+
+      <h3>2. Not Subtracting Doors and Windows</h3>
+      <p>Failing to subtract openings makes you buy more paint than you need. In a typical room, doors and windows can account for 50-70 square feet — nearly a fifth of a small room's wall area. Our calculator handles this automatically.</p>
+
+      <h3>3. Poor Surface Preparation</h3>
+      <p>Painting over patched drywall, unpainted wood, or porous surfaces without priming first dramatically increases absorption. The first coat soaks in and provides little coverage. Always prime bare surfaces, repaired spots, and stain-prone areas before applying your finish coat.</p>
+
+      <div class="warning-box">
+        <p><strong>Watch Out:</strong> If your walls have heavy texture (knockdown, orange peel, or popcorn), you'll need 15-25% more paint than the calculator estimates for smooth walls. Textured surfaces have more surface area than their flat dimensions suggest.</p>
+      </div>
+
+      <h2>How Wall Texture Affects Paint Usage</h2>
+      <p>Smooth, flat drywall is the easiest surface to paint and uses the least amount of paint. But many homes have textured walls, and that texture creates peaks and valleys that dramatically increase the actual surface area:</p>
+      <ul>
+        <li><strong>Smooth drywall:</strong> Standard coverage rates apply directly.</li>
+        <li><strong>Light orange peel:</strong> Add roughly 10-15% more paint.</li>
+        <li><strong>Heavy knockdown:</strong> Add 15-20% more paint.</li>
+        <li><strong>Popcorn / heavy splatter:</strong> Add 20-30% more paint. These surfaces have deep crevices that consume paint quickly.</li>
+      </ul>
+      <p>If your walls are textured, use the calculator's result as a baseline and then add the appropriate percentage based on your texture type.</p>
+
+      <h2>Pro Tips for a Perfect Paint Job</h2>
+      <ul>
+        <li><strong>Always prime first.</strong> Primer seals the surface, provides a uniform base, and helps the topcoat adhere better. It's especially critical over new drywall, patches, stains, or dramatic color changes.</li>
+        <li><strong>Cut in before rolling.</strong> Use a 2-3 inch angled brush to "cut in" along edges, corners, and around trim before using a roller on the large wall areas. This gives you clean lines without tape in most cases.</li>
+        <li><strong>Maintain a wet edge.</strong> Roll in overlapping W-shaped or M-shaped patterns and don't let the leading edge dry before you roll over it again. This prevents visible lap marks.</li>
+        <li><strong>Use the right roller nap.</strong> Smooth walls need a 3/8" nap, lightly textured walls a 1/2" nap, and heavily textured walls a 3/4" nap. The wrong nap means uneven coverage.</li>
+        <li><strong>Buy all your paint at once.</strong> Even cans of the same color from the same brand can vary slightly between batches. Buy everything in one trip and "box" your paint (pour all gallons into a large bucket and mix) for consistent color.</li>
+        <li><strong>Keep leftover paint for touch-ups.</strong> Store at least a quart in a sealed container labeled with the room, color name, and date. Minor scuffs and nail holes are inevitable, and touch-up paint from the same batch will blend perfectly.</li>
+      </ul>
+
+      <div class="tip-box">
+        <p><strong>Pro Tip:</strong> When estimating for a whole house, calculate each room separately. Rooms vary in size, number of openings, and wall condition. Lumping everything together leads to inaccurate totals. Use this calculator for each room, then add up the gallons.</p>
+      </div>
+
+      <p>Now that you understand the math and the method, use the calculator above to get your precise number — and walk into the paint store knowing exactly what you need. No second trips, no wasted paint, and no surprises.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p>
+    </div>
+  </footer>
+
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      const COVERAGE_STANDARD = 350; // sq ft per gallon
+      const COVERAGE_PREMIUM = 400;
+      const COST_STANDARD = 35; // $/gal
+      const COST_PREMIUM = 55;
+      const DOOR_AREA_SQFT = 21; // standard door ~3x7 ft
+      const WINDOW_AREA_SQFT = 15; // standard window ~3x5 ft
+      const WASTE_FACTOR = 1.10;
+      const SQ_M_TO_SQ_FT = 10.7639;
+      const M_TO_FT = 3.28084;
+      const GAL_TO_LITERS = 3.78541;
+
+      function updateUnits() {
+        var u = CalcCore.getToggleVal('units');
+        var isMetric = u === 'metric';
+        document.getElementById('room-length-unit').textContent = isMetric ? 'm' : 'ft';
+        document.getElementById('room-width-unit').textContent = isMetric ? 'm' : 'ft';
+        document.getElementById('wall-height-unit').textContent = isMetric ? 'm' : 'ft';
+      }
+
+      function calculate() {
+        updateUnits();
+
+        var u = CalcCore.getToggleVal('units');
+        var isMetric = u === 'metric';
+        var paintType = CalcCore.getToggleVal('paint-type');
+        var coats = parseInt(CalcCore.getToggleVal('num-coats'), 10) || 2;
+
+        var coverage = paintType === 'premium' ? COVERAGE_PREMIUM : COVERAGE_STANDARD;
+        var costPerGal = paintType === 'premium' ? COST_PREMIUM : COST_STANDARD;
+
+        var length = CalcCore.getVal('room-length');
+        var width = CalcCore.getVal('room-width');
+        var height = CalcCore.getVal('wall-height');
+        var doors = CalcCore.getVal('num-doors');
+        var windows = CalcCore.getVal('num-windows');
+
+        // Convert metric to imperial for calculation
+        if (isMetric) {
+          length = length * M_TO_FT;
+          width = width * M_TO_FT;
+          height = height * M_TO_FT;
+        }
+
+        if (length <= 0 || width <= 0 || height <= 0) {
+          CalcCore.setResult('result-value', '—');
+          CalcCore.setResult('result-area', '—');
+          CalcCore.setResult('result-quarts', '—');
+          CalcCore.setResult('result-cost', '—');
+          return;
+        }
+
+        // Step 1: Total wall area
+        var wallArea = 2 * (length + width) * height;
+
+        // Step 2: Subtract openings
+        var openingsArea = (doors * DOOR_AREA_SQFT) + (windows * WINDOW_AREA_SQFT);
+        var paintableArea = Math.max(wallArea - openingsArea, 0);
+
+        // Step 3: Apply coats
+        var totalArea = paintableArea * coats;
+
+        // Step 4: Add waste
+        var totalWithWaste = totalArea * WASTE_FACTOR;
+
+        // Step 5: Calculate gallons
+        var gallons = totalWithWaste / coverage;
+        var quarts = gallons * 4;
+        var cost = Math.ceil(gallons) * costPerGal;
+
+        // Display results
+        if (isMetric) {
+          var liters = gallons * GAL_TO_LITERS;
+          var paintableAreaM2 = paintableArea / SQ_M_TO_SQ_FT;
+          CalcCore.setResult('result-value', CalcCore.fmt.number(liters, 1));
+          CalcCore.setResult('result-unit', 'liters');
+          CalcCore.setResult('result-area', CalcCore.fmt.number(paintableAreaM2, 1));
+          CalcCore.setResult('result-area-unit', 'm²');
+        } else {
+          CalcCore.setResult('result-value', CalcCore.fmt.number(gallons, 1));
+          CalcCore.setResult('result-unit', 'gallons');
+          CalcCore.setResult('result-area', CalcCore.fmt.number(paintableArea, 0));
+          CalcCore.setResult('result-area-unit', 'sq ft');
+        }
+
+        CalcCore.setResult('result-quarts', CalcCore.fmt.number(quarts, 1));
+        CalcCore.setResult('result-cost', CalcCore.fmt.currency(cost, 0));
+        CalcCore.setResult('result-cost-label', '@ ' + CalcCore.fmt.currency(costPerGal, 0) + '/gal');
+      }
+
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+
+  <!-- Sticky Footer Ad (mobile) -->
+  <div id="ad-sticky-footer" class="ad-sticky-footer">
+    <button class="ad-sticky-close" aria-label="Close ad">&times;</button>
+    <div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div>
+  </div>
+
+  <script src="../../js/ads.js"></script>
+</body>
+</html>

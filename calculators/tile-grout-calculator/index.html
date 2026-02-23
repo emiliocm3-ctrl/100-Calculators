@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tile Grout Calculator — How Much Grout Do I Need?</title>
+  <meta name="description" content="Calculate exactly how much grout you need for your tiling project. Enter tile size, grout gap width, and area to get kilograms or pounds of grout needed.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="../../" class="site-logo">
+        <span class="logo-icon">=</span>
+        100 Calculators
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav class="breadcrumb">
+      <a href="../../">Home</a>
+      <span class="sep">/</span>
+      <a href="../../#home-improvement">Home Improvement</a>
+      <span class="sep">/</span>
+      <span>Tile Grout Calculator</span>
+    </nav>
+
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+
+    <div class="page-header">
+      <span class="badge">Home Improvement</span>
+      <h1>Tile Grout Calculator</h1>
+      <p class="subtitle">Find out exactly how many kilograms (or pounds) of grout you need. No more guessing at the hardware store.</p>
+    </div>
+
+    <!-- Calculator Card -->
+    <div class="calc-card">
+      <h2>Enter Your Tile Details</h2>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="tile-length">Tile Length</label>
+          <div class="input-with-unit">
+            <input type="number" id="tile-length" value="12" min="1" max="120" step="0.5">
+            <span class="unit" id="tile-length-unit">in</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="tile-width">Tile Width</label>
+          <div class="input-with-unit">
+            <input type="number" id="tile-width" value="12" min="1" max="120" step="0.5">
+            <span class="unit" id="tile-width-unit">in</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="tile-depth">Tile Depth (Thickness)</label>
+          <div class="input-with-unit">
+            <input type="number" id="tile-depth" value="0.375" min="0.1" max="2" step="0.025">
+            <span class="unit" id="tile-depth-unit">in</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="gap-width">Grout Gap Width</label>
+          <div class="input-with-unit">
+            <input type="number" id="gap-width" value="0.125" min="0.0625" max="1" step="0.0625">
+            <span class="unit" id="gap-width-unit">in</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="area">Total Area to Tile</label>
+        <div class="input-with-unit">
+          <input type="number" id="area" value="100" min="1" max="10000" step="1">
+          <span class="unit" id="area-unit">ft²</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Units</label>
+        <div class="toggle-group" data-for="units">
+          <button type="button" class="toggle-btn active" data-value="imperial">Inches / ft²</button>
+          <button type="button" class="toggle-btn" data-value="metric">cm / m²</button>
+        </div>
+        <input type="hidden" id="units" value="imperial">
+      </div>
+
+      <!-- Primary Result -->
+      <div class="result-display" id="result-box">
+        <div class="result-label">Grout Needed</div>
+        <div class="result-value" id="result-value">—</div>
+        <div class="result-unit" id="result-unit">pounds</div>
+        <div class="result-note" id="result-note">Includes 10% waste factor</div>
+      </div>
+
+      <!-- Secondary Results -->
+      <div class="results-grid">
+        <div class="result-item">
+          <div class="result-item-label">Without Waste</div>
+          <div class="result-item-value" id="result-raw">—</div>
+          <div class="result-item-unit" id="result-raw-unit">lbs</div>
+        </div>
+        <div class="result-item">
+          <div class="result-item-label">Number of Tiles</div>
+          <div class="result-item-value" id="result-tiles">—</div>
+          <div class="result-item-unit">tiles</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-box">
+      <span class="cta-icon">&#128722;</span>
+      <div class="cta-content">
+        <p><strong>Ready to buy?</strong> Make sure you pick the right grout type for your tile.</p>
+        <a href="#" class="cta-link">See Top-Rated Grout on Amazon &rarr;</a>
+      </div>
+    </div>
+
+    <!-- Ad Placeholder -->
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+
+    <!-- Article Content -->
+    <article class="article-content">
+      <h2>How to Calculate Tile Grout: The Complete Guide</h2>
+      <p>Calculating tile grout seems straightforward, but most DIYers end up making at least one extra trip to the hardware store because they underestimated how much they need. This guide explains the math behind our calculator, why it works, and the common mistakes that leave you short — or stuck with five extra bags.</p>
+
+      <h2>The Formula Explained</h2>
+      <p>The volume of grout in a tiled area depends on four measurements: <strong>tile length</strong>, <strong>tile width</strong>, <strong>tile depth</strong> (thickness), and <strong>grout gap width</strong> (also called the grout joint). Here is the industry-standard formula used by professionals:</p>
+
+      <div class="formula-box">
+        Grout Volume = [(L + W) / (L &times; W)] &times; D &times; G &times; Area &times; Density
+      </div>
+
+      <p>Where <strong>L</strong> is tile length, <strong>W</strong> is tile width, <strong>D</strong> is tile depth, <strong>G</strong> is grout gap width, and <strong>Density</strong> is the grout powder density (approximately 1.6 kg/L for sanded grout). This formula works because it calculates the total linear length of grout joints per unit area and multiplies by the cross-sectional area of each joint.</p>
+
+      <h3>Step-by-Step Breakdown</h3>
+      <ol>
+        <li><strong>Determine the grout joint cross-section.</strong> This is the gap width multiplied by the tile depth. For a 3/16" gap on a 3/8"-thick tile, the cross-section is 0.1875 &times; 0.375 = 0.0703 square inches.</li>
+        <li><strong>Calculate the total length of grout lines per tile.</strong> Each tile has grout on two sides (one length side and one width side, since adjacent tiles share joints). Total linear grout per tile = (L + W).</li>
+        <li><strong>Scale to your area.</strong> Divide the total area by the area of one tile (L &times; W) to get the tile count, then multiply by grout per tile.</li>
+        <li><strong>Convert volume to weight.</strong> Grout is sold by weight. Sanded grout has a density around 100 lbs/ft&sup3; (1.6 kg/L). Unsanded grout is slightly lighter.</li>
+      </ol>
+
+      <h2>Sanded vs. Unsanded Grout</h2>
+      <p>The type of grout you use depends on the width of your gap:</p>
+      <ul>
+        <li><strong>Unsanded grout</strong> is used for joints <strong>1/8" (3mm) or narrower</strong>. It's smoother, easier to work into thin lines, and better for polished stone that could be scratched by sand particles.</li>
+        <li><strong>Sanded grout</strong> is used for joints <strong>wider than 1/8"</strong>. The sand provides structural strength and prevents the grout from cracking as it cures in wider gaps.</li>
+      </ul>
+
+      <div class="tip-box">
+        <p><strong>Pro Tip:</strong> If you're tiling a shower floor with small mosaic tiles (1" or 2"), the grout-to-tile ratio is much higher than with large 12" tiles. You may need two to three times more grout per square foot than you'd expect.</p>
+      </div>
+
+      <h2>Common Mistakes That Waste Grout (and Money)</h2>
+      <h3>1. Forgetting the Waste Factor</h3>
+      <p>No matter how careful you are, some grout sticks to your bucket, your float, and gets wiped off during cleaning. Professionals add a <strong>10% waste factor</strong> as standard practice. For intricate patterns or first-time tilers, consider 15%.</p>
+
+      <h3>2. Ignoring Tile Thickness</h3>
+      <p>Many online calculators only ask for gap width and forget tile depth. But grout fills the full depth of the joint — a 1/2" thick tile uses 33% more grout than a 3/8" tile with the same gap width.</p>
+
+      <h3>3. Not Accounting for Irregular Tiles</h3>
+      <p>Hand-made or natural stone tiles have slight size variations, which means the gap width isn't perfectly uniform. If using irregular tiles, add an extra 5-10% to your estimate.</p>
+
+      <div class="warning-box">
+        <p><strong>Watch Out:</strong> Never mix more grout than you can apply in 20-30 minutes. Grout begins to set quickly once water is added. Mix in small batches to avoid waste.</p>
+      </div>
+
+      <h2>How Much Does a Bag of Grout Cover?</h2>
+      <p>A standard <strong>25-pound bag of sanded grout</strong> covers approximately:</p>
+      <ul>
+        <li>95-100 sq ft of 12&times;12" tile with 1/8" joints</li>
+        <li>50-60 sq ft of 6&times;6" tile with 1/8" joints</li>
+        <li>25-35 sq ft of 12&times;12" tile with 1/4" joints</li>
+        <li>8-12 sq ft of 2&times;2" mosaic tile with 1/16" joints</li>
+      </ul>
+      <p>These are rough estimates. Our calculator gives you a precise number based on your exact measurements, so you buy the right amount the first time.</p>
+
+      <h2>Tips for a Perfect Grout Job</h2>
+      <ul>
+        <li><strong>Wait 24 hours</strong> after laying tiles before grouting. The thinset adhesive needs time to cure.</li>
+        <li><strong>Use a grout float</strong> held at a 45-degree angle. Push grout diagonally across joints to fill them completely.</li>
+        <li><strong>Clean as you go</strong> with a damp (not wet) sponge. Excess water weakens the grout and causes discoloration.</li>
+        <li><strong>Seal your grout</strong> 48-72 hours after it cures. Unsealed grout absorbs moisture and stains easily.</li>
+      </ul>
+
+      <p>Now that you know the math and the method, use the calculator above to get your exact number — and feel confident walking into the hardware store knowing you'll buy the right amount.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p>
+    </div>
+  </footer>
+
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      const GROUT_DENSITY_LB_PER_CUIN = 0.058; // ~100 lb/ft³ sanded grout
+      const WASTE_FACTOR = 1.10;
+
+      function updateUnits() {
+        const u = CalcCore.getToggleVal('units');
+        const isMetric = u === 'metric';
+        document.getElementById('tile-length-unit').textContent = isMetric ? 'cm' : 'in';
+        document.getElementById('tile-width-unit').textContent = isMetric ? 'cm' : 'in';
+        document.getElementById('tile-depth-unit').textContent = isMetric ? 'cm' : 'in';
+        document.getElementById('gap-width-unit').textContent = isMetric ? 'mm' : 'in';
+        document.getElementById('area-unit').textContent = isMetric ? 'm²' : 'ft²';
+      }
+
+      function calculate() {
+        updateUnits();
+        const u = CalcCore.getToggleVal('units');
+        const isMetric = u === 'metric';
+
+        let L = CalcCore.getVal('tile-length');
+        let W = CalcCore.getVal('tile-width');
+        let D = CalcCore.getVal('tile-depth');
+        let G = CalcCore.getVal('gap-width');
+        let A = CalcCore.getVal('area');
+
+        if (isMetric) {
+          // convert cm to inches, mm to inches, m² to ft²
+          L = L / 2.54;
+          W = W / 2.54;
+          D = D / 2.54;
+          G = G / 25.4; // mm to in
+          A = A * 10.7639; // m² to ft²
+        }
+
+        if (L <= 0 || W <= 0 || D <= 0 || G <= 0 || A <= 0) {
+          CalcCore.setResult('result-value', '—');
+          CalcCore.setResult('result-raw', '—');
+          CalcCore.setResult('result-tiles', '—');
+          return;
+        }
+
+        const tileAreaSqIn = L * W;
+        const totalAreaSqIn = A * 144; // ft² to in²
+        const numTiles = Math.ceil(totalAreaSqIn / tileAreaSqIn);
+
+        // grout volume per tile (cubic inches)
+        // each tile contributes grout along one length side and one width side
+        const groutVolPerTile = (L + W) * D * G;
+        const totalGroutVolCuIn = groutVolPerTile * numTiles;
+
+        const rawLbs = totalGroutVolCuIn * GROUT_DENSITY_LB_PER_CUIN;
+        const withWaste = rawLbs * WASTE_FACTOR;
+
+        if (isMetric) {
+          const rawKg = rawLbs * 0.4536;
+          const wasteKg = withWaste * 0.4536;
+          CalcCore.setResult('result-value', CalcCore.fmt.number(wasteKg, 1));
+          CalcCore.setResult('result-unit', 'kilograms');
+          CalcCore.setResult('result-raw', CalcCore.fmt.number(rawKg, 1));
+          CalcCore.setResult('result-raw-unit', 'kg');
+        } else {
+          CalcCore.setResult('result-value', CalcCore.fmt.number(withWaste, 1));
+          CalcCore.setResult('result-unit', 'pounds');
+          CalcCore.setResult('result-raw', CalcCore.fmt.number(rawLbs, 1));
+          CalcCore.setResult('result-raw-unit', 'lbs');
+        }
+
+        CalcCore.setResult('result-tiles', CalcCore.fmt.number(numTiles));
+      }
+
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+
+  <!-- Sticky Footer Ad (mobile) -->
+  <div id="ad-sticky-footer" class="ad-sticky-footer">
+    <button class="ad-sticky-close" aria-label="Close ad">&times;</button>
+    <div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div>
+  </div>
+
+  <script src="../../js/ads.js"></script>
+</body>
+</html>

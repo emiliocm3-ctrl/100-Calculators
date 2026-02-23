@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mulch &amp; Gravel Calculator — How Many Bags Do I Need?</title>
+  <meta name="description" content="Calculate exactly how much mulch, gravel, topsoil, or sand you need for any landscaping project. Get cubic yards, number of bags, weight, and cost estimates.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="../../" class="site-logo">
+        <span class="logo-icon">=</span>
+        100 Calculators
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav class="breadcrumb">
+      <a href="../../">Home</a>
+      <span class="sep">/</span>
+      <a href="../../#home-improvement">Home Improvement</a>
+      <span class="sep">/</span>
+      <span>Mulch &amp; Gravel Calculator</span>
+    </nav>
+
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+
+    <div class="page-header">
+      <span class="badge">Home Improvement</span>
+      <h1>Mulch &amp; Gravel Calculator</h1>
+      <p class="subtitle">Calculate exactly how much mulch, gravel, or soil you need for any landscaping project.</p>
+    </div>
+
+    <!-- Calculator Card -->
+    <div class="calc-card">
+      <h2>Enter Your Project Details</h2>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="area-length">Area Length</label>
+          <div class="input-with-unit">
+            <input type="number" id="area-length" value="20" min="0.1" max="5000" step="0.5">
+            <span class="unit" id="length-unit">ft</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="area-width">Area Width</label>
+          <div class="input-with-unit">
+            <input type="number" id="area-width" value="10" min="0.1" max="5000" step="0.5">
+            <span class="unit" id="width-unit">ft</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="depth">Desired Depth — <span id="depth-val">3</span> <span id="depth-unit-label">inches</span></label>
+        <input type="range" id="depth" min="1" max="12" value="3" step="0.5">
+        <div class="range-labels">
+          <span id="depth-min-label">1 in</span>
+          <span id="depth-max-label">12 in</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Material</label>
+        <div class="toggle-group" data-for="material">
+          <button type="button" class="toggle-btn active" data-value="mulch">Mulch</button>
+          <button type="button" class="toggle-btn" data-value="gravel">Gravel</button>
+          <button type="button" class="toggle-btn" data-value="topsoil">Topsoil</button>
+          <button type="button" class="toggle-btn" data-value="sand">Sand</button>
+        </div>
+        <input type="hidden" id="material" value="mulch">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Units</label>
+          <div class="toggle-group" data-for="units">
+            <button type="button" class="toggle-btn active" data-value="imperial">Imperial</button>
+            <button type="button" class="toggle-btn" data-value="metric">Metric</button>
+          </div>
+          <input type="hidden" id="units" value="imperial">
+        </div>
+        <div class="form-group">
+          <label>Purchase Format</label>
+          <div class="toggle-group" data-for="bag-size">
+            <button type="button" class="toggle-btn active" data-value="bags">2 cu ft Bags</button>
+            <button type="button" class="toggle-btn" data-value="bulk">Bulk (cu yd)</button>
+          </div>
+          <input type="hidden" id="bag-size" value="bags">
+        </div>
+      </div>
+
+      <!-- Primary Result -->
+      <div class="result-display" id="result-box">
+        <div class="result-label">Total Volume Needed</div>
+        <div class="result-value" id="result-value">—</div>
+        <div class="result-unit" id="result-unit">cubic yards</div>
+        <div class="result-note" id="result-note">for 200 sq ft of mulch at 3" deep</div>
+      </div>
+
+      <!-- Secondary Results -->
+      <div class="results-grid">
+        <div class="result-item">
+          <div class="result-item-label">Coverage Area</div>
+          <div class="result-item-value" id="result-area">—</div>
+          <div class="result-item-unit" id="result-area-unit">sq ft</div>
+        </div>
+        <div class="result-item">
+          <div class="result-item-label" id="bags-label">Bags Needed (2 cu ft)</div>
+          <div class="result-item-value" id="result-bags">—</div>
+          <div class="result-item-unit" id="result-bags-unit">bags</div>
+        </div>
+        <div class="result-item">
+          <div class="result-item-label">Total Weight</div>
+          <div class="result-item-value" id="result-weight">—</div>
+          <div class="result-item-unit" id="result-weight-unit">tons</div>
+        </div>
+        <div class="result-item">
+          <div class="result-item-label">Estimated Cost</div>
+          <div class="result-item-value" id="result-cost">—</div>
+          <div class="result-item-unit" id="result-cost-label">bulk pricing</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-box">
+      <span class="cta-icon">&#127793;</span>
+      <div class="cta-content">
+        <p><strong>Get the best price on mulch.</strong> Compare top-rated landscaping supplies delivered to your door.</p>
+        <a href="#" class="cta-link">Shop Landscaping Supplies &rarr;</a>
+      </div>
+    </div>
+
+    <!-- Ad Placeholder -->
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+
+    <!-- Article Content -->
+    <article class="article-content">
+      <h2>How to Calculate Mulch, Gravel, and Soil for Your Garden</h2>
+      <p>Whether you are refreshing flower beds, building a gravel walkway, or preparing a new garden plot, knowing exactly how much material you need saves money, time, and frustration. Ordering too little means a second delivery charge or another trip to the store. Ordering too much leaves you with a pile of excess material and nowhere to put it. This comprehensive guide walks you through the volume formula, explains how depth affects coverage, compares common materials, and shares professional tips so your next landscaping project goes off without a hitch.</p>
+
+      <h2>The Volume Formula Explained</h2>
+      <p>Every bulk landscaping material — mulch, gravel, topsoil, sand — is sold by volume, typically measured in <strong>cubic yards</strong> in the United States or <strong>cubic meters</strong> elsewhere. The underlying formula is simple: you need to figure out how much three-dimensional space your material will fill.</p>
+
+      <div class="formula-box">
+        Volume (cu ft) = Length (ft) &times; Width (ft) &times; Depth (ft)<br>
+        Cubic Yards = Volume (cu ft) &divide; 27
+      </div>
+
+      <p>Because depth is almost always measured in inches, you first convert it to feet by dividing by 12. For example, a flower bed that is 20 feet long, 10 feet wide, and 3 inches deep requires: 20 &times; 10 &times; (3 &divide; 12) = <strong>50 cubic feet</strong>, which is 50 &divide; 27 = <strong>1.85 cubic yards</strong>. That is the amount of mulch, gravel, or soil you need before accounting for settling.</p>
+
+      <h3>Why 27?</h3>
+      <p>One cubic yard equals 3 feet &times; 3 feet &times; 3 feet = 27 cubic feet. It is the standard bulk unit because most landscape supply companies load their trucks by the scoop, and one scoop typically equals about one cubic yard. When ordering bagged material, a standard bag holds 2 cubic feet, so you would divide total cubic feet by 2 to get the number of bags.</p>
+
+      <h2>How Depth Affects Coverage</h2>
+      <p>The depth you choose is the single most important variable in the calculation — even small changes have a big impact on the total volume. Here is how different depths affect coverage for a 100 square foot area:</p>
+      <ul>
+        <li><strong>1 inch:</strong> 8.3 cu ft (0.31 cu yd) — A light top-dressing, barely enough to refresh existing mulch.</li>
+        <li><strong>2 inches:</strong> 16.7 cu ft (0.62 cu yd) — The minimum recommended for mulch refreshing over existing layers.</li>
+        <li><strong>3 inches:</strong> 25 cu ft (0.93 cu yd) — The ideal depth for new mulch beds. Provides good weed suppression and moisture retention.</li>
+        <li><strong>4 inches:</strong> 33.3 cu ft (1.23 cu yd) — Excellent for weed prevention; recommended for gravel paths and driveways.</li>
+        <li><strong>6 inches:</strong> 50 cu ft (1.85 cu yd) — Heavy coverage for gravel driveways or drainage beds.</li>
+        <li><strong>12 inches:</strong> 100 cu ft (3.70 cu yd) — Used for raised garden beds or deep gravel foundations.</li>
+      </ul>
+
+      <div class="tip-box">
+        <p><strong>Pro Tip:</strong> For weed prevention with mulch, 3 inches is the sweet spot. Going deeper than 4 inches can actually suffocate plant roots and trap moisture against tree trunks, leading to rot. For gravel walkways and driveways, 4 inches over landscape fabric provides a firm, stable surface.</p>
+      </div>
+
+      <h2>Material Comparison: Mulch vs. Gravel vs. Topsoil vs. Sand</h2>
+      <p>Each material serves a different purpose in the landscape, and they differ dramatically in weight and cost. Here is what you need to know:</p>
+
+      <h3>Mulch (~400 lb per cubic yard, ~$30/cu yd)</h3>
+      <p>Mulch is the go-to material for garden beds, tree rings, and ornamental plantings. It suppresses weeds, retains soil moisture, regulates soil temperature, and breaks down over time to enrich the soil. Organic mulches like shredded hardwood, pine bark, and cedar need to be replenished every 1-2 years as they decompose. Because it is lightweight, mulch is the easiest material to spread by hand.</p>
+
+      <h3>Gravel (~2,800 lb per cubic yard, ~$50/cu yd)</h3>
+      <p>Gravel is a permanent hardscaping material used for driveways, walkways, drainage swales, and decorative borders. It does not decompose, so you install it once. However, it is extremely heavy — nearly seven times heavier than mulch — which makes delivery costs higher and manual spreading more labor-intensive. Pea gravel, crushed stone, and river rock all fall into this category.</p>
+
+      <h3>Topsoil (~2,200 lb per cubic yard, ~$25/cu yd)</h3>
+      <p>Topsoil is used to build or amend planting areas, level lawns, and fill raised beds. Quality varies widely — always ask for screened topsoil if you are planting directly into it. Low-quality fill dirt may be full of clay, rocks, or debris. Topsoil is moderately heavy and packs down over time, so plan on it settling about 10-15% after watering and natural compaction.</p>
+
+      <h3>Sand (~2,700 lb per cubic yard, ~$40/cu yd)</h3>
+      <p>Sand is used as a leveling base under pavers and flagstone, for drainage improvements, and in sandbox construction. Masonry sand is fine-grained and packs tightly, while coarse concrete sand drains well and is used for backfilling trenches. Like gravel, sand is heavy and relatively permanent once installed.</p>
+
+      <h2>Common Mistakes to Avoid</h2>
+
+      <h3>1. Forgetting About Settling</h3>
+      <p>Every material compacts after installation. Mulch settles by about 10-15% as it absorbs water and begins to decompose. Gravel and sand settle by 5-10% as particles lock together. Topsoil can settle even more if it was loosely loaded. Always <strong>add 10-15% to your calculated volume</strong> to account for settling. Our calculator gives you the theoretical volume — adding that safety margin ensures you will not come up short.</p>
+
+      <div class="warning-box">
+        <p><strong>Warning:</strong> Ordering exactly the calculated amount almost guarantees you'll run short after the material settles. Always round up to the next half or full cubic yard when ordering bulk, or buy 2-3 extra bags. It is far cheaper than placing a second order or making another trip.</p>
+      </div>
+
+      <h3>2. Using the Wrong Depth</h3>
+      <p>Too shallow and your mulch won't suppress weeds; too deep and you risk suffocating roots. Too thin a gravel layer shifts underfoot and doesn't provide stable footing. Always follow recommended depth guidelines: 2-3 inches for mulch around existing plants, 3-4 inches for new mulch beds, 4-6 inches for gravel pathways, and 6-12 inches for driveways and deep drainage beds.</p>
+
+      <h3>3. Ignoring Irregular Shapes</h3>
+      <p>Not every garden bed is a perfect rectangle. For L-shaped, curved, or irregularly shaped areas, break the space into smaller rectangles or triangles, calculate each section separately, and add them together. For circular areas, use the formula: Area = &pi; &times; radius&sup2;. Our calculator handles rectangular areas — for curves, estimate the average length and width.</p>
+
+      <h2>How Much Does a Cubic Yard Cover?</h2>
+      <p>One of the most frequently asked questions at any garden center. The answer depends entirely on depth:</p>
+      <ul>
+        <li><strong>1 cubic yard at 1" deep</strong> covers 324 sq ft</li>
+        <li><strong>1 cubic yard at 2" deep</strong> covers 162 sq ft</li>
+        <li><strong>1 cubic yard at 3" deep</strong> covers 108 sq ft</li>
+        <li><strong>1 cubic yard at 4" deep</strong> covers 81 sq ft</li>
+        <li><strong>1 cubic yard at 6" deep</strong> covers 54 sq ft</li>
+        <li><strong>1 cubic yard at 12" deep</strong> covers 27 sq ft</li>
+      </ul>
+      <p>This quick reference is useful when you're at the supply yard and need to estimate on the fly. For mulch at the standard 3-inch depth, a good rule of thumb is <strong>one cubic yard per 100 square feet</strong> (with a small amount left over).</p>
+
+      <h2>Delivery vs. Bags: When Each Makes Sense</h2>
+      <p>Should you buy bags from the hardware store or order a bulk delivery? The answer depends on the size of your project and your vehicle situation:</p>
+
+      <h3>Buy Bags When:</h3>
+      <ul>
+        <li>You need <strong>less than 2 cubic yards</strong> of material.</li>
+        <li>You have limited access to the area (narrow side yards, rooftop gardens).</li>
+        <li>You want to work on the project gradually, a few bags at a time.</li>
+        <li>You drive an SUV or sedan and cannot haul bulk material.</li>
+      </ul>
+
+      <h3>Order Bulk Delivery When:</h3>
+      <ul>
+        <li>You need <strong>more than 2-3 cubic yards</strong>. Bulk is dramatically cheaper per cubic yard.</li>
+        <li>You have a clear area where the truck can dump the pile — ideally a driveway or open lot.</li>
+        <li>You have a wheelbarrow and the time to spread it. Most deliveries dump the material in one pile.</li>
+        <li>Cost matters — bulk mulch is often $25-35 per cubic yard vs. $4-6 per 2 cu ft bag (which works out to $54-81 per cubic yard in bags).</li>
+      </ul>
+
+      <div class="tip-box">
+        <p><strong>Pro Tip:</strong> If you're on the fence, ask your local landscape supply company about their minimum delivery. Many have a 2-3 cubic yard minimum. If your project falls near that threshold, bulk delivery is almost always the smarter choice — you save money and avoid dozens of heavy bags.</p>
+      </div>
+
+      <p>Use the calculator above to get your precise volume, bag count, weight, and cost estimate. Switch between materials and units to compare options, and always round up to avoid running short. A well-mulched garden bed or properly built gravel path adds real beauty and value to your home — and getting the quantity right is the first step to a project you will be proud of.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p>
+    </div>
+  </footer>
+
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      /* Material data: weight in lb per cubic yard, cost in $ per cubic yard */
+      var MATERIALS = {
+        mulch:   { weight: 400,  cost: 30, label: 'Mulch' },
+        gravel:  { weight: 2800, cost: 50, label: 'Gravel' },
+        topsoil: { weight: 2200, cost: 25, label: 'Topsoil' },
+        sand:    { weight: 2700, cost: 40, label: 'Sand' }
+      };
+
+      var FT_PER_M = 3.28084;
+      var IN_PER_CM = 0.393701;
+      var CU_FT_PER_CU_YD = 27;
+      var CU_FT_PER_CU_M = 35.3147;
+      var LB_PER_TON = 2000;
+      var KG_PER_LB = 0.453592;
+      var BAG_SIZE_CU_FT = 2;
+
+      function updateUnits() {
+        var isMetric = CalcCore.getToggleVal('units') === 'metric';
+        document.getElementById('length-unit').textContent = isMetric ? 'm' : 'ft';
+        document.getElementById('width-unit').textContent = isMetric ? 'm' : 'ft';
+        document.getElementById('depth-unit-label').textContent = isMetric ? 'cm' : 'inches';
+        document.getElementById('depth-min-label').textContent = isMetric ? '1 cm' : '1 in';
+        document.getElementById('depth-max-label').textContent = isMetric ? '12 cm' : '12 in';
+      }
+
+      function calculate() {
+        updateUnits();
+
+        var isMetric = CalcCore.getToggleVal('units') === 'metric';
+        var materialKey = CalcCore.getToggleVal('material') || 'mulch';
+        var mat = MATERIALS[materialKey];
+        var bagMode = CalcCore.getToggleVal('bag-size') === 'bags';
+
+        var length = CalcCore.getVal('area-length');
+        var width = CalcCore.getVal('area-width');
+        var depth = CalcCore.getVal('depth');
+
+        /* Convert to imperial for calculation */
+        var lengthFt = isMetric ? length * FT_PER_M : length;
+        var widthFt = isMetric ? width * FT_PER_M : width;
+        var depthFt = isMetric ? (depth / 2.54) / 12 : depth / 12;
+
+        if (lengthFt <= 0 || widthFt <= 0 || depth <= 0) {
+          CalcCore.setResult('result-value', '—');
+          CalcCore.setResult('result-area', '—');
+          CalcCore.setResult('result-bags', '—');
+          CalcCore.setResult('result-weight', '—');
+          CalcCore.setResult('result-cost', '—');
+          return;
+        }
+
+        var areaSqFt = lengthFt * widthFt;
+        var volumeCuFt = areaSqFt * depthFt;
+        var cubicYards = volumeCuFt / CU_FT_PER_CU_YD;
+        var bags = Math.ceil(volumeCuFt / BAG_SIZE_CU_FT);
+        var weightLb = cubicYards * mat.weight;
+        var weightTons = weightLb / LB_PER_TON;
+        var costBulk = cubicYards * mat.cost;
+
+        /* Primary result */
+        if (isMetric) {
+          var cubicMeters = volumeCuFt / CU_FT_PER_CU_M;
+          CalcCore.setResult('result-value', CalcCore.fmt.number(cubicMeters, 2));
+          CalcCore.setResult('result-unit', 'cubic meters');
+        } else {
+          CalcCore.setResult('result-value', CalcCore.fmt.number(cubicYards, 2));
+          CalcCore.setResult('result-unit', 'cubic yards');
+        }
+
+        /* Result note */
+        var areaTxt = isMetric
+          ? CalcCore.fmt.number(areaSqFt / 10.7639, 1) + ' m²'
+          : CalcCore.fmt.number(areaSqFt, 0) + ' sq ft';
+        var depthTxt = isMetric
+          ? CalcCore.fmt.number(depth, 1) + ' cm'
+          : CalcCore.fmt.number(depth, 1) + '"';
+        CalcCore.setResult('result-note',
+          'for ' + areaTxt + ' of ' + mat.label.toLowerCase() + ' at ' + depthTxt + ' deep');
+
+        /* Coverage area */
+        if (isMetric) {
+          CalcCore.setResult('result-area', CalcCore.fmt.number(areaSqFt / 10.7639, 1));
+          CalcCore.setResult('result-area-unit', 'm²');
+        } else {
+          CalcCore.setResult('result-area', CalcCore.fmt.number(areaSqFt, 0));
+          CalcCore.setResult('result-area-unit', 'sq ft');
+        }
+
+        /* Bags or bulk quantity */
+        if (bagMode) {
+          document.getElementById('bags-label').textContent = 'Bags Needed (2 cu ft)';
+          CalcCore.setResult('result-bags', CalcCore.fmt.number(bags, 0));
+          CalcCore.setResult('result-bags-unit', 'bags');
+        } else {
+          document.getElementById('bags-label').textContent = 'Bulk Volume';
+          if (isMetric) {
+            CalcCore.setResult('result-bags', CalcCore.fmt.number(volumeCuFt / CU_FT_PER_CU_M, 2));
+            CalcCore.setResult('result-bags-unit', 'cu m');
+          } else {
+            CalcCore.setResult('result-bags', CalcCore.fmt.number(cubicYards, 2));
+            CalcCore.setResult('result-bags-unit', 'cu yd');
+          }
+        }
+
+        /* Weight */
+        if (isMetric) {
+          var weightKg = weightLb * KG_PER_LB;
+          var weightTonnes = weightKg / 1000;
+          CalcCore.setResult('result-weight', CalcCore.fmt.number(weightTonnes, 2));
+          CalcCore.setResult('result-weight-unit', 'tonnes');
+        } else {
+          CalcCore.setResult('result-weight', CalcCore.fmt.number(weightTons, 2));
+          CalcCore.setResult('result-weight-unit', 'tons');
+        }
+
+        /* Cost */
+        CalcCore.setResult('result-cost', CalcCore.fmt.currency(costBulk, 0));
+        CalcCore.setResult('result-cost-label', '@ ' + CalcCore.fmt.currency(mat.cost, 0) + '/cu yd · ' + mat.label);
+      }
+
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+
+  <!-- Sticky Footer Ad (mobile) -->
+  <div id="ad-sticky-footer" class="ad-sticky-footer">
+    <button class="ad-sticky-close" aria-label="Close ad">&times;</button>
+    <div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div>
+  </div>
+
+  <script src="../../js/ads.js"></script>
+</body>
+</html>

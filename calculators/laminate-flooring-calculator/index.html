@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laminate Flooring Calculator — How Many Boxes Do I Need?</title>
+  <meta name="description" content="Calculate the exact number of laminate flooring boxes for any room. Includes waste factor for cuts and irregular layouts.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container"><a href="../../" class="site-logo"><span class="logo-icon">=</span> 100 Calculators</a></div>
+  </header>
+
+  <main class="container">
+    <nav class="breadcrumb"><a href="../../">Home</a><span class="sep">/</span><a href="../../#home-improvement">Home Improvement</a><span class="sep">/</span><span>Laminate Flooring</span></nav>
+
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+
+    <div class="page-header">
+      <span class="badge">Home Improvement</span>
+      <h1>Laminate Flooring Calculator</h1>
+      <p class="subtitle">Find out exactly how many boxes of laminate or vinyl plank flooring you need — waste factor included.</p>
+    </div>
+
+    <div class="calc-card">
+      <h2>Room Dimensions</h2>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="room-length">Room Length</label>
+          <div class="input-with-unit"><input type="number" id="room-length" value="15" min="1" max="200" step="0.5"><span class="unit" id="len-unit">ft</span></div>
+        </div>
+        <div class="form-group">
+          <label for="room-width">Room Width</label>
+          <div class="input-with-unit"><input type="number" id="room-width" value="12" min="1" max="200" step="0.5"><span class="unit" id="wid-unit">ft</span></div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="box-coverage">Coverage Per Box</label>
+          <div class="input-with-unit"><input type="number" id="box-coverage" value="24" min="1" max="100" step="0.5"><span class="unit" id="box-unit">sq ft</span></div>
+          <span class="hint">Check the box label — usually 20–30 sq ft</span>
+        </div>
+        <div class="form-group">
+          <label for="box-price">Price Per Box (optional)</label>
+          <div class="input-with-unit"><input type="number" id="box-price" value="45" min="0" max="500" step="1"><span class="unit">$</span></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="waste">Waste Factor</label>
+        <input type="range" id="waste" min="5" max="20" value="10" step="1">
+        <div class="range-labels"><span>5%</span><span id="waste-val">10</span><span>20%</span></div>
+        <span class="hint">10% standard, 15% for diagonal/complex layouts</span>
+      </div>
+      <div class="form-group">
+        <label>Units</label>
+        <div class="toggle-group" data-for="units"><button type="button" class="toggle-btn active" data-value="ft">Feet</button><button type="button" class="toggle-btn" data-value="m">Meters</button></div>
+        <input type="hidden" id="units" value="ft">
+      </div>
+
+      <div class="result-display">
+        <div class="result-label">Boxes Needed</div>
+        <div class="result-value" id="result-boxes">—</div>
+        <div class="result-unit">boxes</div>
+      </div>
+      <div class="results-grid">
+        <div class="result-item"><div class="result-item-label">Room Area</div><div class="result-item-value" id="result-area">—</div><div class="result-item-unit" id="result-area-unit">sq ft</div></div>
+        <div class="result-item"><div class="result-item-label">With Waste</div><div class="result-item-value" id="result-waste-area">—</div><div class="result-item-unit" id="result-waste-unit">sq ft</div></div>
+        <div class="result-item"><div class="result-item-label">Estimated Cost</div><div class="result-item-value" id="result-cost">—</div></div>
+        <div class="result-item"><div class="result-item-label">Extra Coverage</div><div class="result-item-value" id="result-extra">—</div><div class="result-item-unit" id="result-extra-unit">sq ft leftover</div></div>
+      </div>
+    </div>
+
+    <div class="cta-box">
+      <span class="cta-icon">&#129717;</span>
+      <div class="cta-content">
+        <p><strong>Ready to install?</strong> A good underlayment makes or breaks a laminate floor.</p>
+        <a href="#" class="cta-link">Best Laminate Floor Underlayment on Amazon &rarr;</a>
+      </div>
+    </div>
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+
+    <article class="article-content">
+      <h2>How to Calculate Laminate Flooring: The Complete Guide</h2>
+      <p>Laminate and vinyl plank flooring is sold in boxes, not by the square foot. This means you'll almost always buy slightly more than you need — but how much more? Too little and you're making an emergency run mid-installation. Too much and you've got expensive boxes gathering dust in the garage. This guide explains the math and the real-world factors that affect your purchase.</p>
+
+      <h2>The Basic Formula</h2>
+      <div class="formula-box">Room Area = Length × Width<br>Area with Waste = Room Area × (1 + Waste%)<br>Boxes = ⌈Area with Waste ÷ Coverage per Box⌉</div>
+      <p>For a 15 ft × 12 ft room (180 sq ft) with 10% waste, you need 198 sq ft of flooring. At 24 sq ft per box, that's ⌈198 ÷ 24⌉ = <strong>9 boxes</strong>. Those 9 boxes provide 216 sq ft, giving you 18 sq ft of comfortable extra material.</p>
+
+      <h2>Why the Waste Factor Exists</h2>
+      <p>You'll never use 100% of the flooring in a box. Here's where the waste goes:</p>
+      <ul>
+        <li><strong>End cuts:</strong> The last plank in each row gets cut, and the offcut may be too short to start the next row (must be at least 12 inches for structural integrity)</li>
+        <li><strong>Starter cuts:</strong> Rows should be staggered by at least 6–8 inches for a natural look, creating intentional waste</li>
+        <li><strong>Damaged planks:</strong> Even premium boxes occasionally contain planks with chips, dents, or locking mechanism defects</li>
+        <li><strong>Measurement errors:</strong> Rooms are rarely perfectly rectangular — closets, alcoves, and angled walls all create extra cuts</li>
+      </ul>
+
+      <h3>When to Use More Than 10%</h3>
+      <ul>
+        <li><strong>12–15%</strong> for rooms with many corners, closets, or irregular shapes</li>
+        <li><strong>15–20%</strong> for diagonal installation patterns</li>
+        <li><strong>15%</strong> if you're a first-time installer (mistakes happen)</li>
+      </ul>
+
+      <div class="tip-box">
+        <p><strong>Pro Tip:</strong> Always keep 2–3 extra planks after installation for future repairs. Flooring gets discontinued, and matching the color and texture years later is nearly impossible.</p>
+      </div>
+
+      <h2>How Much Does Laminate Cost?</h2>
+      <p>Laminate flooring ranges widely in price:</p>
+      <ul>
+        <li><strong>Budget (6mm, AC3):</strong> $0.70–$1.50/sq ft — fine for low-traffic areas</li>
+        <li><strong>Mid-range (8mm, AC4):</strong> $1.50–$3.00/sq ft — good balance of durability and looks</li>
+        <li><strong>Premium (12mm, AC5):</strong> $3.00–$5.00/sq ft — commercial-grade, waterproof options</li>
+      </ul>
+      <p>For a 180 sq ft room, budget laminate costs around $200–400 installed DIY, while premium runs $600–1,000+. Adding underlayment ($0.15–$0.50/sq ft) and transitions ($10–20 each) brings the total up further.</p>
+
+      <h2>Common Mistakes</h2>
+      <h3>1. Forgetting Underlayment</h3>
+      <p>Most laminate needs a separate foam or cork underlayment for sound dampening and moisture protection. Some premium planks have it pre-attached — check before buying a separate roll.</p>
+
+      <h3>2. Not Acclimating the Flooring</h3>
+      <p>Laminate needs to sit in the room for <strong>48–72 hours</strong> before installation to adjust to temperature and humidity. Skipping this step can cause buckling or gaps after installation.</p>
+
+      <div class="warning-box">
+        <p><strong>Watch Out:</strong> Laminate flooring expands and contracts with humidity. Always leave a <strong>1/4" expansion gap</strong> around all walls and fixed objects. Don't nail or glue it down — it's a floating floor.</p>
+      </div>
+
+      <h2>Laminate vs. Vinyl Plank</h2>
+      <p>Both are calculated the same way (boxes × area), but vinyl plank (LVP) is fully waterproof while laminate is only water-resistant. For bathrooms, kitchens, and basements, vinyl plank is the safer choice despite its slightly higher price.</p>
+
+      <p>Use the calculator above to get your box count, add the cost estimate, and head to the store with confidence.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer"><div class="container"><p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p></div></footer>
+
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      function calculate() {
+        const isMetric = CalcCore.getToggleVal('units') === 'm';
+        let len = CalcCore.getVal('room-length');
+        let wid = CalcCore.getVal('room-width');
+        let boxCov = CalcCore.getVal('box-coverage');
+        const price = CalcCore.getVal('box-price');
+        const wastePct = CalcCore.getVal('waste');
+
+        document.getElementById('len-unit').textContent = isMetric ? 'm' : 'ft';
+        document.getElementById('wid-unit').textContent = isMetric ? 'm' : 'ft';
+        document.getElementById('box-unit').textContent = isMetric ? 'sq m' : 'sq ft';
+
+        if (isMetric) { len *= 3.28084; wid *= 3.28084; boxCov *= 10.7639; }
+
+        const area = len * wid;
+        const areaWithWaste = area * (1 + wastePct / 100);
+        const boxes = Math.ceil(areaWithWaste / boxCov);
+        const totalCoverage = boxes * boxCov;
+        const extra = totalCoverage - area;
+        const cost = boxes * price;
+
+        if (isMetric) {
+          CalcCore.setResult('result-area', CalcCore.fmt.number(area / 10.7639, 1));
+          CalcCore.setResult('result-area-unit', 'sq m');
+          CalcCore.setResult('result-waste-area', CalcCore.fmt.number(areaWithWaste / 10.7639, 1));
+          CalcCore.setResult('result-waste-unit', 'sq m');
+          CalcCore.setResult('result-extra', CalcCore.fmt.number(extra / 10.7639, 1));
+          CalcCore.setResult('result-extra-unit', 'sq m leftover');
+        } else {
+          CalcCore.setResult('result-area', CalcCore.fmt.number(area, 0));
+          CalcCore.setResult('result-area-unit', 'sq ft');
+          CalcCore.setResult('result-waste-area', CalcCore.fmt.number(areaWithWaste, 0));
+          CalcCore.setResult('result-waste-unit', 'sq ft');
+          CalcCore.setResult('result-extra', CalcCore.fmt.number(extra, 0));
+          CalcCore.setResult('result-extra-unit', 'sq ft leftover');
+        }
+
+        CalcCore.setResult('result-boxes', CalcCore.fmt.number(boxes));
+        CalcCore.setResult('result-cost', price > 0 ? CalcCore.fmt.currency(cost, 0) : '—');
+      }
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+
+  <!-- Sticky Footer Ad (mobile) -->
+  <div id="ad-sticky-footer" class="ad-sticky-footer">
+    <button class="ad-sticky-close" aria-label="Close ad">&times;</button>
+    <div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div>
+  </div>
+
+  <script src="../../js/ads.js"></script>
+</body>
+</html>

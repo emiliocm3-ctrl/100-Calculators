@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candle Wax Calculator — Wax, Fragrance &amp; Wick Amounts</title>
+  <meta name="description" content="Calculate the exact wax, fragrance oil, and dye amounts for any candle jar. Perfect for batch production and candle making businesses.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <header class="site-header"><div class="container"><a href="../../" class="site-logo"><span class="logo-icon">=</span> 100 Calculators</a></div></header>
+  <main class="container">
+    <nav class="breadcrumb"><a href="../../">Home</a><span class="sep">/</span><a href="../../#lifestyle">Lifestyle</a><span class="sep">/</span><span>Candle Wax</span></nav>
+
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+    <div class="page-header">
+      <span class="badge">Maker / DIY</span>
+      <h1>Candle Wax Calculator</h1>
+      <p class="subtitle">Calculate wax, fragrance oil, and dye for any number of candle jars. No more guessing on batch sizes.</p>
+    </div>
+    <div class="calc-card">
+      <h2>Your Candle Specs</h2>
+      <div class="form-row">
+        <div class="form-group"><label for="container-vol">Container Volume</label><div class="input-with-unit"><input type="number" id="container-vol" value="8" min="1" max="100" step="0.5"><span class="unit">oz</span></div><span class="hint">Water volume of the jar</span></div>
+        <div class="form-group"><label for="num-candles">Number of Candles</label><input type="number" id="num-candles" value="12" min="1" max="500" step="1"></div>
+      </div>
+      <div class="form-group">
+        <label for="frag-load">Fragrance Load</label>
+        <input type="range" id="frag-load" min="3" max="12" value="8" step="0.5">
+        <div class="range-labels"><span>3%</span><span id="frag-load-val">8</span><span>12%</span></div>
+        <span class="hint">Soy wax: 6–10% · Paraffin: 6–12% · Coconut blend: 8–10%</span>
+      </div>
+      <div class="form-group">
+        <label>Wax Type</label>
+        <div class="toggle-group" data-for="wax-type"><button type="button" class="toggle-btn active" data-value="soy">Soy (464)</button><button type="button" class="toggle-btn" data-value="paraffin">Paraffin</button><button type="button" class="toggle-btn" data-value="coconut">Coconut Blend</button></div>
+        <input type="hidden" id="wax-type" value="soy">
+      </div>
+
+      <div class="result-display">
+        <div class="result-label">Wax Needed</div>
+        <div class="result-value" id="result-wax">—</div>
+        <div class="result-unit">lbs of wax</div>
+      </div>
+      <div class="chart-container">
+        <div class="donut-chart"><canvas id="wax-chart" width="200" height="200"></canvas><div id="wax-chart-center" class="chart-center"></div></div>
+      </div>
+      <div id="wax-chart-legend" class="chart-legend"></div>
+      <div class="results-grid">
+        <div class="result-item"><div class="result-item-label">Wax (oz)</div><div class="result-item-value" id="result-wax-oz">—</div></div>
+        <div class="result-item"><div class="result-item-label">Fragrance Oil</div><div class="result-item-value" id="result-frag">—</div><div class="result-item-unit">oz</div></div>
+        <div class="result-item"><div class="result-item-label">Per Candle (wax)</div><div class="result-item-value" id="result-per-candle">—</div><div class="result-item-unit">oz</div></div>
+        <div class="result-item"><div class="result-item-label">Per Candle (fragrance)</div><div class="result-item-value" id="result-per-frag">—</div><div class="result-item-unit">oz</div></div>
+      </div>
+    </div>
+    <div class="cta-box">
+      <span class="cta-icon">&#128367;</span>
+      <div class="cta-content">
+        <p><strong>Starting a candle business?</strong> Quality wax and fragrance oils are everything.</p>
+        <a href="#" class="cta-link">Best Candle Making Kits on Amazon &rarr;</a>
+      </div>
+    </div>
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+    <article class="article-content">
+      <h2>How to Calculate Candle Wax and Fragrance</h2>
+      <p>Candle making is both art and chemistry. The right amount of wax and fragrance determines scent throw, burn time, and safety. This guide covers the density math, fragrance load limits, and batch-scaling formulas that turn guesswork into precision.</p>
+
+      <h2>The Wax Formula</h2>
+      <div class="formula-box">Wax (oz) = Container Volume (oz) × Density Ratio<br>Fragrance (oz) = Wax (oz) × (Fragrance Load% ÷ (100 – Fragrance Load%))</div>
+      <p>Wax is lighter than water: <strong>soy wax</strong> has a density of ~0.86 relative to water, so an 8 oz jar holds about 6.9 oz of wax. The fragrance is calculated as a percentage of the total candle weight (wax + fragrance combined), not just the wax weight.</p>
+
+      <h2>Understanding Fragrance Load</h2>
+      <p>Fragrance load is the percentage of the total candle weight that is fragrance oil:</p>
+      <ul>
+        <li><strong>6%:</strong> Light scent, good for subtle aromatics</li>
+        <li><strong>8%:</strong> Medium scent throw — the sweet spot for most candles</li>
+        <li><strong>10%:</strong> Strong scent throw — maximum for most soy waxes</li>
+        <li><strong>12%:</strong> Very strong — only safe for certain paraffin blends</li>
+      </ul>
+
+      <div class="warning-box">
+        <p><strong>Watch Out:</strong> Exceeding your wax's maximum fragrance load causes "sweating" (oil leaching to the surface) and can be a <strong>fire hazard</strong>. Always check the manufacturer's maximum load for your specific wax. Soy 464 maxes at 10–12%. Some waxes cap at 6%.</p>
+      </div>
+
+      <h2>Wax Density by Type</h2>
+      <ul>
+        <li><strong>Soy wax (Golden 464):</strong> 0.86 density — most popular for containers</li>
+        <li><strong>Paraffin (IGI 4630):</strong> 0.90 density — great scent throw</li>
+        <li><strong>Coconut/soy blends:</strong> 0.84 density — smooth tops, good adhesion</li>
+      </ul>
+
+      <div class="tip-box">
+        <p><strong>Pro Tip:</strong> To find your jar's volume in ounces, fill it with water to the desired pour line and weigh it. Water weighs ~1 oz per fluid ounce, so the weight in ounces equals the volume. This is more accurate than the jar's labeled size, which often refers to total capacity, not the usable fill line.</p>
+      </div>
+
+      <h2>Scaling to Batches</h2>
+      <p>For production runs, calculate the total wax and fragrance, then add 5–10% for losses during melting, pouring, and cleanup. A 12-candle batch of 8 oz jars needs about 82 oz of wax (5.1 lbs) and 7.1 oz of fragrance oil — plus a little extra to account for what sticks to the pitcher and thermometer.</p>
+
+      <p>Use the calculator above to get your exact amounts, whether you're making 1 candle or 100. Precision keeps your costs down and your candles consistent.</p>
+    </article>
+  </main>
+  <footer class="site-footer"><div class="container"><p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p></div></footer>
+
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      const DENSITY = { soy: 0.86, paraffin: 0.90, coconut: 0.84 };
+      function calculate() {
+        const vol = CalcCore.getVal('container-vol');
+        const n = CalcCore.getVal('num-candles');
+        const fragPct = CalcCore.getVal('frag-load');
+        const waxType = CalcCore.getToggleVal('wax-type') || 'soy';
+
+        const density = DENSITY[waxType] || 0.86;
+        const waxPerCandle = vol * density;
+        const fragPerCandle = waxPerCandle * (fragPct / (100 - fragPct));
+        const totalWaxOz = waxPerCandle * n;
+        const totalFragOz = fragPerCandle * n;
+        const totalWaxLbs = totalWaxOz / 16;
+
+        CalcCore.setResult('result-wax', CalcCore.fmt.number(totalWaxLbs, 1));
+        CalcCore.setResult('result-wax-oz', CalcCore.fmt.number(totalWaxOz, 1));
+        CalcCore.setResult('result-frag', CalcCore.fmt.number(totalFragOz, 1));
+        CalcCore.setResult('result-per-candle', CalcCore.fmt.number(waxPerCandle, 1));
+        CalcCore.setResult('result-per-frag', CalcCore.fmt.number(fragPerCandle, 2));
+
+        CalcCore.drawDonut('wax-chart', [
+          { value: totalWaxOz, color: '#f59e0b', label: 'Wax', display: CalcCore.fmt.number(totalWaxOz, 1) + ' oz' },
+          { value: totalFragOz, color: '#7c3aed', label: 'Fragrance', display: CalcCore.fmt.number(totalFragOz, 1) + ' oz' },
+        ], { size: 200, thickness: 0.6, centerText: n + '', centerLabel: 'candles' });
+      }
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+
+  <!-- Sticky Footer Ad (mobile) -->
+  <div id="ad-sticky-footer" class="ad-sticky-footer">
+    <button class="ad-sticky-close" aria-label="Close ad">&times;</button>
+    <div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div>
+  </div>
+
+  <script src="../../js/ads.js"></script>
+</body>
+</html>

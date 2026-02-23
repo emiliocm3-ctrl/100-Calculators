@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Protein Intake Calculator — Daily Grams for Your Goal</title>
+  <meta name="description" content="Calculate your daily protein needs based on weight and fitness goal. Muscle building, maintenance, and weight loss recommendations.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <header class="site-header"><div class="container"><a href="../../" class="site-logo"><span class="logo-icon">=</span> 100 Calculators</a></div></header>
+  <main class="container">
+    <nav class="breadcrumb"><a href="../../">Home</a><span class="sep">/</span><a href="../../#fitness">Fitness &amp; Health</a><span class="sep">/</span><span>Protein Intake</span></nav>
+
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+    <div class="page-header">
+      <span class="badge">Fitness &amp; Health</span>
+      <h1>Protein Intake Calculator</h1>
+      <p class="subtitle">How many grams of protein do you need per day? Depends on your weight and goal.</p>
+    </div>
+    <div class="calc-card">
+      <h2>Your Details</h2>
+      <div class="form-row">
+        <div class="form-group"><label for="body-weight">Body Weight</label><div class="input-with-unit"><input type="number" id="body-weight" value="170" min="50" max="500" step="1"><span class="unit" id="bw-unit">lbs</span></div></div>
+        <div class="form-group">
+          <label>Units</label>
+          <div class="toggle-group" data-for="units"><button type="button" class="toggle-btn active" data-value="lbs">Lbs</button><button type="button" class="toggle-btn" data-value="kg">Kg</button></div>
+          <input type="hidden" id="units" value="lbs">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Goal</label>
+        <div class="toggle-group" data-for="goal">
+          <button type="button" class="toggle-btn" data-value="sedentary">Sedentary / General</button>
+          <button type="button" class="toggle-btn" data-value="maintain">Active / Maintain</button>
+          <button type="button" class="toggle-btn active" data-value="build">Build Muscle</button>
+          <button type="button" class="toggle-btn" data-value="cut">Lose Fat / Cut</button>
+        </div>
+        <input type="hidden" id="goal" value="build">
+      </div>
+
+      <div class="result-display">
+        <div class="result-label">Daily Protein Target</div>
+        <div class="result-value" id="result-protein">—</div>
+        <div class="result-unit">grams per day</div>
+      </div>
+      <div class="results-grid">
+        <div class="result-item"><div class="result-item-label">Per Meal (4 meals)</div><div class="result-item-value" id="result-per-meal">—</div><div class="result-item-unit">grams</div></div>
+        <div class="result-item"><div class="result-item-label">Rate Used</div><div class="result-item-value" id="result-rate">—</div><div class="result-item-unit">g per kg body weight</div></div>
+        <div class="result-item"><div class="result-item-label">Chicken Breast Equiv.</div><div class="result-item-value" id="result-chicken">—</div><div class="result-item-unit">oz (~8.8g protein/oz cooked)</div></div>
+        <div class="result-item"><div class="result-item-label">Protein Scoops</div><div class="result-item-value" id="result-scoops">—</div><div class="result-item-unit">25g scoops equiv.</div></div>
+      </div>
+    </div>
+    <div class="cta-box">
+      <span class="cta-icon">&#129385;</span>
+      <div class="cta-content">
+        <p><strong>Need more protein?</strong> A quality whey protein makes hitting your daily target much easier.</p>
+        <a href="#" class="cta-link">Best Protein Powders on Amazon &rarr;</a>
+      </div>
+    </div>
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+    <article class="article-content">
+      <h2>How Much Protein Do You Need?</h2>
+      <p>Protein is the most important macronutrient for body composition. Whether you're building muscle, losing fat, or just trying to stay healthy, getting the right amount of protein determines your results more than any supplement or workout program. Here's the science on how much you actually need.</p>
+
+      <h2>The Formula</h2>
+      <div class="formula-box">Daily Protein (g) = Body Weight (kg) × Rate (g/kg)</div>
+      <p>The rate depends on your activity level and goal:</p>
+      <ul>
+        <li><strong>Sedentary adults:</strong> 0.8 g/kg — the minimum RDA to prevent deficiency</li>
+        <li><strong>Active / Maintenance:</strong> 1.2–1.4 g/kg — supports recovery from regular exercise</li>
+        <li><strong>Muscle Building:</strong> 1.6–2.0 g/kg — the evidence-based range for maximizing muscle protein synthesis</li>
+        <li><strong>Fat Loss / Cutting:</strong> 1.8–2.4 g/kg — higher protein preserves muscle during caloric deficit</li>
+      </ul>
+
+      <div class="tip-box">
+        <p><strong>Pro Tip:</strong> Research consistently shows that going above <strong>1.6 g/kg</strong> (0.73 g/lb) has diminishing returns for muscle building in most people. The extra protein won't hurt, but the first 1.6 g/kg does the heavy lifting (pun intended).</p>
+      </div>
+
+      <h2>Best Protein Sources</h2>
+      <ul>
+        <li><strong>Chicken breast:</strong> 31g per 100g — lean, versatile, affordable</li>
+        <li><strong>Greek yogurt:</strong> 10g per 100g — great for snacks</li>
+        <li><strong>Eggs:</strong> 6g per large egg — complete amino acid profile</li>
+        <li><strong>Whey protein:</strong> 25g per scoop — fast-absorbing, convenient</li>
+        <li><strong>Tofu:</strong> 8g per 100g — solid plant-based option</li>
+        <li><strong>Lentils:</strong> 9g per 100g (cooked) — high fiber bonus</li>
+      </ul>
+
+      <h2>Common Mistakes</h2>
+      <h3>1. Eating All Protein in One Meal</h3>
+      <p>Your body can synthesize muscle from roughly <strong>30–50g of protein per meal</strong>. Distributing protein evenly across 3–5 meals (25–40g each) is more effective than eating 150g at dinner.</p>
+
+      <h3>2. Confusing Meat Weight with Protein Weight</h3>
+      <p>A 6 oz chicken breast weighs 170g but contains ~53g of protein — not 170g. Always check the protein content, not the food weight.</p>
+
+      <div class="warning-box">
+        <p><strong>Watch Out:</strong> People with kidney disease should consult a doctor before increasing protein intake. For healthy adults, high protein diets (up to 2.5 g/kg) have been consistently shown to be safe in research.</p>
+      </div>
+
+      <p>Use the calculator above to find your daily target, then plan your meals to spread protein evenly throughout the day.</p>
+    </article>
+  </main>
+  <footer class="site-footer"><div class="container"><p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p></div></footer>
+
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      const RATES = { sedentary: 0.8, maintain: 1.3, build: 1.8, cut: 2.1 };
+      function calculate() {
+        let bw = CalcCore.getVal('body-weight');
+        const isKg = CalcCore.getToggleVal('units') === 'kg';
+        const goal = CalcCore.getToggleVal('goal') || 'build';
+        document.getElementById('bw-unit').textContent = isKg ? 'kg' : 'lbs';
+
+        const bwKg = isKg ? bw : bw / 2.20462;
+        const rate = RATES[goal] || 1.8;
+        const protein = bwKg * rate;
+
+        CalcCore.setResult('result-protein', CalcCore.fmt.number(Math.round(protein)));
+        CalcCore.setResult('result-per-meal', CalcCore.fmt.number(Math.round(protein / 4)));
+        CalcCore.setResult('result-rate', CalcCore.fmt.number(rate, 1));
+        CalcCore.setResult('result-chicken', CalcCore.fmt.number((protein / 8.8).toFixed(0)));
+        CalcCore.setResult('result-scoops', CalcCore.fmt.number((protein / 25).toFixed(1)));
+      }
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+
+  <!-- Sticky Footer Ad (mobile) -->
+  <div id="ad-sticky-footer" class="ad-sticky-footer">
+    <button class="ad-sticky-close" aria-label="Close ad">&times;</button>
+    <div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div>
+  </div>
+
+  <script src="../../js/ads.js"></script>
+</body>
+</html>

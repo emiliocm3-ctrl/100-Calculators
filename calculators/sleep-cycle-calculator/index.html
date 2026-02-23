@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sleep Cycle Calculator — Best Bedtimes to Wake Up Refreshed</title>
+  <meta name="description" content="Find the best times to fall asleep or wake up based on 90-minute sleep cycles. Wake between cycles to avoid grogginess.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <header class="site-header"><div class="container"><a href="../../" class="site-logo"><span class="logo-icon">=</span> 100 Calculators</a></div></header>
+  <main class="container">
+    <nav class="breadcrumb"><a href="../../">Home</a><span class="sep">/</span><a href="../../#fitness">Fitness &amp; Health</a><span class="sep">/</span><span>Sleep Cycle</span></nav>
+
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+    <div class="page-header">
+      <span class="badge">Fitness &amp; Health</span>
+      <h1>Sleep Cycle Calculator</h1>
+      <p class="subtitle">Find the best bedtime to wake up feeling rested — based on 90-minute REM cycles.</p>
+    </div>
+    <div class="calc-card">
+      <h2>When Do You Need to Wake Up?</h2>
+      <div class="form-group">
+        <label>Mode</label>
+        <div class="toggle-group" data-for="mode">
+          <button type="button" class="toggle-btn active" data-value="wake">I need to wake up at…</button>
+          <button type="button" class="toggle-btn" data-value="sleep">I'm going to sleep at…</button>
+        </div>
+        <input type="hidden" id="mode" value="wake">
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label for="hour">Hour</label>
+          <select id="hour"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7" selected>7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option></select>
+        </div>
+        <div class="form-group"><label for="minute">Minute</label>
+          <select id="minute"><option value="0">00</option><option value="15">15</option><option value="30">30</option><option value="45">45</option></select>
+        </div>
+        <div class="form-group"><label for="ampm">AM/PM</label>
+          <select id="ampm"><option value="AM" selected>AM</option><option value="PM">PM</option></select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="fall-asleep">Minutes to Fall Asleep</label>
+        <input type="range" id="fall-asleep" min="5" max="30" value="15" step="5">
+        <div class="range-labels"><span>5 min</span><span id="fall-asleep-val">15</span><span>30 min</span></div>
+      </div>
+
+      <div class="result-display">
+        <div class="result-label" id="result-label">Best Bedtimes</div>
+        <div class="result-value" id="result-best" style="font-size:clamp(1.2rem,4vw,1.8rem)">—</div>
+        <div class="result-note" id="result-note">6 cycles = ideal 9 hours of sleep</div>
+      </div>
+      <div id="cycles-list" class="mt-lg"></div>
+    </div>
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+    <article class="article-content">
+      <h2>How Sleep Cycles Work</h2>
+      <p>Sleep isn't one continuous state — it cycles through distinct stages roughly every <strong>90 minutes</strong>. Each cycle moves from light sleep → deep sleep → REM (dreaming) sleep → brief waking. Waking up between cycles (during light sleep) feels refreshing. Waking up in the middle of deep sleep or REM feels groggy, even if you've had "enough" hours.</p>
+
+      <h2>The 90-Minute Rule</h2>
+      <div class="formula-box">Bedtime = Wake Time – (Cycles × 90 min) – Time to Fall Asleep</div>
+      <p>For a 7:00 AM wake-up with 15 minutes to fall asleep:</p>
+      <ul>
+        <li><strong>6 cycles (9h):</strong> Go to bed at 9:45 PM — ideal for most adults</li>
+        <li><strong>5 cycles (7.5h):</strong> Go to bed at 11:15 PM — the minimum for most people</li>
+        <li><strong>4 cycles (6h):</strong> Go to bed at 12:45 AM — survivable short-term</li>
+      </ul>
+
+      <div class="tip-box">
+        <p><strong>Pro Tip:</strong> Most adults need <strong>5–6 cycles</strong> (7.5–9 hours) per night. Consistently getting fewer than 5 cycles (under 7.5 hours) is linked to impaired cognitive function, weakened immune system, and increased disease risk.</p>
+      </div>
+
+      <h2>Why You Wake Up Groggy</h2>
+      <p>Sleep inertia — that heavy, confused feeling when your alarm goes off — happens when you're pulled out of deep sleep or REM mid-cycle. By timing your alarm to land between cycles, you wake during light sleep and feel alert almost immediately.</p>
+
+      <h2>Tips for Better Sleep</h2>
+      <ul>
+        <li><strong>Consistent schedule:</strong> Go to bed and wake up at the same time every day, including weekends</li>
+        <li><strong>Cool room:</strong> 65–68°F (18–20°C) is optimal for sleep quality</li>
+        <li><strong>No screens 30 min before bed:</strong> Blue light suppresses melatonin production</li>
+        <li><strong>Avoid caffeine after 2 PM:</strong> Caffeine has a half-life of 5–6 hours</li>
+      </ul>
+
+      <div class="warning-box">
+        <p><strong>Watch Out:</strong> The "time to fall asleep" matters. If you lie in bed for 45 minutes before sleeping, your actual sleep time is much less than you think. If you consistently take more than 20 minutes to fall asleep, address your sleep hygiene before relying on cycle timing.</p>
+      </div>
+
+      <p>Use the calculator above to find your optimal bedtime. Even shifting your alarm by 15 minutes can make the difference between groggy and great.</p>
+    </article>
+  </main>
+  <footer class="site-footer"><div class="container"><p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p></div></footer>
+
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      const CYCLE_MIN = 90;
+
+      function formatTime(totalMin) {
+        let m = ((totalMin % 1440) + 1440) % 1440; // normalize to 0-1439
+        let h = Math.floor(m / 60);
+        let min = m % 60;
+        const ampm = h >= 12 ? 'PM' : 'AM';
+        h = h % 12 || 12;
+        return h + ':' + String(min).padStart(2, '0') + ' ' + ampm;
+      }
+
+      function calculate() {
+        const mode = CalcCore.getToggleVal('mode') || 'wake';
+        const hour = CalcCore.getVal('hour');
+        const minute = CalcCore.getVal('minute');
+        const ampm = document.getElementById('ampm').value;
+        const fallAsleep = CalcCore.getVal('fall-asleep');
+
+        let h24 = hour % 12;
+        if (ampm === 'PM') h24 += 12;
+        const timeMin = h24 * 60 + minute;
+
+        const cycles = [6, 5, 4, 3];
+        let results = [];
+
+        if (mode === 'wake') {
+          document.getElementById('result-label').textContent = 'Best Bedtimes';
+          cycles.forEach(c => {
+            const sleepNeeded = c * CYCLE_MIN;
+            const bedtime = timeMin - sleepNeeded - fallAsleep;
+            results.push({ cycles: c, hours: (sleepNeeded / 60).toFixed(1), time: formatTime(bedtime) });
+          });
+        } else {
+          document.getElementById('result-label').textContent = 'Best Wake-Up Times';
+          cycles.forEach(c => {
+            const sleepDuration = c * CYCLE_MIN;
+            const wakeTime = timeMin + fallAsleep + sleepDuration;
+            results.push({ cycles: c, hours: (sleepDuration / 60).toFixed(1), time: formatTime(wakeTime) });
+          });
+        }
+
+        CalcCore.setResult('result-best', results[0].time + '  or  ' + results[1].time);
+        CalcCore.setResult('result-note', results[0].cycles + ' cycles = ' + results[0].hours + 'h of sleep (recommended)');
+
+        // Build list
+        const list = document.getElementById('cycles-list');
+        const colors = ['#059669', '#2563eb', '#d97706', '#dc2626'];
+        const labels = ['Ideal', 'Good', 'Minimum', 'Short'];
+        list.innerHTML = results.map((r, i) => `
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:var(--bg);border-radius:var(--radius-sm);margin-bottom:8px;border-left:4px solid ${colors[i]}">
+            <div>
+              <strong style="font-size:1.1rem;font-family:var(--font-mono)">${r.time}</strong>
+              <span style="color:var(--text-muted);font-size:0.85rem;margin-left:8px">${r.cycles} cycles · ${r.hours}h</span>
+            </div>
+            <span style="font-size:0.75rem;font-weight:700;color:${colors[i]};text-transform:uppercase">${labels[i]}</span>
+          </div>
+        `).join('');
+      }
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+
+  <!-- Sticky Footer Ad (mobile) -->
+  <div id="ad-sticky-footer" class="ad-sticky-footer">
+    <button class="ad-sticky-close" aria-label="Close ad">&times;</button>
+    <div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div>
+  </div>
+
+  <script src="../../js/ads.js"></script>
+</body>
+</html>

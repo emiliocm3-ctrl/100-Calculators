@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meeting Cost Calculator — How Much Is This Meeting Costing?</title>
+  <meta name="description" content="See the real-time dollar cost of any meeting based on attendees, salaries, and duration. A powerful tool for productive teams.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <header class="site-header"><div class="container"><a href="../../" class="site-logo"><span class="logo-icon">=</span> 100 Calculators</a></div></header>
+  <main class="container">
+    <nav class="breadcrumb"><a href="../../">Home</a><span class="sep">/</span><a href="../../#business">Business &amp; Finance</a><span class="sep">/</span><span>Meeting Cost</span></nav>
+
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+    <div class="page-header">
+      <span class="badge">Business &amp; Finance</span>
+      <h1>Meeting Cost Calculator</h1>
+      <p class="subtitle">See how much money that meeting is burning through. Great for rethinking recurring calendar bloat.</p>
+    </div>
+    <div class="calc-card">
+      <h2>Meeting Details</h2>
+      <div class="form-row form-row--3">
+        <div class="form-group"><label for="attendees">Attendees</label><input type="number" id="attendees" value="6" min="1" max="500" step="1"></div>
+        <div class="form-group"><label for="avg-salary">Avg. Annual Salary</label><div class="input-with-unit"><input type="number" id="avg-salary" value="75000" min="10000" max="1000000" step="1000"><span class="unit">$</span></div></div>
+        <div class="form-group"><label for="duration">Duration</label><div class="input-with-unit"><input type="number" id="duration" value="60" min="5" max="480" step="5"><span class="unit">min</span></div></div>
+      </div>
+      <div class="form-group">
+        <label>Include Overhead (Benefits, Office, etc.)</label>
+        <div class="toggle-group" data-for="overhead">
+          <button type="button" class="toggle-btn" data-value="none">Salary Only</button>
+          <button type="button" class="toggle-btn active" data-value="standard">+ 30% Overhead</button>
+          <button type="button" class="toggle-btn" data-value="full">+ 50% Fully Loaded</button>
+        </div>
+        <input type="hidden" id="overhead" value="standard">
+      </div>
+
+      <div class="result-display result-bad" id="result-box">
+        <div class="result-label">This Meeting Costs</div>
+        <div class="result-value" id="result-cost">—</div>
+        <div class="result-unit">total cost</div>
+        <div class="result-note" id="result-note">—</div>
+      </div>
+      <div class="results-grid">
+        <div class="result-item"><div class="result-item-label">Per Minute</div><div class="result-item-value" id="result-per-min">—</div></div>
+        <div class="result-item"><div class="result-item-label">Per Person</div><div class="result-item-value" id="result-per-person">—</div></div>
+        <div class="result-item"><div class="result-item-label">Hourly Cost Rate</div><div class="result-item-value" id="result-hourly">—</div><div class="result-item-unit">/hour all-in</div></div>
+        <div class="result-item"><div class="result-item-label">Weekly (if recurring)</div><div class="result-item-value" id="result-weekly">—</div><div class="result-item-unit">52 weeks/year</div></div>
+      </div>
+    </div>
+    <div class="cta-box">
+      <span class="cta-icon">&#128176;</span>
+      <div class="cta-content">
+        <p><strong>Want fewer meetings?</strong> Async communication tools save thousands per year.</p>
+        <a href="#" class="cta-link">Best Team Communication Tools &rarr;</a>
+      </div>
+    </div>
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+    <article class="article-content">
+      <h2>The True Cost of Meetings (And Why It Matters)</h2>
+      <p>The average professional spends 23 hours per week in meetings. For managers, it's even more. But few organizations ever put a dollar figure on that time. When you see that a weekly 1-hour standup with 8 people costs $40,000+ per year, suddenly that Slack thread looks a lot more appealing. This guide explains the math and offers strategies to make meetings worth their cost.</p>
+
+      <h2>The Formula</h2>
+      <div class="formula-box">Meeting Cost = Attendees × (Hourly Rate × Overhead Multiplier) × (Duration ÷ 60)</div>
+      <p>The <strong>hourly rate</strong> is derived from annual salary ÷ 2,080 (standard work hours per year). The <strong>overhead multiplier</strong> accounts for the true cost of an employee beyond salary: health insurance, office space, equipment, taxes, and benefits typically add 30–50% on top of base salary.</p>
+
+      <h2>The Hidden Costs Not In the Formula</h2>
+      <ul>
+        <li><strong>Context switching:</strong> It takes an average of 23 minutes to regain deep focus after an interruption. A 30-minute meeting actually costs 53 minutes of productive time.</li>
+        <li><strong>Preparation time:</strong> Creating slides, reading pre-reads, and preparing agendas add 15–30 minutes per attendee.</li>
+        <li><strong>Opportunity cost:</strong> That engineer in your meeting could be shipping features. That salesperson could be closing deals.</li>
+      </ul>
+
+      <div class="tip-box">
+        <p><strong>Pro Tip:</strong> Before scheduling a meeting, ask: "Could this be an email?" If the answer is yes, send the email. Reserve meetings for discussions that need real-time collaboration, decision-making, or relationship-building.</p>
+      </div>
+
+      <h2>How to Calculate If a Meeting Is Worth It</h2>
+      <p>A useful framework: the meeting should generate value <strong>greater than its cost</strong>. A $500 meeting that results in a decision that saves $5,000 is excellent ROI. A $500 meeting that produces an action item that could have been a Slack message is pure waste.</p>
+
+      <h2>Strategies to Reduce Meeting Costs</h2>
+      <h3>1. Halve the Attendee List</h3>
+      <p>Amazon's "two-pizza rule" limits meetings to the number of people two pizzas can feed (6–8). Every additional person adds cost and reduces each individual's contribution. Be ruthless about who truly needs to attend versus who can read the notes afterward.</p>
+
+      <h3>2. Shorten Default Durations</h3>
+      <p>Parkinson's Law says work expands to fill the time available. Change your default meeting length from 60 to 25 minutes (or 50 to leave buffer). Most discussions adapt to the shorter window.</p>
+
+      <h3>3. Require Agendas</h3>
+      <p>Meetings without agendas are brainstorming sessions disguised as work. Require a written agenda with outcomes defined before the meeting is scheduled. No agenda = meeting cancelled.</p>
+
+      <div class="warning-box">
+        <p><strong>Watch Out:</strong> Not all meetings are bad. Design reviews, retrospectives, 1-on-1s, and team-building sessions have value that's hard to capture in a formula. The goal isn't zero meetings — it's zero <em>unnecessary</em> meetings.</p>
+      </div>
+
+      <h2>The Annual Impact</h2>
+      <p>Consider a company of 50 people where the average employee attends 3 hours of meetings per day at a fully-loaded rate of $55/hour. That's <strong>$4.3 million per year</strong> spent in meetings. Even a 20% reduction through better practices saves nearly a million dollars — without hiring anyone or buying anything.</p>
+
+      <p>Use the calculator above to put a price tag on your next meeting. Sometimes seeing the number is all it takes to make the change.</p>
+    </article>
+  </main>
+  <footer class="site-footer"><div class="container"><p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p></div></footer>
+
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      const WORK_HOURS_YEAR = 2080;
+      const OVERHEAD = { none: 1.0, standard: 1.3, full: 1.5 };
+
+      function calculate() {
+        const n = CalcCore.getVal('attendees');
+        const salary = CalcCore.getVal('avg-salary');
+        const mins = CalcCore.getVal('duration');
+        const oh = CalcCore.getToggleVal('overhead') || 'standard';
+
+        const hourly = (salary / WORK_HOURS_YEAR) * OVERHEAD[oh];
+        const totalCost = n * hourly * (mins / 60);
+        const perMin = totalCost / mins;
+        const perPerson = totalCost / n;
+        const yearlyIfWeekly = totalCost * 52;
+
+        CalcCore.setResult('result-cost', CalcCore.fmt.currency(totalCost, 0));
+        CalcCore.setResult('result-per-min', CalcCore.fmt.currency(perMin, 2) + '/min');
+        CalcCore.setResult('result-per-person', CalcCore.fmt.currency(perPerson, 0));
+        CalcCore.setResult('result-hourly', CalcCore.fmt.currency(n * hourly, 0));
+        CalcCore.setResult('result-weekly', CalcCore.fmt.currency(yearlyIfWeekly, 0) + '/yr');
+        CalcCore.setResult('result-note', CalcCore.fmt.currency(perMin, 2) + ' per minute burning');
+      }
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+
+  <!-- Sticky Footer Ad (mobile) -->
+  <div id="ad-sticky-footer" class="ad-sticky-footer">
+    <button class="ad-sticky-close" aria-label="Close ad">&times;</button>
+    <div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div>
+  </div>
+
+  <script src="../../js/ads.js"></script>
+</body>
+</html>

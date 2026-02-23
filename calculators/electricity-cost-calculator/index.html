@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electricity Cost Calculator — Appliance Running Cost</title>
+  <meta name="description" content="Calculate how much any appliance costs to run per day, month, and year. Enter wattage, hours, and electricity rate.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <header class="site-header"><div class="container"><a href="../../" class="site-logo"><span class="logo-icon">=</span> 100 Calculators</a></div></header>
+  <main class="container">
+    <nav class="breadcrumb"><a href="../../">Home</a><span class="sep">/</span><a href="../../#lifestyle">Lifestyle</a><span class="sep">/</span><span>Electricity Cost</span></nav>
+
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+    <div class="page-header">
+      <span class="badge">Lifestyle</span>
+      <h1>Electricity Cost Calculator</h1>
+      <p class="subtitle">How much does your gaming PC, space heater, or any appliance cost to run? Find out per day, month, and year.</p>
+    </div>
+    <div class="calc-card">
+      <h2>Appliance Details</h2>
+      <div class="form-row">
+        <div class="form-group"><label for="watts">Device Wattage</label><div class="input-with-unit"><input type="number" id="watts" value="350" min="1" max="20000" step="10"><span class="unit">watts</span></div></div>
+        <div class="form-group"><label for="hours">Hours Used Per Day</label><div class="input-with-unit"><input type="number" id="hours" value="8" min="0.5" max="24" step="0.5"><span class="unit">hrs/day</span></div></div>
+      </div>
+      <div class="form-group"><label for="rate">Electricity Rate</label><div class="input-with-unit"><input type="number" id="rate" value="0.15" min="0.01" max="1" step="0.01"><span class="unit">$/kWh</span></div><span class="hint">US average: ~$0.15/kWh. Check your power bill for your rate.</span></div>
+      <div class="form-group">
+        <label>Quick Presets</label>
+        <div class="toggle-group" data-for="preset">
+          <button type="button" class="toggle-btn" data-value="pc">Gaming PC</button>
+          <button type="button" class="toggle-btn" data-value="heater">Space Heater</button>
+          <button type="button" class="toggle-btn" data-value="fridge">Fridge</button>
+          <button type="button" class="toggle-btn" data-value="tv">TV (55")</button>
+          <button type="button" class="toggle-btn" data-value="custom">Custom</button>
+        </div>
+        <input type="hidden" id="preset" value="custom">
+      </div>
+
+      <div class="result-display">
+        <div class="result-label">Monthly Cost</div>
+        <div class="result-value" id="result-monthly">—</div>
+        <div class="result-unit">per month</div>
+      </div>
+      <div class="results-grid">
+        <div class="result-item"><div class="result-item-label">Daily</div><div class="result-item-value" id="result-daily">—</div></div>
+        <div class="result-item"><div class="result-item-label">Yearly</div><div class="result-item-value" id="result-yearly">—</div></div>
+        <div class="result-item"><div class="result-item-label">kWh / Day</div><div class="result-item-value" id="result-kwh-day">—</div></div>
+        <div class="result-item"><div class="result-item-label">kWh / Year</div><div class="result-item-value" id="result-kwh-year">—</div></div>
+      </div>
+    </div>
+    <div class="cta-box">
+      <span class="cta-icon">&#9889;</span>
+      <div class="cta-content">
+        <p><strong>Want to measure actual usage?</strong> A plug-in watt meter shows exactly how much power any device draws.</p>
+        <a href="#" class="cta-link">Best Electricity Usage Monitors on Amazon &rarr;</a>
+      </div>
+    </div>
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+    <article class="article-content">
+      <h2>How to Calculate Electricity Cost for Any Appliance</h2>
+      <p>Your electricity bill is a mystery to most people. You know the total is too high, but which appliances are the culprits? A gaming PC running 8 hours a day? The old space heater in the basement? The always-on mini-fridge? This calculator and guide help you identify the expensive devices and estimate their individual contribution to your bill.</p>
+
+      <h2>The Formula</h2>
+      <div class="formula-box">Daily Cost = (Watts ÷ 1,000) × Hours × Rate per kWh</div>
+      <p>A 350-watt gaming PC running 8 hours per day at $0.15/kWh: (350 ÷ 1,000) × 8 × $0.15 = <strong>$0.42/day</strong> = $12.60/month = $153.30/year.</p>
+
+      <h2>Common Appliance Wattages</h2>
+      <ul>
+        <li><strong>Gaming PC (under load):</strong> 300–500W</li>
+        <li><strong>Space heater:</strong> 1,500W</li>
+        <li><strong>Refrigerator:</strong> 100–200W (runs ~8h/day effective)</li>
+        <li><strong>55" LED TV:</strong> 60–90W</li>
+        <li><strong>Laptop:</strong> 30–65W</li>
+        <li><strong>LED light bulb:</strong> 8–12W</li>
+        <li><strong>Air conditioner (window):</strong> 500–1,500W</li>
+        <li><strong>Washing machine:</strong> 400–500W</li>
+        <li><strong>Electric oven:</strong> 2,000–5,000W</li>
+        <li><strong>Hair dryer:</strong> 1,200–1,800W</li>
+      </ul>
+
+      <div class="tip-box">
+        <p><strong>Pro Tip:</strong> The wattage on the label is the <strong>maximum</strong> draw. Most devices use less than their rated wattage during normal operation. A 500W gaming PC might average 300W during gaming and 80W at idle. A plug-in watt meter (like the Kill A Watt) gives you the real number.</p>
+      </div>
+
+      <h2>The Biggest Energy Hogs</h2>
+      <p>The most expensive appliances combine <strong>high wattage with long run times</strong>:</p>
+      <ol>
+        <li><strong>HVAC (heating/cooling):</strong> 40–60% of most electricity bills</li>
+        <li><strong>Water heater:</strong> 15–20% (if electric)</li>
+        <li><strong>Space heaters:</strong> 1,500W × many hours = shocking cost</li>
+        <li><strong>Old refrigerators:</strong> An Energy Star fridge uses 400 kWh/year; a 1990s model uses 800–1,200 kWh</li>
+      </ol>
+
+      <h2>Common Mistakes</h2>
+      <h3>1. Leaving Devices on Standby</h3>
+      <p>"Phantom load" or "vampire draw" from devices in standby mode costs the average US home $100–$200 per year. Game consoles, TVs, and cable boxes are the worst offenders — they draw 5–25W even when "off."</p>
+
+      <div class="warning-box">
+        <p><strong>Watch Out:</strong> Space heaters are the most dangerous appliance for both your wallet and safety. A single 1,500W heater running 10 hours/day costs <strong>$67.50/month</strong> at $0.15/kWh. Running two of them all winter can add $500+ to your bill.</p>
+      </div>
+
+      <h2>How to Reduce Your Bill</h2>
+      <ul>
+        <li><strong>Switch to LED bulbs:</strong> Use 75% less electricity than incandescent</li>
+        <li><strong>Use smart power strips:</strong> Cut phantom loads automatically</li>
+        <li><strong>Run dishwasher/laundry at night:</strong> Off-peak rates may be 30–50% cheaper</li>
+        <li><strong>Upgrade old appliances:</strong> A new Energy Star fridge pays for itself in energy savings within 5–7 years</li>
+      </ul>
+
+      <p>Use the calculator above to check your biggest appliances. You might be surprised which ones are quietly draining your wallet.</p>
+    </article>
+  </main>
+  <footer class="site-footer"><div class="container"><p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p></div></footer>
+
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      const PRESETS = {
+        pc:     { watts: 350, hours: 8 },
+        heater: { watts: 1500, hours: 10 },
+        fridge: { watts: 150, hours: 8 },
+        tv:     { watts: 75, hours: 5 },
+      };
+      let lastPreset = 'custom';
+
+      function calculate() {
+        const preset = CalcCore.getToggleVal('preset') || 'custom';
+        if (preset !== 'custom' && preset !== lastPreset) {
+          const p = PRESETS[preset];
+          if (p) {
+            document.getElementById('watts').value = p.watts;
+            document.getElementById('hours').value = p.hours;
+          }
+          lastPreset = preset;
+        }
+        lastPreset = preset;
+
+        const watts = CalcCore.getVal('watts');
+        const hours = CalcCore.getVal('hours');
+        const rate = CalcCore.getVal('rate');
+
+        const kwhDay = (watts / 1000) * hours;
+        const dailyCost = kwhDay * rate;
+        const monthlyCost = dailyCost * 30;
+        const yearlyCost = dailyCost * 365;
+        const kwhYear = kwhDay * 365;
+
+        CalcCore.setResult('result-daily', CalcCore.fmt.currency(dailyCost, 2));
+        CalcCore.setResult('result-monthly', CalcCore.fmt.currency(monthlyCost, 2));
+        CalcCore.setResult('result-yearly', CalcCore.fmt.currency(yearlyCost, 0));
+        CalcCore.setResult('result-kwh-day', CalcCore.fmt.number(kwhDay, 2));
+        CalcCore.setResult('result-kwh-year', CalcCore.fmt.number(kwhYear, 0));
+      }
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+
+  <!-- Sticky Footer Ad (mobile) -->
+  <div id="ad-sticky-footer" class="ad-sticky-footer">
+    <button class="ad-sticky-close" aria-label="Close ad">&times;</button>
+    <div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div>
+  </div>
+
+  <script src="../../js/ads.js"></script>
+</body>
+</html>

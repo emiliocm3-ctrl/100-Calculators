@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CPM Calculator — Cost Per Thousand Impressions</title>
+  <meta name="description" content="Calculate CPM, total cost, or impressions for any ad campaign. Essential for Facebook, Google, and display advertising.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <header class="site-header"><div class="container"><a href="../../" class="site-logo"><span class="logo-icon">=</span> 100 Calculators</a></div></header>
+  <main class="container">
+    <nav class="breadcrumb"><a href="../../">Home</a><span class="sep">/</span><a href="../../#business">Business &amp; Finance</a><span class="sep">/</span><span>CPM Calculator</span></nav>
+
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+    <div class="page-header">
+      <span class="badge">Business &amp; Finance</span>
+      <h1>CPM Calculator</h1>
+      <p class="subtitle">Calculate cost per thousand impressions — or solve for cost or impressions from the other two values.</p>
+    </div>
+    <div class="calc-card">
+      <h2>Campaign Numbers</h2>
+      <div class="form-group">
+        <label>Solve For</label>
+        <div class="toggle-group" data-for="solve-for">
+          <button type="button" class="toggle-btn active" data-value="cpm">CPM</button>
+          <button type="button" class="toggle-btn" data-value="cost">Total Cost</button>
+          <button type="button" class="toggle-btn" data-value="impressions">Impressions</button>
+        </div>
+        <input type="hidden" id="solve-for" value="cpm">
+      </div>
+      <div class="form-row form-row--3">
+        <div class="form-group" id="grp-cost"><label for="total-cost">Total Cost</label><div class="input-with-unit"><input type="number" id="total-cost" value="500" min="0" max="10000000" step="10"><span class="unit">$</span></div></div>
+        <div class="form-group" id="grp-impressions"><label for="impressions">Impressions</label><div class="input-with-unit"><input type="number" id="impressions" value="200000" min="0" max="999999999" step="1000"><span class="unit">impr.</span></div></div>
+        <div class="form-group" id="grp-cpm"><label for="cpm-input">CPM</label><div class="input-with-unit"><input type="number" id="cpm-input" value="" min="0" max="1000" step="0.1"><span class="unit">$</span></div></div>
+      </div>
+
+      <div class="result-display">
+        <div class="result-label" id="result-label">CPM (Cost per 1,000 Impressions)</div>
+        <div class="result-value" id="result-value">—</div>
+        <div class="result-unit" id="result-unit"></div>
+      </div>
+      <div class="results-grid">
+        <div class="result-item"><div class="result-item-label">Cost per Impression</div><div class="result-item-value" id="result-cpi">—</div></div>
+        <div class="result-item"><div class="result-item-label">Impressions per Dollar</div><div class="result-item-value" id="result-ipd">—</div></div>
+      </div>
+    </div>
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+    <article class="article-content">
+      <h2>What Is CPM and How Do You Calculate It?</h2>
+      <p>CPM stands for <strong>Cost Per Mille</strong> (mille = Latin for thousand). It's the standard metric for pricing display advertising, social media ads, and programmatic campaigns. Understanding CPM lets you compare campaigns across platforms, forecast budgets, and evaluate whether your ad spend is delivering competitive reach.</p>
+
+      <h2>The CPM Formula</h2>
+      <div class="formula-box">CPM = (Total Cost ÷ Total Impressions) × 1,000</div>
+      <p>If you spend $500 and get 200,000 impressions: ($500 ÷ 200,000) × 1,000 = <strong>$2.50 CPM</strong>. This means you're paying $2.50 for every 1,000 times your ad is shown.</p>
+      <p>You can rearrange the formula to solve for any of the three variables:</p>
+      <ul>
+        <li><strong>Total Cost</strong> = CPM × Impressions ÷ 1,000</li>
+        <li><strong>Impressions</strong> = (Total Cost ÷ CPM) × 1,000</li>
+      </ul>
+
+      <h2>CPM Benchmarks by Platform (2024–2025)</h2>
+      <ul>
+        <li><strong>Facebook/Instagram Feed:</strong> $5–$15 CPM</li>
+        <li><strong>Google Display Network:</strong> $1–$5 CPM</li>
+        <li><strong>YouTube Pre-Roll:</strong> $8–$20 CPM</li>
+        <li><strong>TikTok:</strong> $4–$10 CPM</li>
+        <li><strong>LinkedIn:</strong> $25–$60 CPM</li>
+        <li><strong>Programmatic Display:</strong> $0.50–$3 CPM</li>
+      </ul>
+
+      <div class="tip-box">
+        <p><strong>Pro Tip:</strong> CPM tells you about reach, not results. A $2 CPM with 0.1% click-through rate costs $20 per click. A $10 CPM with 1% CTR costs just $10 per click. Always pair CPM analysis with downstream metrics like CTR, CPA, and ROAS.</p>
+      </div>
+
+      <h2>CPM vs. CPC vs. CPA</h2>
+      <ul>
+        <li><strong>CPM:</strong> You pay per impression — best for brand awareness and reach campaigns</li>
+        <li><strong>CPC (Cost Per Click):</strong> You pay per click — best for driving traffic</li>
+        <li><strong>CPA (Cost Per Action):</strong> You pay per conversion — best for direct response</li>
+      </ul>
+
+      <h2>Common Mistakes</h2>
+      <h3>1. Optimizing for Low CPM Alone</h3>
+      <p>The cheapest impressions are often the least valuable. Showing ads on low-quality sites or to irrelevant audiences gets you a great CPM and zero results.</p>
+
+      <h3>2. Confusing Impressions with Reach</h3>
+      <p>Impressions count every time an ad is shown, including to the same person multiple times. Reach counts unique viewers. High impressions with low reach means you're bombarding a small audience.</p>
+
+      <div class="warning-box">
+        <p><strong>Watch Out:</strong> Some platforms count an "impression" the moment the ad loads in the page code, even if the user never scrolls down to see it. Look for <strong>viewable impressions</strong> (MRC standard: 50% of the ad visible for 1 second) for more accurate measurement.</p>
+      </div>
+
+      <p>Use the calculator above to quickly convert between CPM, cost, and impressions. It's a staple tool in any media buyer's toolkit.</p>
+    </article>
+  </main>
+  <footer class="site-footer"><div class="container"><p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p></div></footer>
+
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      function calculate() {
+        const mode = CalcCore.getToggleVal('solve-for') || 'cpm';
+        const costEl = document.getElementById('total-cost');
+        const imprEl = document.getElementById('impressions');
+        const cpmEl = document.getElementById('cpm-input');
+
+        // Disable the field being solved for
+        costEl.disabled = mode === 'cost';
+        imprEl.disabled = mode === 'impressions';
+        cpmEl.disabled = mode === 'cpm';
+
+        const cost = CalcCore.getVal('total-cost');
+        const impr = CalcCore.getVal('impressions');
+        const cpmIn = CalcCore.getVal('cpm-input');
+
+        let cpm, totalCost, impressions;
+
+        if (mode === 'cpm') {
+          totalCost = cost; impressions = impr;
+          cpm = impressions > 0 ? (totalCost / impressions) * 1000 : 0;
+          CalcCore.setResult('result-label', 'CPM (Cost per 1,000 Impressions)');
+          CalcCore.setResult('result-value', CalcCore.fmt.currency(cpm, 2));
+          CalcCore.setResult('result-unit', '');
+        } else if (mode === 'cost') {
+          cpm = cpmIn; impressions = impr;
+          totalCost = (cpm * impressions) / 1000;
+          CalcCore.setResult('result-label', 'Total Campaign Cost');
+          CalcCore.setResult('result-value', CalcCore.fmt.currency(totalCost, 2));
+          CalcCore.setResult('result-unit', '');
+        } else {
+          cpm = cpmIn; totalCost = cost;
+          impressions = cpm > 0 ? (totalCost / cpm) * 1000 : 0;
+          CalcCore.setResult('result-label', 'Total Impressions');
+          CalcCore.setResult('result-value', CalcCore.fmt.compact(impressions));
+          CalcCore.setResult('result-unit', 'impressions');
+        }
+
+        const cpi = impressions > 0 ? totalCost / impressions : 0;
+        const ipd = totalCost > 0 ? impressions / totalCost : 0;
+        CalcCore.setResult('result-cpi', CalcCore.fmt.currency(cpi, 4));
+        CalcCore.setResult('result-ipd', CalcCore.fmt.number(ipd, 0));
+      }
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+
+  <!-- Sticky Footer Ad (mobile) -->
+  <div id="ad-sticky-footer" class="ad-sticky-footer">
+    <button class="ad-sticky-close" aria-label="Close ad">&times;</button>
+    <div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div>
+  </div>
+
+  <script src="../../js/ads.js"></script>
+</body>
+</html>

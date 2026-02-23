@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grass Seed Calculator — How Much Seed for My Lawn?</title>
+  <meta name="description" content="Calculate the exact pounds of grass seed for a new lawn or overseeding project. Enter dimensions and planting type.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <header class="site-header"><div class="container"><a href="../../" class="site-logo"><span class="logo-icon">=</span> 100 Calculators</a></div></header>
+  <main class="container">
+    <nav class="breadcrumb"><a href="../../">Home</a><span class="sep">/</span><a href="../../#home-improvement">Home Improvement</a><span class="sep">/</span><span>Grass Seed</span></nav>
+
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+    <div class="page-header">
+      <span class="badge">Home Improvement</span>
+      <h1>Grass Seed Calculator</h1>
+      <p class="subtitle">New lawn or overseeding? Get the exact pounds of seed for full, even coverage.</p>
+    </div>
+    <div class="calc-card">
+      <h2>Lawn Details</h2>
+      <div class="form-row">
+        <div class="form-group"><label for="lawn-length">Lawn Length</label><div class="input-with-unit"><input type="number" id="lawn-length" value="50" min="1" max="2000" step="1"><span class="unit">ft</span></div></div>
+        <div class="form-group"><label for="lawn-width">Lawn Width</label><div class="input-with-unit"><input type="number" id="lawn-width" value="30" min="1" max="2000" step="1"><span class="unit">ft</span></div></div>
+      </div>
+      <div class="form-group">
+        <label>Planting Type</label>
+        <div class="toggle-group" data-for="planting-type">
+          <button type="button" class="toggle-btn active" data-value="new">New Lawn</button>
+          <button type="button" class="toggle-btn" data-value="overseed">Overseeding</button>
+          <button type="button" class="toggle-btn" data-value="repair">Bare Spot Repair</button>
+        </div>
+        <input type="hidden" id="planting-type" value="new">
+        <span class="hint">New = 4–5 lbs/1000 sq ft · Overseed = 2–3 lbs · Repair = 6–8 lbs</span>
+      </div>
+      <div class="form-group">
+        <label>Grass Type</label>
+        <div class="toggle-group" data-for="grass-type">
+          <button type="button" class="toggle-btn active" data-value="cool">Cool Season (Fescue, Rye, Bluegrass)</button>
+          <button type="button" class="toggle-btn" data-value="warm">Warm Season (Bermuda, Zoysia)</button>
+        </div>
+        <input type="hidden" id="grass-type" value="cool">
+      </div>
+
+      <div class="result-display">
+        <div class="result-label">Seed Needed</div>
+        <div class="result-value" id="result-seed">—</div>
+        <div class="result-unit">pounds</div>
+      </div>
+      <div class="results-grid">
+        <div class="result-item"><div class="result-item-label">Lawn Area</div><div class="result-item-value" id="result-area">—</div><div class="result-item-unit">sq ft</div></div>
+        <div class="result-item"><div class="result-item-label">Seed Rate</div><div class="result-item-value" id="result-rate">—</div><div class="result-item-unit">lbs / 1,000 sq ft</div></div>
+        <div class="result-item"><div class="result-item-label">5-lb Bags</div><div class="result-item-value" id="result-bags-5">—</div><div class="result-item-unit">bags</div></div>
+        <div class="result-item"><div class="result-item-label">Estimated Cost</div><div class="result-item-value" id="result-cost">—</div><div class="result-item-unit">@ ~$5/lb</div></div>
+      </div>
+    </div>
+    <div class="cta-box">
+      <span class="cta-icon">&#127807;</span>
+      <div class="cta-content">
+        <p><strong>Starting a lawn?</strong> Quality seed makes the difference between patchy and perfect.</p>
+        <a href="#" class="cta-link">Top-Rated Grass Seed on Amazon &rarr;</a>
+      </div>
+    </div>
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+    <article class="article-content">
+      <h2>How to Calculate Grass Seed for Any Lawn</h2>
+      <p>Getting the right amount of grass seed is surprisingly important. Too little and you'll have thin, patchy coverage that lets weeds take over. Too much and seedlings compete for resources, leading to weak, disease-prone grass that thins out within a year. This guide covers the seeding rates, grass types, and timing that make the difference between a lawn you mow and a lawn you admire.</p>
+
+      <h2>The Seeding Rate Formula</h2>
+      <div class="formula-box">Seed (lbs) = (Lawn Area in sq ft ÷ 1,000) × Rate per 1,000 sq ft</div>
+      <p>The <strong>rate per 1,000 sq ft</strong> varies by what you're doing:</p>
+      <ul>
+        <li><strong>New lawn:</strong> 4–5 lbs for cool-season grasses, 1–2 lbs for warm-season</li>
+        <li><strong>Overseeding (thickening existing lawn):</strong> 2–3 lbs (cool) or 0.5–1 lb (warm)</li>
+        <li><strong>Bare spot repair:</strong> 6–8 lbs for aggressive coverage</li>
+      </ul>
+      <p>Warm-season grasses like Bermuda and Zoysia have much smaller seeds, so less weight covers the same area.</p>
+
+      <h2>Cool Season vs. Warm Season</h2>
+      <p>Your climate zone determines which grasses will thrive:</p>
+      <ul>
+        <li><strong>Cool-season</strong> (zones 3–6): Kentucky Bluegrass, Tall Fescue, Perennial Ryegrass. Plant in <strong>early fall</strong> (September) for best results.</li>
+        <li><strong>Warm-season</strong> (zones 7–10): Bermuda, Zoysia, St. Augustine. Plant in <strong>late spring</strong> (May–June) when soil is consistently warm.</li>
+        <li><strong>Transition zone</strong> (zone 7): Either type works, but tall fescue blends are the most reliable.</li>
+      </ul>
+
+      <div class="tip-box">
+        <p><strong>Pro Tip:</strong> The single most important factor in seeding success is <strong>soil contact</strong>. Rake the area to loosen the top 1/4 inch, spread seed, then lightly rake again to press seeds into the soil. A thin layer of straw mulch (not hay!) retains moisture.</p>
+      </div>
+
+      <h2>Common Mistakes</h2>
+      <h3>1. Seeding at the Wrong Time</h3>
+      <p>Cool-season grass planted in spring fights summer heat before roots establish. Warm-season grass planted in fall goes dormant before it can spread. Timing is everything.</p>
+
+      <h3>2. Not Watering Enough</h3>
+      <p>New seed needs <strong>consistent moisture</strong> for 2–3 weeks. Water lightly 2–3 times per day to keep the top inch of soil damp. A single deep watering is wrong for seeds — they need frequency, not depth.</p>
+
+      <h3>3. Mowing Too Soon</h3>
+      <p>Don't mow until the new grass reaches <strong>3.5–4 inches</strong> tall. Mowing too early pulls up seedlings with shallow roots.</p>
+
+      <div class="warning-box">
+        <p><strong>Watch Out:</strong> Do NOT apply weed killer (pre-emergent herbicide) for at least 6–8 weeks after seeding. Pre-emergent kills all germinating seeds — including your grass.</p>
+      </div>
+
+      <h2>How Much Does Grass Seed Cost?</h2>
+      <ul>
+        <li><strong>Economy blends:</strong> $2–$3/lb — basic coverage, may include annual rye (dies after one season)</li>
+        <li><strong>Premium blends:</strong> $4–$7/lb — named cultivars, better disease resistance, NTEP-rated varieties</li>
+        <li><strong>Specialty (shade, drought-tolerant):</strong> $6–$10/lb</li>
+      </ul>
+      <p>For a 1,500 sq ft new lawn at 5 lbs/1,000 sq ft, you need 7.5 lbs of seed. At $5/lb, that's about <strong>$37.50</strong> — one of the most affordable home improvement projects there is.</p>
+
+      <p>Use the calculator above to get your exact seed amount, then follow the timing and watering rules for a lawn that fills in thick and strong.</p>
+    </article>
+  </main>
+  <footer class="site-footer"><div class="container"><p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p></div></footer>
+
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      const RATES = {
+        cool: { new: 4.5, overseed: 2.5, repair: 7 },
+        warm: { new: 1.5, overseed: 0.75, repair: 3 },
+      };
+      const COST_PER_LB = 5;
+
+      function calculate() {
+        const len = CalcCore.getVal('lawn-length');
+        const wid = CalcCore.getVal('lawn-width');
+        const type = CalcCore.getToggleVal('planting-type') || 'new';
+        const grass = CalcCore.getToggleVal('grass-type') || 'cool';
+
+        const area = len * wid;
+        const rate = RATES[grass]?.[type] ?? 4.5;
+        const seed = (area / 1000) * rate;
+        const bags5 = Math.ceil(seed / 5);
+        const cost = seed * COST_PER_LB;
+
+        CalcCore.setResult('result-seed', CalcCore.fmt.number(seed, 1));
+        CalcCore.setResult('result-area', CalcCore.fmt.number(area));
+        CalcCore.setResult('result-rate', CalcCore.fmt.number(rate, 1));
+        CalcCore.setResult('result-bags-5', CalcCore.fmt.number(bags5));
+        CalcCore.setResult('result-cost', CalcCore.fmt.currency(cost, 0));
+      }
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+
+  <!-- Sticky Footer Ad (mobile) -->
+  <div id="ad-sticky-footer" class="ad-sticky-footer">
+    <button class="ad-sticky-close" aria-label="Close ad">&times;</button>
+    <div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div>
+  </div>
+
+  <script src="../../js/ads.js"></script>
+</body>
+</html>

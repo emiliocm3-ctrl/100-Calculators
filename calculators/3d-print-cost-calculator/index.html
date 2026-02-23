@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Print Cost Calculator — Filament, Electricity &amp; True Cost</title>
+  <meta name="description" content="Estimate the true cost of a 3D print including filament, electricity, and machine wear. Enter weight, material, and print time for an accurate breakdown.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="../../" class="site-logo">
+        <span class="logo-icon">=</span>
+        100 Calculators
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav class="breadcrumb">
+      <a href="../../">Home</a>
+      <span class="sep">/</span>
+      <a href="../../#hobbies">Niche Hobbies</a>
+      <span class="sep">/</span>
+      <span>3D Print Cost Calculator</span>
+    </nav>
+
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+
+    <div class="page-header">
+      <span class="badge">Niche Hobbies</span>
+      <h1>3D Print Cost Calculator</h1>
+      <p class="subtitle">Find the true cost of any 3D print — filament, electricity, and machine depreciation. Know your real per-part cost.</p>
+    </div>
+
+    <div class="calc-card">
+      <h2>Print Details</h2>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="filament-weight">Filament Used</label>
+          <div class="input-with-unit">
+            <input type="number" id="filament-weight" value="50" min="0.1" max="10000" step="1">
+            <span class="unit">grams</span>
+          </div>
+          <span class="hint">Check your slicer for estimated weight</span>
+        </div>
+        <div class="form-group">
+          <label for="print-time">Print Time</label>
+          <div class="input-with-unit">
+            <input type="number" id="print-time" value="4" min="0.1" max="500" step="0.5">
+            <span class="unit">hours</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Filament Material</label>
+        <div class="toggle-group" data-for="material">
+          <button type="button" class="toggle-btn active" data-value="pla">PLA</button>
+          <button type="button" class="toggle-btn" data-value="petg">PETG</button>
+          <button type="button" class="toggle-btn" data-value="abs">ABS</button>
+          <button type="button" class="toggle-btn" data-value="tpu">TPU</button>
+          <button type="button" class="toggle-btn" data-value="nylon">Nylon</button>
+        </div>
+        <input type="hidden" id="material" value="pla">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="spool-cost">Spool Cost</label>
+          <div class="input-with-unit">
+            <input type="number" id="spool-cost" value="22" min="1" max="500" step="0.5">
+            <span class="unit">$</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="spool-weight">Spool Weight</label>
+          <div class="input-with-unit">
+            <input type="number" id="spool-weight" value="1000" min="100" max="10000" step="100">
+            <span class="unit">grams</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="power-draw">Printer Power Draw</label>
+          <div class="input-with-unit">
+            <input type="number" id="power-draw" value="150" min="50" max="1500" step="10">
+            <span class="unit">watts</span>
+          </div>
+          <span class="hint">Typical: Ender 3 ≈ 150W, Prusa ≈ 120W, Voron ≈ 350W</span>
+        </div>
+        <div class="form-group">
+          <label for="electricity-rate">Electricity Rate</label>
+          <div class="input-with-unit">
+            <input type="number" id="electricity-rate" value="0.12" min="0.01" max="1" step="0.01">
+            <span class="unit">$/kWh</span>
+          </div>
+          <span class="hint">US average: $0.12/kWh</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="printer-cost">Printer Purchase Price (for depreciation)</label>
+        <div class="input-with-unit">
+          <input type="number" id="printer-cost" value="300" min="0" max="100000" step="10">
+          <span class="unit">$</span>
+        </div>
+        <span class="hint">Set to 0 to exclude depreciation. Assumed lifespan: 2000 print hours.</span>
+      </div>
+
+      <div class="form-group">
+        <label for="fail-rate">Print Failure Rate</label>
+        <input type="range" id="fail-rate" min="0" max="30" value="5" step="1">
+        <div class="range-labels">
+          <span>0%</span>
+          <span id="fail-rate-val">5</span>
+          <span>30%</span>
+        </div>
+        <span class="hint">Accounts for failed prints and wasted material</span>
+      </div>
+
+      <div class="result-display" id="result-box">
+        <div class="result-label">Total Cost Per Print</div>
+        <div class="result-value" id="result-total">—</div>
+        <div class="result-unit">USD</div>
+      </div>
+
+      <!-- Cost breakdown chart -->
+      <div class="chart-container">
+        <div class="donut-chart">
+          <canvas id="cost-chart" width="200" height="200"></canvas>
+          <div id="cost-chart-center" class="chart-center"></div>
+        </div>
+      </div>
+      <div id="cost-chart-legend" class="chart-legend"></div>
+
+      <div class="results-grid">
+        <div class="result-item">
+          <div class="result-item-label">Filament Cost</div>
+          <div class="result-item-value" id="result-filament-cost">—</div>
+        </div>
+        <div class="result-item">
+          <div class="result-item-label">Electricity Cost</div>
+          <div class="result-item-value" id="result-elec-cost">—</div>
+        </div>
+        <div class="result-item">
+          <div class="result-item-label">Depreciation</div>
+          <div class="result-item-value" id="result-deprec">—</div>
+        </div>
+        <div class="result-item">
+          <div class="result-item-label">Failure Surcharge</div>
+          <div class="result-item-value" id="result-fail-cost">—</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-box">
+      <span class="cta-icon">&#9881;&#65039;</span>
+      <div class="cta-content">
+        <p><strong>Looking for great-value filament?</strong> Quality PLA doesn't have to break the bank.</p>
+        <a href="#" class="cta-link">Top-Rated 3D Printer Filament on Amazon &rarr;</a>
+      </div>
+    </div>
+
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+
+    <article class="article-content">
+      <h2>How to Calculate the True Cost of a 3D Print</h2>
+      <p>Most 3D printer users only think about filament cost: "it uses 50 grams of PLA, so that's about a dollar." But the real cost includes electricity, machine wear, and failed prints. When you're pricing parts for sale or comparing 3D printing to buying, you need the complete picture. This guide breaks down every cost component and shows you how to calculate them.</p>
+
+      <h2>The Cost Formula</h2>
+      <p>The total cost of a 3D print has four components:</p>
+
+      <div class="formula-box">
+        Total = Filament + Electricity + Depreciation + Failure Surcharge
+      </div>
+
+      <h3>1. Filament Cost</h3>
+      <p>This is the simplest calculation:</p>
+      <div class="formula-box">
+        Filament Cost = (Grams Used / Spool Weight) &times; Spool Price
+      </div>
+      <p>A typical 1kg spool of PLA costs $18-25. At $22/kg, each gram costs $0.022. A 50-gram print uses <strong>$1.10</strong> of filament. Material costs vary dramatically by type:</p>
+      <ul>
+        <li><strong>PLA:</strong> $18-25/kg — the cheapest, most common material</li>
+        <li><strong>PETG:</strong> $20-30/kg — stronger, heat-resistant, slightly more expensive</li>
+        <li><strong>ABS:</strong> $18-28/kg — tough but requires enclosure and ventilation</li>
+        <li><strong>TPU:</strong> $25-40/kg — flexible filament, pricier but unique properties</li>
+        <li><strong>Nylon:</strong> $30-60/kg — engineering-grade strength, most expensive common filament</li>
+      </ul>
+
+      <h3>2. Electricity Cost</h3>
+      <p>3D printers draw power for heating the bed, heating the nozzle, moving motors, and running the control board:</p>
+      <div class="formula-box">
+        Electricity = (Watts / 1000) &times; Hours &times; Rate per kWh
+      </div>
+      <p>A Creality Ender 3 draws about 150 watts on average. At $0.12/kWh, a 4-hour print costs <strong>$0.072</strong> in electricity. It's not nothing, but it's rarely the dominant cost. For larger printers with heated chambers (like the Voron at 350W), electricity costs can add up on long prints.</p>
+
+      <h3>3. Machine Depreciation</h3>
+      <p>Your printer won't last forever. Motors wear out, hotends degrade, bearings need replacing. A reasonable estimate for a hobby-grade printer's usable lifespan is <strong>2,000-3,000 print hours</strong>. Using 2,000 hours:</p>
+      <div class="formula-box">
+        Depreciation = (Printer Cost / 2000) &times; Print Hours
+      </div>
+      <p>A $300 printer costs $0.15 per print hour. A 4-hour print adds <strong>$0.60</strong> in depreciation. Higher-end printers ($1000+) have higher per-hour costs but typically last longer due to better components.</p>
+
+      <div class="tip-box">
+        <p><strong>Pro Tip:</strong> If you've already paid off your printer through use and aren't planning to replace it, you can set depreciation to $0 for a "marginal cost" calculation — the cost of one more print given that you already own the machine.</p>
+      </div>
+
+      <h3>4. The Failure Surcharge</h3>
+      <p>Not every print succeeds. Prints fail due to adhesion issues, power outages, filament tangles, slicing errors, and a dozen other reasons. Even experienced users have a <strong>5-10% failure rate</strong>. Beginners can see 15-25%. The failure surcharge accounts for this waste:</p>
+      <div class="formula-box">
+        Adjusted Cost = Base Cost &times; (1 + Failure Rate %)
+      </div>
+      <p>A 10% failure rate adds 10% to your total cost. Over time, this averages out to accurately reflect the true material and time waste from failed prints.</p>
+
+      <h2>Real-World Cost Examples</h2>
+      <p>Here's what common prints actually cost with all factors included:</p>
+      <ul>
+        <li><strong>Phone case</strong> (30g, 2h): $0.66 + $0.04 + $0.30 + $0.05 = <strong>$1.05</strong></li>
+        <li><strong>Desk organizer</strong> (150g, 8h): $3.30 + $0.14 + $1.20 + $0.23 = <strong>$4.87</strong></li>
+        <li><strong>Cosplay helmet</strong> (500g, 30h): $11.00 + $0.54 + $4.50 + $0.80 = <strong>$16.84</strong></li>
+        <li><strong>Miniature figure</strong> (8g, 1h): $0.18 + $0.02 + $0.15 + $0.02 = <strong>$0.37</strong></li>
+      </ul>
+
+      <h2>Common Mistakes</h2>
+      <h3>1. Ignoring Failed Prints in Pricing</h3>
+      <p>If you sell 3D printed parts and price them based only on successful prints, every failure eats into your profit. Always include the failure surcharge when pricing for customers.</p>
+
+      <h3>2. Forgetting Post-Processing Costs</h3>
+      <p>Sanding, painting, acetone smoothing, and assembly all take time and materials. If you're pricing for sale, add your time at a reasonable hourly rate.</p>
+
+      <div class="warning-box">
+        <p><strong>Watch Out:</strong> Resin (SLA) printing has completely different cost calculations. Resin is much more expensive per ml, plus you need wash/cure stations, IPA, and disposal supplies. This calculator is designed for FDM/FFF filament printers only.</p>
+      </div>
+
+      <h2>How to Reduce Print Costs</h2>
+      <ul>
+        <li><strong>Buy filament in bulk</strong> — multi-pack spools from Amazon are 20-30% cheaper per kg</li>
+        <li><strong>Optimize infill</strong> — 15-20% infill is sufficient for most non-structural prints (vs. the 20-30% default in many slicers)</li>
+        <li><strong>Reduce failures</strong> — level your bed, calibrate e-steps, and use a glass/PEI bed for better adhesion</li>
+        <li><strong>Use efficient supports</strong> — tree supports use 30-50% less material than normal supports</li>
+        <li><strong>Print at night</strong> — if your electricity provider has off-peak rates</li>
+      </ul>
+
+      <p>Use the calculator above to get a complete picture of your per-print costs. Whether you're printing for fun or for profit, knowing the real numbers helps you make better decisions about what to print, what material to use, and how to price your work.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p>
+    </div>
+  </footer>
+
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      const PRINTER_LIFESPAN_HOURS = 2000;
+
+      // Default spool prices by material
+      const DEFAULT_PRICES = {
+        pla: 22, petg: 25, abs: 22, tpu: 32, nylon: 45,
+      };
+
+      function calculate() {
+        const material = CalcCore.getToggleVal('material') || 'pla';
+        const filamentG = CalcCore.getVal('filament-weight');
+        const printTime = CalcCore.getVal('print-time');
+        const spoolCost = CalcCore.getVal('spool-cost');
+        const spoolWeight = CalcCore.getVal('spool-weight');
+        const powerW = CalcCore.getVal('power-draw');
+        const elecRate = CalcCore.getVal('electricity-rate');
+        const printerCost = CalcCore.getVal('printer-cost');
+        const failRate = CalcCore.getVal('fail-rate');
+
+        // Update spool cost when material changes (only if user hasn't custom-edited)
+        // We won't force this — let the user override
+
+        // Filament cost
+        const filamentCost = (filamentG / spoolWeight) * spoolCost;
+
+        // Electricity cost
+        const elecCost = (powerW / 1000) * printTime * elecRate;
+
+        // Depreciation
+        const deprecCost = printerCost > 0 ? (printerCost / PRINTER_LIFESPAN_HOURS) * printTime : 0;
+
+        // Base cost
+        const baseCost = filamentCost + elecCost + deprecCost;
+
+        // Failure surcharge
+        const failSurcharge = baseCost * (failRate / 100);
+        const totalCost = baseCost + failSurcharge;
+
+        CalcCore.setResult('result-total', CalcCore.fmt.currency(totalCost));
+        CalcCore.setResult('result-filament-cost', CalcCore.fmt.currency(filamentCost));
+        CalcCore.setResult('result-elec-cost', CalcCore.fmt.currency(elecCost));
+        CalcCore.setResult('result-deprec', CalcCore.fmt.currency(deprecCost));
+        CalcCore.setResult('result-fail-cost', CalcCore.fmt.currency(failSurcharge));
+
+        // Draw donut chart
+        CalcCore.drawDonut('cost-chart', [
+          { value: filamentCost, color: '#2563eb', label: 'Filament', display: CalcCore.fmt.currency(filamentCost) },
+          { value: elecCost, color: '#f59e0b', label: 'Electricity', display: CalcCore.fmt.currency(elecCost) },
+          { value: deprecCost, color: '#7c3aed', label: 'Depreciation', display: CalcCore.fmt.currency(deprecCost) },
+          { value: failSurcharge, color: '#ef4444', label: 'Failure', display: CalcCore.fmt.currency(failSurcharge) },
+        ], {
+          size: 200,
+          thickness: 0.6,
+          centerText: CalcCore.fmt.currency(totalCost),
+          centerLabel: 'total',
+        });
+      }
+
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+
+  <!-- Sticky Footer Ad (mobile) -->
+  <div id="ad-sticky-footer" class="ad-sticky-footer">
+    <button class="ad-sticky-close" aria-label="Close ad">&times;</button>
+    <div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div>
+  </div>
+
+  <script src="../../js/ads.js"></script>
+</body>
+</html>

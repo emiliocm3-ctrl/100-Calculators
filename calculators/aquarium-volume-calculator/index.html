@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aquarium Volume &amp; Salt Calculator — Tank Water &amp; Salt Mix</title>
+  <meta name="description" content="Calculate the water volume and salt mix for any aquarium. Rectangular, bow-front, or cylindrical tanks. Get gallons, liters, and exact salt amounts.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="../../" class="site-logo">
+        <span class="logo-icon">=</span>
+        100 Calculators
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav class="breadcrumb">
+      <a href="../../">Home</a>
+      <span class="sep">/</span>
+      <a href="../../#hobbies">Niche Hobbies</a>
+      <span class="sep">/</span>
+      <span>Aquarium Volume &amp; Salt</span>
+    </nav>
+
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+
+    <div class="page-header">
+      <span class="badge">Niche Hobbies</span>
+      <h1>Aquarium Volume &amp; Salt Calculator</h1>
+      <p class="subtitle">Calculate the exact water volume for your tank and the precise amount of salt mix for saltwater setups.</p>
+    </div>
+
+    <div class="calc-card">
+      <h2>Tank Dimensions</h2>
+
+      <div class="form-group">
+        <label>Tank Shape</label>
+        <div class="toggle-group" data-for="shape">
+          <button type="button" class="toggle-btn active" data-value="rectangular">Rectangular</button>
+          <button type="button" class="toggle-btn" data-value="cylindrical">Cylindrical</button>
+          <button type="button" class="toggle-btn" data-value="bowfront">Bow-Front</button>
+        </div>
+        <input type="hidden" id="shape" value="rectangular">
+      </div>
+
+      <div class="form-row form-row--3" id="dims-rect">
+        <div class="form-group">
+          <label for="length">Length</label>
+          <div class="input-with-unit">
+            <input type="number" id="length" value="48" min="1" max="300" step="0.5">
+            <span class="unit" id="length-unit">in</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="width">Width</label>
+          <div class="input-with-unit">
+            <input type="number" id="width" value="12" min="1" max="200" step="0.5">
+            <span class="unit" id="width-unit">in</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="height">Height</label>
+          <div class="input-with-unit">
+            <input type="number" id="height" value="20" min="1" max="200" step="0.5">
+            <span class="unit" id="height-unit">in</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row" id="dims-cyl" style="display:none">
+        <div class="form-group">
+          <label for="diameter">Diameter</label>
+          <div class="input-with-unit">
+            <input type="number" id="diameter" value="18" min="1" max="200" step="0.5">
+            <span class="unit" id="diameter-unit">in</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="cyl-height">Height</label>
+          <div class="input-with-unit">
+            <input type="number" id="cyl-height" value="24" min="1" max="200" step="0.5">
+            <span class="unit" id="cyl-height-unit">in</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row form-row--3" id="dims-bow" style="display:none">
+        <div class="form-group">
+          <label for="bow-length">Length</label>
+          <div class="input-with-unit">
+            <input type="number" id="bow-length" value="36" min="1" max="300" step="0.5">
+            <span class="unit" id="bow-length-unit">in</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="bow-width">Center Width</label>
+          <div class="input-with-unit">
+            <input type="number" id="bow-width" value="18" min="1" max="200" step="0.5">
+            <span class="unit" id="bow-width-unit">in</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="bow-height">Height</label>
+          <div class="input-with-unit">
+            <input type="number" id="bow-height" value="20" min="1" max="200" step="0.5">
+            <span class="unit" id="bow-height-unit">in</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Units</label>
+          <div class="toggle-group" data-for="units">
+            <button type="button" class="toggle-btn active" data-value="imperial">Inches</button>
+            <button type="button" class="toggle-btn" data-value="metric">cm</button>
+          </div>
+          <input type="hidden" id="units" value="imperial">
+        </div>
+        <div class="form-group">
+          <label>Tank Type</label>
+          <div class="toggle-group" data-for="water-type">
+            <button type="button" class="toggle-btn" data-value="freshwater">Freshwater</button>
+            <button type="button" class="toggle-btn active" data-value="saltwater">Saltwater</button>
+          </div>
+          <input type="hidden" id="water-type" value="saltwater">
+        </div>
+      </div>
+
+      <div class="form-group" id="salinity-group">
+        <label for="salinity">Target Salinity (ppt)</label>
+        <input type="range" id="salinity" min="30" max="40" value="35" step="0.5">
+        <div class="range-labels">
+          <span>30 ppt</span>
+          <span id="salinity-val">35</span>
+          <span>40 ppt</span>
+        </div>
+        <span class="hint">Standard reef: 35 ppt (SG 1.026)</span>
+      </div>
+
+      <div class="result-display" id="result-box">
+        <div class="result-label">Water Volume</div>
+        <div class="result-value" id="result-volume">—</div>
+        <div class="result-unit" id="result-volume-unit">US gallons</div>
+      </div>
+
+      <div class="results-grid">
+        <div class="result-item">
+          <div class="result-item-label">Liters</div>
+          <div class="result-item-value" id="result-liters">—</div>
+          <div class="result-item-unit">L</div>
+        </div>
+        <div class="result-item">
+          <div class="result-item-label">Cubic Inches</div>
+          <div class="result-item-value" id="result-cuin">—</div>
+          <div class="result-item-unit">in³</div>
+        </div>
+        <div class="result-item" id="salt-result">
+          <div class="result-item-label">Salt Mix Needed</div>
+          <div class="result-item-value" id="result-salt">—</div>
+          <div class="result-item-unit">cups (~½ cup per gal at 35ppt)</div>
+        </div>
+        <div class="result-item" id="salt-weight-result">
+          <div class="result-item-label">Salt Weight</div>
+          <div class="result-item-value" id="result-salt-weight">—</div>
+          <div class="result-item-unit">lbs</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-box">
+      <span class="cta-icon">&#128032;</span>
+      <div class="cta-content">
+        <p><strong>Setting up a new tank?</strong> Quality salt mix is the foundation of a healthy reef.</p>
+        <a href="#" class="cta-link">Best Aquarium Salt Mixes on Amazon &rarr;</a>
+      </div>
+    </div>
+
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+
+    <article class="article-content">
+      <h2>How to Calculate Aquarium Volume and Salt Mix</h2>
+      <p>Knowing the exact volume of your aquarium is critical for everything from dosing medications to mixing saltwater. Guess wrong, and you risk overdosing fish treatments, creating toxic salinity swings, or wasting expensive salt mix. This guide walks through the math for every common tank shape and explains how to get your salt mixing right.</p>
+
+      <h2>Volume Formulas by Tank Shape</h2>
+
+      <h3>Rectangular Tanks</h3>
+      <p>The most common aquarium shape. The formula is straightforward:</p>
+      <div class="formula-box">
+        Volume (in³) = Length &times; Width &times; Height<br>
+        US Gallons = Volume (in³) &divide; 231
+      </div>
+      <p>A standard 55-gallon tank measures 48" × 12" × 20", which gives 11,520 in³ ÷ 231 = <strong>49.9 gallons</strong>. Note that manufacturer-listed sizes are approximate — always calculate from actual dimensions.</p>
+
+      <h3>Cylindrical Tanks</h3>
+      <p>Column tanks and drum-style tanks use the cylinder formula:</p>
+      <div class="formula-box">
+        Volume (in³) = &pi; &times; (Diameter / 2)² &times; Height
+      </div>
+      <p>A 18" diameter × 24" tall cylinder holds about 6,107 in³ = <strong>26.4 gallons</strong>.</p>
+
+      <h3>Bow-Front Tanks</h3>
+      <p>Bow-front aquariums have a curved front panel that adds extra volume. The exact curve varies by manufacturer, but a reasonable approximation adds about 10-15% over a standard rectangle of the same dimensions:</p>
+      <div class="formula-box">
+        Volume ≈ Length &times; Center Width &times; Height &times; 0.85
+      </div>
+      <p>The 0.85 factor accounts for the bow shape averaging between the maximum center width and the narrower edges. This gives a result within 5% of actual volume for most bow-front designs.</p>
+
+      <div class="tip-box">
+        <p><strong>Pro Tip:</strong> The calculated volume is the tank's total capacity, but your actual water volume will be 10-15% less due to substrate, rocks, and equipment taking up space. For medication dosing, use 85% of calculated volume to be safe.</p>
+      </div>
+
+      <h2>Saltwater Mixing: Getting It Right</h2>
+      <p>For saltwater and reef aquariums, precise salinity is essential. Most marine fish thrive at <strong>35 parts per thousand (ppt)</strong>, which corresponds to a specific gravity of about 1.026 on a hydrometer.</p>
+
+      <h3>How Much Salt Per Gallon?</h3>
+      <p>The amount varies by brand, but a good rule of thumb:</p>
+      <ul>
+        <li><strong>½ cup of salt mix per gallon</strong> gets you to approximately 35 ppt</li>
+        <li>That's about <strong>135 grams (4.75 oz) per gallon</strong></li>
+        <li>For a 50-gallon tank: roughly 25 cups or <strong>15 lbs of salt mix</strong></li>
+      </ul>
+      <p>Always mix salt in a separate container with a powerhead running for at least 24 hours before adding it to your tank. Never add dry salt directly to a tank with livestock.</p>
+
+      <h2>Common Mistakes</h2>
+
+      <h3>1. Measuring the Outside of the Tank</h3>
+      <p>Glass thickness matters. A tank with 3/8" glass on each side loses almost an inch of interior width. For large tanks, measure the <strong>inside dimensions</strong> for accurate volume calculations.</p>
+
+      <h3>2. Forgetting Displacement</h3>
+      <p>A reef tank with 50 lbs of live rock displaces roughly 2-3 gallons of water. A 3-inch sand bed in a 48" × 12" tank displaces about 6 gallons. Your actual water volume is always less than the empty tank calculation.</p>
+
+      <h3>3. Mixing Salt to the Wrong Temperature</h3>
+      <p>Salt dissolves and reads differently at different temperatures. Always mix and measure salinity at the same temperature your tank runs (typically 76-80°F / 24-27°C). Cold freshwater with salt added will read differently once it warms up.</p>
+
+      <div class="warning-box">
+        <p><strong>Watch Out:</strong> Never trust a hydrometer alone for salinity readings. Swing-arm hydrometers are notoriously inaccurate. Invest in a <strong>digital refractometer</strong> ($30-50) for reliable readings. Calibrate it with 35 ppt reference solution monthly.</p>
+      </div>
+
+      <h2>Water Change Calculations</h2>
+      <p>Regular water changes are the foundation of aquarium health. When doing a 20% water change on a 50-gallon tank, you're replacing 10 gallons — so mix 10 gallons of new saltwater, not 50. Our calculator gives you the total volume, and you can easily calculate any percentage change from there.</p>
+
+      <h2>Quick Reference: Standard Tank Sizes</h2>
+      <ul>
+        <li><strong>10 gallon:</strong> 20" × 10" × 12" (great starter freshwater)</li>
+        <li><strong>20 gallon long:</strong> 30" × 12" × 12" (nano reef capable)</li>
+        <li><strong>40 gallon breeder:</strong> 36" × 18" × 16" (popular reef size)</li>
+        <li><strong>55 gallon:</strong> 48" × 12" × 20" (classic community tank)</li>
+        <li><strong>75 gallon:</strong> 48" × 18" × 20" (serious reef territory)</li>
+        <li><strong>125 gallon:</strong> 72" × 18" × 22" (dream tank)</li>
+      </ul>
+
+      <p>Use the calculator above to get your exact numbers, whether you're setting up a new tank, planning a water change, or dialing in your salt mix. Precision keeps your fish happy and your wallet intact.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p>
+    </div>
+  </footer>
+
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      const CU_IN_PER_GALLON = 231;
+      const LITERS_PER_GALLON = 3.78541;
+      const SALT_GRAMS_PER_GAL_PER_PPT = 3.86; // ~135g per gal at 35ppt → 3.86 per ppt
+      const GRAMS_PER_CUP_SALT = 273;
+      const GRAMS_PER_LB = 453.6;
+
+      function showShape(shape) {
+        document.getElementById('dims-rect').style.display = shape === 'rectangular' ? '' : 'none';
+        document.getElementById('dims-cyl').style.display = shape === 'cylindrical' ? '' : 'none';
+        document.getElementById('dims-bow').style.display = shape === 'bowfront' ? '' : 'none';
+      }
+
+      function calculate() {
+        const shape = CalcCore.getToggleVal('shape') || 'rectangular';
+        const isMetric = CalcCore.getToggleVal('units') === 'metric';
+        const waterType = CalcCore.getToggleVal('water-type') || 'saltwater';
+        const salinity = CalcCore.getVal('salinity');
+
+        showShape(shape);
+
+        // Show/hide salt results
+        const isSalt = waterType === 'saltwater';
+        document.getElementById('salinity-group').style.display = isSalt ? '' : 'none';
+        document.getElementById('salt-result').style.display = isSalt ? '' : 'none';
+        document.getElementById('salt-weight-result').style.display = isSalt ? '' : 'none';
+
+        let volumeCuIn = 0;
+
+        if (shape === 'rectangular') {
+          let l = CalcCore.getVal('length');
+          let w = CalcCore.getVal('width');
+          let h = CalcCore.getVal('height');
+          if (isMetric) { l /= 2.54; w /= 2.54; h /= 2.54; }
+          volumeCuIn = l * w * h;
+        } else if (shape === 'cylindrical') {
+          let d = CalcCore.getVal('diameter');
+          let h = CalcCore.getVal('cyl-height');
+          if (isMetric) { d /= 2.54; h /= 2.54; }
+          volumeCuIn = Math.PI * Math.pow(d / 2, 2) * h;
+        } else if (shape === 'bowfront') {
+          let l = CalcCore.getVal('bow-length');
+          let w = CalcCore.getVal('bow-width');
+          let h = CalcCore.getVal('bow-height');
+          if (isMetric) { l /= 2.54; w /= 2.54; h /= 2.54; }
+          volumeCuIn = l * w * h * 0.85;
+        }
+
+        const gallons = volumeCuIn / CU_IN_PER_GALLON;
+        const liters = gallons * LITERS_PER_GALLON;
+
+        CalcCore.setResult('result-volume', CalcCore.fmt.number(gallons, 1));
+        CalcCore.setResult('result-volume-unit', 'US gallons');
+        CalcCore.setResult('result-liters', CalcCore.fmt.number(liters, 1));
+        CalcCore.setResult('result-cuin', CalcCore.fmt.number(volumeCuIn, 0));
+
+        if (isSalt) {
+          const saltGrams = gallons * SALT_GRAMS_PER_GAL_PER_PPT * salinity;
+          const saltCups = saltGrams / GRAMS_PER_CUP_SALT;
+          const saltLbs = saltGrams / GRAMS_PER_LB;
+          CalcCore.setResult('result-salt', CalcCore.fmt.number(saltCups, 1));
+          CalcCore.setResult('result-salt-weight', CalcCore.fmt.number(saltLbs, 1));
+        }
+
+        // Update unit labels
+        const unitSuffix = isMetric ? 'cm' : 'in';
+        ['length-unit','width-unit','height-unit','diameter-unit','cyl-height-unit',
+         'bow-length-unit','bow-width-unit','bow-height-unit'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.textContent = unitSuffix;
+        });
+      }
+
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+
+  <!-- Sticky Footer Ad (mobile) -->
+  <div id="ad-sticky-footer" class="ad-sticky-footer">
+    <button class="ad-sticky-close" aria-label="Close ad">&times;</button>
+    <div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div>
+  </div>
+
+  <script src="../../js/ads.js"></script>
+</body>
+</html>

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AC BTU Calculator — What Size Air Conditioner Do I Need?</title>
+  <meta name="description" content="Calculate the right cooling capacity for any room. Input room size, ceiling height, sun exposure, and occupancy to find the perfect AC unit in BTU.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="../../" class="site-logo">
+        <span class="logo-icon">=</span>
+        100 Calculators
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav class="breadcrumb">
+      <a href="../../">Home</a>
+      <span class="sep">/</span>
+      <a href="../../#home-improvement">Home Improvement</a>
+      <span class="sep">/</span>
+      <span>AC BTU Calculator</span>
+    </nav>
+
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+
+    <div class="page-header">
+      <span class="badge">Home Improvement</span>
+      <h1>AC BTU Calculator &mdash; What Size Air Conditioner Do I Need?</h1>
+      <p class="subtitle">Find the right cooling capacity for any room based on size, ceiling height, sun exposure, and occupancy.</p>
+    </div>
+
+    <!-- Calculator Card -->
+    <div class="calc-card">
+      <h2>Enter Your Room Details</h2>
+
+      <div class="form-group">
+        <label>Units</label>
+        <div class="toggle-group" data-for="units">
+          <button type="button" class="toggle-btn active" data-value="ft">ft</button>
+          <button type="button" class="toggle-btn" data-value="m">m</button>
+        </div>
+        <input type="hidden" id="units" value="ft">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="room-length">Room Length</label>
+          <div class="input-with-unit">
+            <input type="number" id="room-length" value="15" min="1" max="200" step="0.5">
+            <span class="unit" id="length-unit">ft</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="room-width">Room Width</label>
+          <div class="input-with-unit">
+            <input type="number" id="room-width" value="12" min="1" max="200" step="0.5">
+            <span class="unit" id="width-unit">ft</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="ceiling-height">Ceiling Height</label>
+        <div class="input-with-unit">
+          <input type="number" id="ceiling-height" value="8" min="6" max="30" step="0.5">
+          <span class="unit" id="height-unit">ft</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Sun Exposure</label>
+        <div class="toggle-group" data-for="sun-exposure">
+          <button type="button" class="toggle-btn" data-value="0.9">Shady</button>
+          <button type="button" class="toggle-btn active" data-value="1.0">Average</button>
+          <button type="button" class="toggle-btn" data-value="1.1">Sunny</button>
+        </div>
+        <input type="hidden" id="sun-exposure" value="1.0">
+      </div>
+
+      <div class="form-group">
+        <label for="occupancy">Number of People</label>
+        <div class="input-with-unit">
+          <input type="number" id="occupancy" value="2" min="1" max="50" step="1">
+          <span class="unit">people</span>
+        </div>
+        <span class="hint">600 BTU added per person above 2</span>
+      </div>
+
+      <div class="form-group">
+        <label>Kitchen Area?</label>
+        <div class="toggle-group" data-for="kitchen">
+          <button type="button" class="toggle-btn" data-value="yes">Yes</button>
+          <button type="button" class="toggle-btn active" data-value="no">No</button>
+        </div>
+        <input type="hidden" id="kitchen" value="no">
+        <span class="hint">Kitchens generate extra heat from appliances — adds 4,000 BTU</span>
+      </div>
+
+      <!-- Primary Result -->
+      <div class="result-display" id="result-box">
+        <div class="result-label">Recommended Cooling Capacity</div>
+        <div class="result-value" id="result-btu">&mdash;</div>
+        <div class="result-unit">BTU</div>
+        <div class="result-note" id="result-note">Rounded up to nearest 1,000 BTU</div>
+      </div>
+
+      <!-- Secondary Results -->
+      <div class="results-grid">
+        <div class="result-item">
+          <div class="result-item-label">Room Area</div>
+          <div class="result-item-value" id="result-area">&mdash;</div>
+          <div class="result-item-unit" id="result-area-unit">sq ft</div>
+        </div>
+        <div class="result-item">
+          <div class="result-item-label">AC Size (Tons)</div>
+          <div class="result-item-value" id="result-tons">&mdash;</div>
+          <div class="result-item-unit">tons</div>
+        </div>
+        <div class="result-item">
+          <div class="result-item-label">Est. Wattage</div>
+          <div class="result-item-value" id="result-watts">&mdash;</div>
+          <div class="result-item-unit">watts</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-box">
+      <span class="cta-icon">&#10052;</span>
+      <div class="cta-content">
+        <p><strong>Find the right AC unit.</strong> Browse top-rated air conditioners sized for your room.</p>
+        <a href="#" class="cta-link">Shop Air Conditioners on Amazon &rarr;</a>
+      </div>
+    </div>
+
+    <!-- Ad Placeholder -->
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+
+    <!-- Article Content -->
+    <article class="article-content">
+      <h2>How to Calculate the Right AC Size for Your Room</h2>
+      <p>Buying an air conditioner without knowing the right size is one of the most common — and most expensive — mistakes homeowners make. An undersized unit will run nonstop, struggle to cool the room, and drive up your electricity bill. An oversized unit will short-cycle (turn on and off rapidly), leaving the room clammy because it cools the air before it can properly dehumidify. Either way, you end up uncomfortable and paying more than you should. This guide explains exactly how to calculate the cooling capacity you need, what each adjustment factor means, and how to choose the best type of AC for your space.</p>
+
+      <h2>What Does BTU Mean and Why Does It Matter?</h2>
+      <p>BTU stands for <strong>British Thermal Unit</strong>. In the context of air conditioning, one BTU is the amount of energy required to raise the temperature of one pound of water by one degree Fahrenheit. When we talk about an AC unit rated at 12,000 BTU, we mean it can remove 12,000 BTUs of heat energy from the air per hour. The higher the BTU rating, the more cooling power the unit has — and the larger the space it can handle.</p>
+      <p>Getting the BTU number right is the single most important decision when buying an AC. Every other factor — brand, features, noise level, smart controls — is secondary. If the BTU capacity doesn't match the room, none of those extras will save you.</p>
+
+      <h2>The Basic Formula and Each Adjustment Factor</h2>
+      <p>The industry-standard starting point comes from the U.S. Department of Energy: multiply the room's square footage by 20 BTU per square foot. From there, you apply a series of adjustment factors to account for real-world conditions.</p>
+
+      <div class="formula-box">
+        Base BTU = Room Area (sq ft) &times; 20<br>
+        &rarr; Adjust for ceiling height, sun exposure, occupancy, and kitchen heat
+      </div>
+
+      <h3>Step 1: Calculate Base BTU</h3>
+      <p>Measure the room's length and width in feet, then multiply to get the area. Multiply the area by 20 to get the base BTU. For example, a 15 ft &times; 12 ft room has 180 sq ft, giving a base BTU of 180 &times; 20 = <strong>3,600 BTU</strong>.</p>
+
+      <h3>Step 2: Ceiling Height Adjustment</h3>
+      <p>The standard formula assumes 8-foot ceilings. If your ceilings are higher, there is more air volume to cool. For ceilings above 8 feet, multiply the base BTU by the ratio of your ceiling height to 8. A room with 10-foot ceilings would multiply by 10/8 = 1.25, increasing the BTU requirement by 25%.</p>
+
+      <h3>Step 3: Sun Exposure</h3>
+      <p>A room that receives heavy direct sunlight through large windows heats up significantly more than a shaded room. Reduce the BTU by 10% for heavily shaded rooms (factor of 0.9) or increase it by 10% for sun-drenched rooms (factor of 1.1). Rooms with average exposure use a factor of 1.0 — no change.</p>
+
+      <h3>Step 4: Occupancy</h3>
+      <p>Each person generates roughly 600 BTU of body heat per hour through normal activity. The baseline formula accounts for two occupants. For every person beyond two, add 600 BTU. A home office with one person needs no adjustment, but a living room that regularly hosts six people would add 4 &times; 600 = <strong>2,400 BTU</strong>.</p>
+
+      <h3>Step 5: Kitchen Heat</h3>
+      <p>Kitchens generate tremendous heat from ovens, stovetops, dishwashers, and refrigerators. If the AC is cooling a kitchen or an open-plan space that includes a kitchen, add <strong>4,000 BTU</strong> to the total. This single adjustment can be the difference between comfortable cooking and a sweltering kitchen.</p>
+
+      <h2>Room Size Chart: Common Sizes and BTU Recommendations</h2>
+      <p>Use this quick-reference table as a starting point. These values assume standard 8-foot ceilings, average sun exposure, and two occupants. Adjust up or down based on your specific conditions using the calculator above.</p>
+      <ul>
+        <li><strong>100–150 sq ft</strong> (small bedroom): 5,000 BTU</li>
+        <li><strong>150–250 sq ft</strong> (bedroom, home office): 6,000–7,000 BTU</li>
+        <li><strong>250–350 sq ft</strong> (large bedroom, small living room): 7,000–8,000 BTU</li>
+        <li><strong>350–450 sq ft</strong> (living room, master suite): 8,000–10,000 BTU</li>
+        <li><strong>450–550 sq ft</strong> (large living room): 10,000–12,000 BTU</li>
+        <li><strong>550–700 sq ft</strong> (open-plan space): 14,000–18,000 BTU</li>
+        <li><strong>700–1,000 sq ft</strong> (large open floor plan): 18,000–24,000 BTU</li>
+        <li><strong>1,000+ sq ft</strong>: Consider a mini-split system or central AC</li>
+      </ul>
+
+      <h2>Window Units vs. Portable AC vs. Mini-Split: When to Use Each</h2>
+
+      <h3>Window Air Conditioners</h3>
+      <p>Window units are the most affordable option and work best for cooling a single room. They are available from 5,000 to 25,000 BTU and install directly into a standard window frame. Choose a window unit when you need to cool one room, have a compatible window, and want to keep costs low. The main downsides are that they block the window, can be noisy, and are not the most aesthetically pleasing option.</p>
+
+      <h3>Portable Air Conditioners</h3>
+      <p>Portable ACs sit on the floor and vent hot air through a hose that connects to a window kit. They are convenient because you can move them between rooms, but they are generally 20–30% less efficient than window units of the same BTU rating. Use a portable unit when you cannot install a window unit (rental restrictions, casement windows) or when you need flexibility to move the unit between spaces.</p>
+
+      <h3>Ductless Mini-Split Systems</h3>
+      <p>Mini-splits consist of an outdoor compressor and one or more indoor air handlers mounted on the wall. They are whisper-quiet, highly efficient (SEER ratings of 20+), and can cool individual zones. Mini-splits are ideal for rooms above 500 sq ft, additions without ductwork, or whole-home cooling with multiple zones. The trade-off is a higher upfront cost and professional installation.</p>
+
+      <div class="tip-box">
+        <p><strong>Tip:</strong> For rooms under 350 sq ft, a window unit offers the best value. For 350–700 sq ft, consider a higher-BTU window unit or a mini-split. Above 700 sq ft, a mini-split or central AC system is almost always the smarter long-term investment.</p>
+      </div>
+
+      <h2>Common Mistakes When Sizing an AC</h2>
+
+      <h3>1. Undersizing the Unit</h3>
+      <p>The most frequent error is buying an AC that is too small. An undersized unit runs continuously, struggles to reach the set temperature on hot days, and wears out its compressor faster. You save nothing upfront because your electricity bill skyrockets and the unit's lifespan drops.</p>
+
+      <h3>2. Forgetting Ceiling Height</h3>
+      <p>A 200 sq ft room with 10-foot ceilings has 25% more air volume than the same room with 8-foot ceilings. Ignoring this is one of the easiest ways to end up with an underpowered unit. Always measure your ceiling height — vaulted and cathedral ceilings can require significantly more cooling capacity.</p>
+
+      <h3>3. Ignoring Sun Exposure</h3>
+      <p>A south- or west-facing room with large windows can gain thousands of extra BTU from solar heat. If you have floor-to-ceiling windows facing the afternoon sun, the 10% sunny-room adjustment might even be conservative. In extreme cases, adding blackout curtains or window film can be more cost-effective than upsizing the AC.</p>
+
+      <div class="warning-box">
+        <p><strong>Warning:</strong> Oversizing is just as bad as undersizing. A unit that is too powerful cools the air quickly but shuts off before it can remove humidity. The result is a cold, damp room that feels clammy. Proper sizing ensures the AC runs long enough to dehumidify effectively.</p>
+      </div>
+
+      <h2>Energy Efficiency Tips: Save Money While Staying Cool</h2>
+
+      <h3>Understand SEER Ratings</h3>
+      <p><strong>SEER</strong> (Seasonal Energy Efficiency Ratio) measures how efficiently an AC converts electricity into cooling. A higher SEER means lower operating costs. The current federal minimum is SEER 14 for central systems. High-efficiency units reach SEER 20–25. While a SEER 20 unit costs more upfront, it uses roughly 30% less electricity than a SEER 14 unit — savings that compound over the 15–20 year life of the system.</p>
+
+      <h3>Use a Programmable Thermostat</h3>
+      <p>Setting the AC to a higher temperature when you are asleep or away can reduce cooling costs by 10–15%. Smart thermostats learn your schedule and adjust automatically, ensuring comfort when you are home and savings when you are not. Even a simple programmable thermostat pays for itself within a single cooling season.</p>
+
+      <h3>Seal and Insulate</h3>
+      <p>No AC unit can overcome poor insulation. Seal gaps around windows and doors with weatherstripping, insulate your attic, and consider adding thermal curtains to sun-facing windows. These measures reduce the cooling load, meaning a smaller and cheaper AC unit can do the job.</p>
+
+      <div class="tip-box">
+        <p><strong>Tip:</strong> Ceiling fans don't lower the air temperature, but they create a wind-chill effect that makes a room feel 4–6&deg;F cooler. Running a fan lets you set the AC thermostat higher without sacrificing comfort — and fans cost a fraction of the electricity an AC uses.</p>
+      </div>
+
+      <p>Armed with the right BTU number from the calculator above, you can shop with confidence. Match the capacity to your room, factor in efficiency ratings, and you will enjoy cool, comfortable air without overspending on equipment or electricity.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p>
+    </div>
+  </footer>
+
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      var FT_PER_M = 3.28084;
+
+      function updateUnits() {
+        var u = CalcCore.getToggleVal('units');
+        var isMetric = u === 'm';
+        var label = isMetric ? 'm' : 'ft';
+        document.getElementById('length-unit').textContent = label;
+        document.getElementById('width-unit').textContent = label;
+        document.getElementById('height-unit').textContent = label;
+      }
+
+      function calculate() {
+        updateUnits();
+
+        var u = CalcCore.getToggleVal('units');
+        var isMetric = u === 'm';
+
+        var length = CalcCore.getVal('room-length');
+        var width = CalcCore.getVal('room-width');
+        var ceiling = CalcCore.getVal('ceiling-height');
+        var sunFactor = parseFloat(CalcCore.getToggleVal('sun-exposure')) || 1.0;
+        var occupancy = CalcCore.getVal('occupancy');
+        var isKitchen = CalcCore.getToggleVal('kitchen') === 'yes';
+
+        if (isMetric) {
+          length = length * FT_PER_M;
+          width = width * FT_PER_M;
+          ceiling = ceiling * FT_PER_M;
+        }
+
+        if (length <= 0 || width <= 0 || ceiling <= 0) {
+          CalcCore.setResult('result-btu', '\u2014');
+          CalcCore.setResult('result-area', '\u2014');
+          CalcCore.setResult('result-tons', '\u2014');
+          CalcCore.setResult('result-watts', '\u2014');
+          return;
+        }
+
+        var area = length * width;
+        var baseBTU = area * 20;
+
+        if (ceiling > 8) {
+          baseBTU = baseBTU * (ceiling / 8);
+        }
+
+        baseBTU = baseBTU * sunFactor;
+
+        var extraPeople = Math.max(occupancy - 2, 0);
+        baseBTU = baseBTU + (extraPeople * 600);
+
+        if (isKitchen) {
+          baseBTU = baseBTU + 4000;
+        }
+
+        var btu = Math.ceil(baseBTU / 1000) * 1000;
+
+        var tons = btu / 12000;
+        var watts = btu / 3.41;
+
+        if (isMetric) {
+          var areaM2 = area / (FT_PER_M * FT_PER_M);
+          CalcCore.setResult('result-area', CalcCore.fmt.number(areaM2, 1));
+          CalcCore.setResult('result-area-unit', 'm\u00B2');
+        } else {
+          CalcCore.setResult('result-area', CalcCore.fmt.number(area, 0));
+          CalcCore.setResult('result-area-unit', 'sq ft');
+        }
+
+        CalcCore.setResult('result-btu', CalcCore.fmt.number(btu, 0));
+        CalcCore.setResult('result-tons', CalcCore.fmt.number(tons, 2));
+        CalcCore.setResult('result-watts', CalcCore.fmt.number(watts, 0));
+
+        if (btu <= 12000) {
+          CalcCore.setResultColor('result-box', 'result-good');
+        } else if (btu <= 24000) {
+          CalcCore.setResultColor('result-box', 'result-warn');
+        } else {
+          CalcCore.setResultColor('result-box', 'result-bad');
+        }
+      }
+
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+
+  <!-- Sticky Footer Ad (mobile) -->
+  <div id="ad-sticky-footer" class="ad-sticky-footer">
+    <button class="ad-sticky-close" aria-label="Close ad">&times;</button>
+    <div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div>
+  </div>
+
+  <script src="../../js/ads.js"></script>
+</body>
+</html>

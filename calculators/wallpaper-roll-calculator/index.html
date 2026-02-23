@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wallpaper Roll Calculator — How Many Rolls Do I Need?</title>
+  <meta name="description" content="Calculate the exact number of wallpaper rolls for any room. Accounts for pattern repeats, wall dimensions, and windows/doors.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="../../" class="site-logo"><span class="logo-icon">=</span> 100 Calculators</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav class="breadcrumb">
+      <a href="../../">Home</a><span class="sep">/</span>
+      <a href="../../#home-improvement">Home Improvement</a><span class="sep">/</span>
+      <span>Wallpaper Roll Calculator</span>
+    </nav>
+
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+
+    <div class="page-header">
+      <span class="badge">Home Improvement</span>
+      <h1>Wallpaper Roll Calculator</h1>
+      <p class="subtitle">Pattern repeats make wallpaper math tricky. Enter your wall dimensions and roll specs — we'll do the rest.</p>
+    </div>
+
+    <div class="calc-card">
+      <h2>Wall &amp; Roll Details</h2>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="wall-width">Wall Width</label>
+          <div class="input-with-unit"><input type="number" id="wall-width" value="144" min="1" max="1200" step="1"><span class="unit">in</span></div>
+          <span class="hint">12 ft = 144 in</span>
+        </div>
+        <div class="form-group">
+          <label for="wall-height">Wall Height</label>
+          <div class="input-with-unit"><input type="number" id="wall-height" value="96" min="1" max="240" step="1"><span class="unit">in</span></div>
+          <span class="hint">8 ft = 96 in</span>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="roll-width">Roll Width</label>
+          <div class="input-with-unit"><input type="number" id="roll-width" value="21" min="1" max="60" step="0.5"><span class="unit">in</span></div>
+          <span class="hint">US standard: 20.5–21 in</span>
+        </div>
+        <div class="form-group">
+          <label for="roll-length">Roll Length</label>
+          <div class="input-with-unit"><input type="number" id="roll-length" value="396" min="1" max="900" step="1"><span class="unit">in</span></div>
+          <span class="hint">US single roll ≈ 33 ft (396 in)</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="pattern-repeat">Pattern Repeat</label>
+        <div class="input-with-unit"><input type="number" id="pattern-repeat" value="12" min="0" max="60" step="0.5"><span class="unit">in</span></div>
+        <span class="hint">Set to 0 for solid / no-repeat patterns</span>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="doors">Doors to Subtract</label>
+          <input type="number" id="doors" value="1" min="0" max="10" step="1">
+        </div>
+        <div class="form-group">
+          <label for="windows">Windows to Subtract</label>
+          <input type="number" id="windows" value="1" min="0" max="10" step="1">
+        </div>
+      </div>
+
+      <div class="result-display">
+        <div class="result-label">Rolls Needed</div>
+        <div class="result-value" id="result-rolls">—</div>
+        <div class="result-unit">single rolls</div>
+        <div class="result-note" id="result-note">Includes pattern waste</div>
+      </div>
+
+      <div class="results-grid">
+        <div class="result-item">
+          <div class="result-item-label">Strips Required</div>
+          <div class="result-item-value" id="result-strips">—</div>
+        </div>
+        <div class="result-item">
+          <div class="result-item-label">Usable Length / Strip</div>
+          <div class="result-item-value" id="result-usable">—</div>
+          <div class="result-item-unit">in</div>
+        </div>
+        <div class="result-item">
+          <div class="result-item-label">Strips Per Roll</div>
+          <div class="result-item-value" id="result-spr">—</div>
+        </div>
+        <div class="result-item">
+          <div class="result-item-label">Total Wall Area</div>
+          <div class="result-item-value" id="result-area">—</div>
+          <div class="result-item-unit">sq ft</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-box">
+      <span class="cta-icon">&#127744;</span>
+      <div class="cta-content">
+        <p><strong>Shopping for wallpaper?</strong> Peel-and-stick makes DIY installation much easier.</p>
+        <a href="#" class="cta-link">Best Peel &amp; Stick Wallpaper on Amazon &rarr;</a>
+      </div>
+    </div>
+
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+
+    <article class="article-content">
+      <h2>How to Calculate Wallpaper: A Complete Guide</h2>
+      <p>Wallpaper calculation is the source of more DIY headaches than almost any other home project. Unlike paint — where you can just add another coat — wallpaper runs short in the middle of a wall and you're stuck hoping the next dye lot matches. This guide breaks down the math, explains pattern repeats, and helps you buy the right amount on the first trip.</p>
+
+      <h2>The Core Formula</h2>
+      <p>Wallpaper is hung in vertical strips. The basic calculation has three steps:</p>
+      <div class="formula-box">1. Strips = Wall Width ÷ Roll Width (round up)<br>2. Strips Per Roll = Roll Length ÷ Strip Cut Length (round down)<br>3. Rolls = Strips ÷ Strips Per Roll (round up)</div>
+      <p>The tricky part is step 2: figuring out the <strong>strip cut length</strong>. For solid-color or no-repeat wallpaper, the cut length is simply the wall height plus 2–4 inches of trim allowance. But for patterned wallpaper, it gets more complex.</p>
+
+      <h2>Understanding Pattern Repeats</h2>
+      <p>A <strong>pattern repeat</strong> is the vertical distance between one occurrence of the design and the next identical occurrence. Common repeat lengths range from 6 inches for small geometrics to 24+ inches for large florals. When cutting strips, you must round up to the next full pattern repeat so that adjacent strips align properly.</p>
+      <div class="formula-box">Strip Cut Length = ⌈Wall Height ÷ Pattern Repeat⌉ × Pattern Repeat</div>
+      <p>For example: If your wall is 96 inches tall and the pattern repeat is 14 inches, you need ⌈96 ÷ 14⌉ = 7 repeats per strip, so each strip is cut to 7 × 14 = <strong>98 inches</strong>. You lose 2 inches to pattern alignment per strip.</p>
+
+      <div class="tip-box">
+        <p><strong>Pro Tip:</strong> Half-drop patterns (where every other strip is offset by half the repeat) create even more waste — typically 10–15% more than straight-match patterns. Ask the manufacturer for the "match type" before purchasing.</p>
+      </div>
+
+      <h2>Subtracting Doors and Windows</h2>
+      <p>A standard interior door opening is about 21 sq ft (3 ft × 7 ft), and a standard window is about 15 sq ft (3 ft × 5 ft). You can subtract these from your total wall area, but be conservative — wallpaper strips still run full-height past these openings, and you need material to cut around them. Our calculator reduces the strip count by about half a strip per opening, which matches real-world experience.</p>
+
+      <h2>US vs. European Rolls</h2>
+      <p>Roll sizes differ by region:</p>
+      <ul>
+        <li><strong>US Single Roll:</strong> 20.5" wide × 33 ft long ≈ 56 sq ft of coverage</li>
+        <li><strong>US Double Roll:</strong> 20.5" wide × 66 ft long ≈ 112 sq ft (most US wallpaper is sold as "double rolls")</li>
+        <li><strong>European Roll:</strong> 21" wide × 33 ft long ≈ 57 sq ft</li>
+      </ul>
+
+      <div class="warning-box">
+        <p><strong>Watch Out:</strong> Many online retailers list prices "per single roll" but ship in double-roll bolts. Make sure you know which unit you're ordering. If the calculator says 8 single rolls, you need 4 double rolls.</p>
+      </div>
+
+      <h2>Common Mistakes</h2>
+      <h3>1. Forgetting Pattern Waste</h3>
+      <p>A 24-inch repeat on a 96-inch wall means zero waste — you get exactly 4 repeats. But a 21-inch repeat means ⌈96/21⌉ = 5 repeats × 21 = 105 inches per strip — <strong>9 inches of waste per strip</strong>. Over 14 strips, that's 10+ feet of wasted wallpaper.</p>
+
+      <h3>2. Not Buying from the Same Dye Lot</h3>
+      <p>Colors vary slightly between print runs. Always buy all your rolls at once and check that the dye lot numbers match. It's better to buy one extra roll than to risk a color mismatch later.</p>
+
+      <h3>3. Measuring Outside Corners</h3>
+      <p>Wallpaper wraps around corners, which requires overlap. Add 2–3 inches per corner and count each wall separately rather than measuring the total perimeter as one flat surface.</p>
+
+      <h2>How Much Extra Should I Buy?</h2>
+      <p>The general rule: <strong>buy 10–15% more than calculated</strong>. You'll need extra for mistakes, future repairs, and areas around electrical outlets and light switches. One extra roll is cheap insurance against running short.</p>
+
+      <p>Use the calculator above to get your precise roll count, then add one for safety. Your walls will thank you.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container"><p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p></div>
+  </footer>
+
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      const DOOR_STRIP_SAVE = 0.5;
+      const WINDOW_STRIP_SAVE = 0.4;
+
+      function calculate() {
+        const wallW = CalcCore.getVal('wall-width');
+        const wallH = CalcCore.getVal('wall-height');
+        const rollW = CalcCore.getVal('roll-width');
+        const rollL = CalcCore.getVal('roll-length');
+        const repeat = CalcCore.getVal('pattern-repeat');
+        const doors = CalcCore.getVal('doors');
+        const windows = CalcCore.getVal('windows');
+
+        if (wallW <= 0 || wallH <= 0 || rollW <= 0 || rollL <= 0) return;
+
+        // Strip cut length accounts for pattern repeat
+        let cutLength = wallH;
+        if (repeat > 0) {
+          cutLength = Math.ceil(wallH / repeat) * repeat;
+        }
+
+        const totalStrips = Math.ceil(wallW / rollW);
+        const adjustedStrips = Math.max(1, Math.ceil(totalStrips - doors * DOOR_STRIP_SAVE - windows * WINDOW_STRIP_SAVE));
+        const stripsPerRoll = Math.floor(rollL / cutLength);
+        const rolls = stripsPerRoll > 0 ? Math.ceil(adjustedStrips / stripsPerRoll) : 999;
+        const areaSqFt = (wallW * wallH) / 144;
+
+        CalcCore.setResult('result-rolls', CalcCore.fmt.number(rolls));
+        CalcCore.setResult('result-strips', CalcCore.fmt.number(adjustedStrips));
+        CalcCore.setResult('result-usable', CalcCore.fmt.number(cutLength));
+        CalcCore.setResult('result-spr', CalcCore.fmt.number(stripsPerRoll));
+        CalcCore.setResult('result-area', CalcCore.fmt.number(areaSqFt, 0));
+        CalcCore.setResult('result-note', repeat > 0
+          ? 'Pattern repeat adds ' + CalcCore.fmt.number(cutLength - wallH) + ' in per strip'
+          : 'No pattern repeat — minimal waste');
+      }
+
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+
+  <!-- Sticky Footer Ad (mobile) -->
+  <div id="ad-sticky-footer" class="ad-sticky-footer">
+    <button class="ad-sticky-close" aria-label="Close ad">&times;</button>
+    <div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div>
+  </div>
+
+  <script src="../../js/ads.js"></script>
+</body>
+</html>

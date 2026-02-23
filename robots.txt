@@ -1,0 +1,10 @@
+# robots.txt — 100 Calculators
+User-agent: *
+Allow: /
+
+# Sitemap location — update domain when deployed
+Sitemap: https://100calculators.com/sitemap.xml
+
+# Block crawling of development/internal paths
+Disallow: /js/
+Disallow: /css/

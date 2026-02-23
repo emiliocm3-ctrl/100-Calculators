@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Cake Calculator — Tier Sizes &amp; Servings</title>
+  <meta name="description" content="Calculate the right cake tier sizes for your wedding guest count. See servings per tier, suggested configurations, and estimated cost.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <header class="site-header"><div class="container"><a href="../../" class="site-logo"><span class="logo-icon">=</span> 100 Calculators</a></div></header>
+  <main class="container">
+    <nav class="breadcrumb"><a href="../../">Home</a><span class="sep">/</span><a href="../../#lifestyle">Lifestyle</a><span class="sep">/</span><span>Wedding Cake</span></nav>
+
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+    <div class="page-header">
+      <span class="badge">Lifestyle &amp; Events</span>
+      <h1>Wedding Cake Calculator</h1>
+      <p class="subtitle">Find the right tier sizes and configuration to serve all your guests with plenty to spare.</p>
+    </div>
+    <div class="calc-card">
+      <h2>Guest Count</h2>
+      <div class="form-group"><label for="guests">Number of Guests</label><input type="number" id="guests" value="120" min="10" max="1000" step="5"></div>
+      <div class="form-group">
+        <label>Serving Style</label>
+        <div class="toggle-group" data-for="style"><button type="button" class="toggle-btn" data-value="party">Party (larger slices)</button><button type="button" class="toggle-btn active" data-value="wedding">Wedding (standard)</button><button type="button" class="toggle-btn" data-value="dessert">Dessert Table (small)</button></div>
+        <input type="hidden" id="style" value="wedding">
+      </div>
+      <div class="form-group">
+        <label>Cake Shape</label>
+        <div class="toggle-group" data-for="shape"><button type="button" class="toggle-btn active" data-value="round">Round</button><button type="button" class="toggle-btn" data-value="square">Square</button></div>
+        <input type="hidden" id="shape" value="round">
+      </div>
+
+      <div class="result-display">
+        <div class="result-label">Suggested Configuration</div>
+        <div class="result-value" id="result-config" style="font-size:clamp(1rem,3.5vw,1.6rem)">—</div>
+        <div class="result-unit" id="result-servings">— servings total</div>
+      </div>
+      <div id="tier-breakdown" class="mt-lg"></div>
+      <div class="results-grid mt-lg">
+        <div class="result-item"><div class="result-item-label">Total Servings</div><div class="result-item-value" id="result-total">—</div></div>
+        <div class="result-item"><div class="result-item-label">Number of Tiers</div><div class="result-item-value" id="result-tiers">—</div></div>
+        <div class="result-item"><div class="result-item-label">Estimated Cost</div><div class="result-item-value" id="result-cost">—</div><div class="result-item-unit">@ $6–$12/slice</div></div>
+        <div class="result-item"><div class="result-item-label">Extra Servings</div><div class="result-item-value" id="result-extra">—</div></div>
+      </div>
+    </div>
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+    <article class="article-content">
+      <h2>How to Size a Wedding Cake</h2>
+      <p>Wedding cake sizing is part math, part art. You need enough servings for every guest, but the cake also has to look proportional and dramatic on the table. This guide walks through the standard serving charts, tier configurations for common guest counts, and how to communicate with your baker.</p>
+
+      <h2>Standard Servings by Tier Size (Round, 4" tall)</h2>
+      <ul>
+        <li><strong>6" round:</strong> 12 wedding servings</li>
+        <li><strong>8" round:</strong> 24 servings</li>
+        <li><strong>10" round:</strong> 38 servings</li>
+        <li><strong>12" round:</strong> 56 servings</li>
+        <li><strong>14" round:</strong> 78 servings</li>
+        <li><strong>16" round:</strong> 100 servings</li>
+      </ul>
+      <p>Square cakes yield ~25% more servings per tier than round cakes of the same width. A 12" square cake yields about 72 servings vs. 56 for round.</p>
+
+      <div class="tip-box">
+        <p><strong>Pro Tip:</strong> Many couples use a smaller "display cake" (2–3 tiers for 50 servings) and supplement with a <strong>sheet cake</strong> in the kitchen for the remaining guests. This saves hundreds of dollars while keeping the dramatic centerpiece.</p>
+      </div>
+
+      <h2>Common Configurations</h2>
+      <ul>
+        <li><strong>50 guests:</strong> 6" + 10" (2 tiers) = 50 servings</li>
+        <li><strong>75 guests:</strong> 6" + 8" + 12" (3 tiers) = ~78–92 servings</li>
+        <li><strong>100 guests:</strong> 6" + 10" + 14" (3 tiers) = 128 servings</li>
+        <li><strong>150 guests:</strong> 6" + 8" + 10" + 14" (4 tiers) = 152 servings</li>
+        <li><strong>200 guests:</strong> 6" + 8" + 10" + 12" + 16" (5 tiers) = 230 servings</li>
+      </ul>
+
+      <h2>What Does a Wedding Cake Cost?</h2>
+      <p>Prices vary widely by region and decorator:</p>
+      <ul>
+        <li><strong>Grocery store bakery:</strong> $2–$4 per slice</li>
+        <li><strong>Local bakery:</strong> $4–$8 per slice</li>
+        <li><strong>Custom cake designer:</strong> $8–$15+ per slice</li>
+      </ul>
+      <p>For 120 guests at $8/slice, expect about <strong>$960</strong> for the cake alone.</p>
+
+      <div class="warning-box">
+        <p><strong>Watch Out:</strong> Fondant cakes cost 20–50% more than buttercream. If you want the clean fondant look on a budget, consider buttercream with a fondant-style smooth finish — many bakers can achieve this for less.</p>
+      </div>
+
+      <p>Use the calculator above to find the right configuration, then share the results with your baker as a starting point for your consultation.</p>
+    </article>
+  </main>
+  <footer class="site-footer"><div class="container"><p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p></div></footer>
+
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      // Servings per tier (4" tall, wedding-size slices) — round
+      const ROUND = { 6: 12, 8: 24, 10: 38, 12: 56, 14: 78, 16: 100 };
+      const SQUARE_MULT = 1.25;
+      const STYLE_MULT = { party: 0.7, wedding: 1.0, dessert: 1.4 };
+      const TIER_SIZES = [6, 8, 10, 12, 14, 16];
+
+      function getServings(size, shape, style) {
+        let base = ROUND[size] || 0;
+        if (shape === 'square') base = Math.round(base * SQUARE_MULT);
+        return Math.round(base * (STYLE_MULT[style] || 1));
+      }
+
+      // Greedy algorithm: build tiers from largest down
+      function findConfig(guests, shape, style) {
+        let remaining = guests;
+        const tiers = [];
+        const sizes = [...TIER_SIZES].reverse();
+
+        for (const size of sizes) {
+          const servings = getServings(size, shape, style);
+          if (servings <= remaining + 10) { // allow slight over
+            tiers.push({ size, servings });
+            remaining -= servings;
+            if (remaining <= 0) break;
+          }
+        }
+        // If still short, add smallest needed tier
+        if (remaining > 0) {
+          for (const size of TIER_SIZES) {
+            const servings = getServings(size, shape, style);
+            if (servings >= remaining) {
+              tiers.push({ size, servings });
+              remaining -= servings;
+              break;
+            }
+          }
+        }
+        return tiers.sort((a, b) => a.size - b.size);
+      }
+
+      function calculate() {
+        const guests = CalcCore.getVal('guests');
+        const style = CalcCore.getToggleVal('style') || 'wedding';
+        const shape = CalcCore.getToggleVal('shape') || 'round';
+
+        const tiers = findConfig(guests, shape, style);
+        const totalServings = tiers.reduce((s, t) => s + t.servings, 0);
+        const extra = totalServings - guests;
+        const config = tiers.map(t => t.size + '"').join(' + ');
+
+        CalcCore.setResult('result-config', config + ' (' + tiers.length + ' tiers)');
+        CalcCore.setResult('result-servings', totalServings + ' servings total');
+        CalcCore.setResult('result-total', CalcCore.fmt.number(totalServings));
+        CalcCore.setResult('result-tiers', tiers.length);
+        CalcCore.setResult('result-cost', CalcCore.fmt.currency(totalServings * 6, 0) + '–' + CalcCore.fmt.currency(totalServings * 12, 0));
+        CalcCore.setResult('result-extra', '+' + CalcCore.fmt.number(Math.max(0, extra)));
+
+        // Tier breakdown
+        const colors = ['#f59e0b', '#2563eb', '#7c3aed', '#059669', '#dc2626', '#8b5cf6'];
+        const el = document.getElementById('tier-breakdown');
+        el.innerHTML = tiers.map((t, i) => `
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:var(--bg);border-radius:var(--radius-sm);margin-bottom:8px;border-left:4px solid ${colors[i]}">
+            <span><strong>${t.size}" ${shape}</strong></span>
+            <span style="font-family:var(--font-mono);font-weight:700">${t.servings} servings</span>
+          </div>
+        `).join('');
+      }
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+
+  <!-- Sticky Footer Ad (mobile) -->
+  <div id="ad-sticky-footer" class="ad-sticky-footer">
+    <button class="ad-sticky-close" aria-label="Close ad">&times;</button>
+    <div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div>
+  </div>
+
+  <script src="../../js/ads.js"></script>
+</body>
+</html>

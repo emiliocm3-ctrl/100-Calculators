@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pet Age Calculator — Dog &amp; Cat Years to Human Years</title>
+  <meta name="description" content="Convert your dog or cat's age to human years using the latest veterinary research. Accurate results based on breed size and species.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="../../" class="site-logo">
+        <span class="logo-icon">=</span>
+        100 Calculators
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav class="breadcrumb">
+      <a href="../../">Home</a>
+      <span class="sep">/</span>
+      <a href="../../#lifestyle">Lifestyle &amp; Events</a>
+      <span class="sep">/</span>
+      <span>Pet Age Calculator</span>
+    </nav>
+
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+
+    <div class="page-header">
+      <span class="badge">Fun &amp; Shareable</span>
+      <h1>Pet Age Calculator</h1>
+      <p class="subtitle">How old is your pet in human years? Use the latest veterinary science — not the old "multiply by 7" myth.</p>
+    </div>
+
+    <div class="calc-card">
+      <h2>Enter Your Pet's Details</h2>
+
+      <div class="form-group">
+        <label>Pet Type</label>
+        <div class="toggle-group" data-for="pet-type">
+          <button type="button" class="toggle-btn active" data-value="dog">&#128054; Dog</button>
+          <button type="button" class="toggle-btn" data-value="cat">&#128049; Cat</button>
+        </div>
+        <input type="hidden" id="pet-type" value="dog">
+      </div>
+
+      <div class="form-group" id="size-group">
+        <label>Dog Size</label>
+        <div class="toggle-group" data-for="dog-size">
+          <button type="button" class="toggle-btn" data-value="small">Small (&lt;20 lb)</button>
+          <button type="button" class="toggle-btn active" data-value="medium">Medium (20-50 lb)</button>
+          <button type="button" class="toggle-btn" data-value="large">Large (50-90 lb)</button>
+          <button type="button" class="toggle-btn" data-value="giant">Giant (90+ lb)</button>
+        </div>
+        <input type="hidden" id="dog-size" value="medium">
+      </div>
+
+      <div class="form-group">
+        <label for="pet-age">Pet's Age (years)</label>
+        <input type="range" id="pet-age" min="1" max="20" value="5" step="1">
+        <div class="range-labels">
+          <span>1 year</span>
+          <span id="pet-age-val">5</span>
+          <span>20 years</span>
+        </div>
+      </div>
+
+      <div class="result-display" id="result-box">
+        <div class="result-label">Human-Equivalent Age</div>
+        <div class="result-value" id="result-human-age">—</div>
+        <div class="result-unit">human years</div>
+        <div class="result-note" id="result-stage">—</div>
+      </div>
+
+      <div class="results-grid">
+        <div class="result-item">
+          <div class="result-item-label">Life Stage</div>
+          <div class="result-item-value" id="result-life-stage">—</div>
+        </div>
+        <div class="result-item">
+          <div class="result-item-label">Average Lifespan</div>
+          <div class="result-item-value" id="result-lifespan">—</div>
+          <div class="result-item-unit">years</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-box">
+      <span class="cta-icon">&#128062;</span>
+      <div class="cta-content">
+        <p><strong>Keep them healthy longer.</strong> Regular vet checkups and quality nutrition make the biggest difference.</p>
+        <a href="#" class="cta-link">Top-Rated Pet Supplements on Amazon &rarr;</a>
+      </div>
+    </div>
+
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+
+    <article class="article-content">
+      <h2>How to Calculate Your Pet's Age in Human Years</h2>
+      <p>For decades, the popular rule was simple: multiply your dog's age by 7. A 5-year-old dog? That's 35 in human years. Easy, memorable — and completely wrong. Modern veterinary science tells us that dogs and cats age at very different rates depending on their species, breed, and size, and the relationship between pet years and human years is far from linear.</p>
+
+      <h2>Why the "Multiply by 7" Rule Is Wrong</h2>
+      <p>The old rule assumes that aging is constant and uniform. But consider this: a 1-year-old dog is sexually mature, can reproduce, and has adult teeth. A 7-year-old human is still losing baby teeth. Clearly, a 1-year-old dog is much older than "7" in any meaningful sense.</p>
+      <p>The American Veterinary Medical Association (AVMA) now uses a more nuanced approach that accounts for the rapid development in the first two years of life, followed by a slower aging process afterward.</p>
+
+      <h2>The Modern Dog Age Formula</h2>
+      <p>Veterinary researchers now recommend this approach for dogs:</p>
+
+      <div class="formula-box">
+        Year 1 = 15 human years&emsp;|&emsp;Year 2 = +9 years&emsp;|&emsp;Each year after = +4 to +7 years (varies by size)
+      </div>
+
+      <p>The key insight is that <strong>size matters enormously</strong> for dogs. Small dogs live longer and age more slowly after maturity, while giant breeds age rapidly and have shorter lifespans:</p>
+      <ul>
+        <li><strong>Small dogs</strong> (under 20 lbs): Add ~4 years per year after age 2. Average lifespan: 12-16 years.</li>
+        <li><strong>Medium dogs</strong> (20-50 lbs): Add ~5 years per year after age 2. Average lifespan: 10-14 years.</li>
+        <li><strong>Large dogs</strong> (50-90 lbs): Add ~6 years per year after age 2. Average lifespan: 9-12 years.</li>
+        <li><strong>Giant dogs</strong> (90+ lbs): Add ~7 years per year after age 2. Average lifespan: 7-10 years.</li>
+      </ul>
+
+      <h2>How Cat Ages Work</h2>
+      <p>Cats age differently from dogs. They mature quickly in their first two years, then age at a relatively consistent rate regardless of breed or size:</p>
+      <ul>
+        <li><strong>Year 1:</strong> 15 human years (kittens become fully grown adolescents)</li>
+        <li><strong>Year 2:</strong> +9 years (total: 24 human years — a full adult)</li>
+        <li><strong>Each year after:</strong> +4 human years</li>
+      </ul>
+      <p>Indoor cats tend to live longer (12-18 years) than outdoor cats (5-10 years) because they're protected from traffic, predators, and disease. A well-cared-for indoor cat reaching 20 years old is equivalent to a 96-year-old human — impressive but not unheard of.</p>
+
+      <div class="tip-box">
+        <p><strong>Pro Tip:</strong> The oldest verified dog ever was an Australian cattle dog named Bluey who lived to 29 years and 5 months — roughly 140+ in human years. The oldest cat, Creme Puff, lived to 38 years — about 168 human years!</p>
+      </div>
+
+      <h2>Life Stages of Dogs and Cats</h2>
+      <p>Understanding your pet's life stage helps you provide age-appropriate care:</p>
+      <ul>
+        <li><strong>Puppy/Kitten</strong> (0-1 year): Rapid growth, vaccinations, socialization critical</li>
+        <li><strong>Junior</strong> (1-2 years): Still maturing, high energy, training window</li>
+        <li><strong>Adult</strong> (2-6 years): Peak physical condition, establish routines</li>
+        <li><strong>Mature</strong> (6-9 years): May slow down, weight management important</li>
+        <li><strong>Senior</strong> (9-12 years): More vet visits, joint care, dental health</li>
+        <li><strong>Geriatric</strong> (12+ years): Special diet, gentle exercise, frequent health monitoring</li>
+      </ul>
+
+      <h2>Common Misconceptions</h2>
+      <h3>1. All Dogs Age the Same</h3>
+      <p>A 7-year-old Great Dane (equivalent to ~60 human years) is biologically much older than a 7-year-old Chihuahua (equivalent to ~44 human years). This is why giant breeds have much shorter lifespans. Always factor in your dog's size when assessing age.</p>
+
+      <h3>2. Mixed Breeds Live Longer</h3>
+      <p>There's some truth to "hybrid vigor" — mixed breed dogs do tend to have fewer inherited genetic conditions. However, size is still the dominant factor in lifespan. A large mixed breed will generally have a shorter life than a small purebred.</p>
+
+      <div class="warning-box">
+        <p><strong>Watch Out:</strong> Sudden behavior changes in older pets (hiding, appetite loss, increased thirst) are not "just aging." These can be signs of treatable conditions like kidney disease, diabetes, or pain. See your vet promptly.</p>
+      </div>
+
+      <h2>How to Help Your Pet Live Longer</h2>
+      <ul>
+        <li><strong>Regular vet checkups:</strong> Annual for adults, twice yearly for seniors</li>
+        <li><strong>Healthy weight:</strong> Obesity is the #1 preventable health issue in pets</li>
+        <li><strong>Dental care:</strong> Dental disease can lead to heart and kidney problems</li>
+        <li><strong>Mental stimulation:</strong> Puzzle toys and training keep aging brains sharp</li>
+        <li><strong>Quality nutrition:</strong> Age-appropriate food makes a measurable difference</li>
+      </ul>
+
+      <p>Use the calculator above to find your pet's human-equivalent age, then make sure they're getting the right care for their life stage. A little attention to age-specific needs can add years to your furry friend's life.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p>
+    </div>
+  </footer>
+
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      // Dog aging rates per year after year 2, by size
+      const DOG_RATE = { small: 4, medium: 5, large: 6, giant: 7 };
+      const DOG_LIFESPAN = { small: '12–16', medium: '10–14', large: '9–12', giant: '7–10' };
+      const CAT_LIFESPAN = '12–18';
+
+      function getDogHumanAge(petAge, size) {
+        const rate = DOG_RATE[size] || 5;
+        if (petAge <= 0) return 0;
+        if (petAge <= 1) return 15;
+        if (petAge <= 2) return 24;
+        return 24 + (petAge - 2) * rate;
+      }
+
+      function getCatHumanAge(petAge) {
+        if (petAge <= 0) return 0;
+        if (petAge <= 1) return 15;
+        if (petAge <= 2) return 24;
+        return 24 + (petAge - 2) * 4;
+      }
+
+      function getLifeStage(humanAge) {
+        if (humanAge <= 15) return 'Puppy / Kitten';
+        if (humanAge <= 24) return 'Junior';
+        if (humanAge <= 40) return 'Adult';
+        if (humanAge <= 56) return 'Mature';
+        if (humanAge <= 80) return 'Senior';
+        return 'Geriatric';
+      }
+
+      function calculate() {
+        const petType = CalcCore.getToggleVal('pet-type') || 'dog';
+        const dogSize = CalcCore.getToggleVal('dog-size') || 'medium';
+        const petAge = CalcCore.getVal('pet-age');
+
+        // Show/hide dog size selector
+        const sizeGroup = document.getElementById('size-group');
+        if (sizeGroup) {
+          sizeGroup.style.display = petType === 'dog' ? '' : 'none';
+        }
+
+        let humanAge;
+        let lifespan;
+        if (petType === 'dog') {
+          humanAge = getDogHumanAge(petAge, dogSize);
+          lifespan = DOG_LIFESPAN[dogSize];
+        } else {
+          humanAge = getCatHumanAge(petAge);
+          lifespan = CAT_LIFESPAN;
+        }
+
+        const stage = getLifeStage(humanAge);
+
+        CalcCore.setResult('result-human-age', CalcCore.fmt.number(Math.round(humanAge)));
+        CalcCore.setResult('result-stage', 'Your ' + petType + ' is in the "' + stage + '" stage');
+        CalcCore.setResult('result-life-stage', stage);
+        CalcCore.setResult('result-lifespan', lifespan);
+      }
+
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+
+  <!-- Sticky Footer Ad (mobile) -->
+  <div id="ad-sticky-footer" class="ad-sticky-footer">
+    <button class="ad-sticky-close" aria-label="Close ad">&times;</button>
+    <div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div>
+  </div>
+
+  <script src="../../js/ads.js"></script>
+</body>
+</html>
