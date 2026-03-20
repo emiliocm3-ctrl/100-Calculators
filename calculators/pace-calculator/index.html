@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pace Calculator — Run and Walk Pace</title>
+  <meta name="description" content="Calculate average pace per mile and per kilometer from distance and finish time.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <header class="site-header"><div class="container"><a href="../../" class="site-logo"><span class="logo-icon">=</span> 100 Calculators</a></div></header>
+  <main class="container">
+    <nav class="breadcrumb"><a href="../../">Home</a><span class="sep">/</span><a href="../../#fitness">Fitness</a><span class="sep">/</span><span>Pace</span></nav>
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+    <div class="page-header"><span class="badge">Fitness &amp; Health</span><h1>Pace Calculator</h1><p class="subtitle">Get your pace per mile and per kilometer from your run time.</p></div>
+    <div class="calc-card">
+      <h2>Workout Inputs</h2>
+      <div class="form-row form-row--3">
+        <div class="form-group"><label for="distance">Distance</label><input type="number" id="distance" value="5" min="0.1" step="0.1"></div>
+        <div class="form-group"><label for="hours">Hours</label><input type="number" id="hours" value="0" min="0"></div>
+        <div class="form-group"><label for="minutes">Minutes</label><input type="number" id="minutes" value="42" min="0"></div>
+      </div>
+      <div class="form-group"><label>Distance Unit</label><div class="toggle-group" data-for="unit"><button type="button" class="toggle-btn active" data-value="mi">Miles</button><button type="button" class="toggle-btn" data-value="km">Kilometers</button></div><input type="hidden" id="unit" value="mi"></div>
+      <div class="result-display"><div class="result-label">Average Pace</div><div class="result-value" id="result-main">—</div><div class="result-unit" id="result-main-unit">per mile</div></div>
+      <div class="results-grid"><div class="result-item"><div class="result-item-label">Pace per Mile</div><div class="result-item-value" id="result-mile">—</div></div><div class="result-item"><div class="result-item-label">Pace per KM</div><div class="result-item-value" id="result-km">—</div></div></div>
+    </div>
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+    <article class="article-content"><h2>Formula</h2><div class="formula-box">Pace = TotalTime ÷ Distance</div><p>Use this for training zones and race pacing decisions.</p></article>
+  </main>
+  <footer class="site-footer"><div class="container"><p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p></div></footer>
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      function fmtPace(minPerUnit) {
+        const min = Math.floor(minPerUnit);
+        const sec = Math.round((minPerUnit - min) * 60);
+        return min + ':' + String(sec).padStart(2, '0');
+      }
+      function calculate() {
+        const distance = Math.max(CalcCore.getVal('distance'), 0.0001);
+        const hours = CalcCore.getVal('hours');
+        const minutes = CalcCore.getVal('minutes');
+        const totalMin = hours * 60 + minutes;
+        const unit = CalcCore.getToggleVal('unit') || 'mi';
+        const miles = unit === 'mi' ? distance : distance * 0.621371;
+        const km = unit === 'km' ? distance : distance * 1.60934;
+        const paceMi = totalMin / miles;
+        const paceKm = totalMin / km;
+        CalcCore.setResult('result-main', fmtPace(unit === 'mi' ? paceMi : paceKm));
+        CalcCore.setResult('result-main-unit', unit === 'mi' ? 'per mile' : 'per km');
+        CalcCore.setResult('result-mile', fmtPace(paceMi));
+        CalcCore.setResult('result-km', fmtPace(paceKm));
+      }
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+  <div id="ad-sticky-footer" class="ad-sticky-footer"><button class="ad-sticky-close" aria-label="Close ad">&times;</button><div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div></div>
+  <script src="../../js/ads.js"></script>
+</body>
+</html>

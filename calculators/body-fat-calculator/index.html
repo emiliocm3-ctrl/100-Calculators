@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Body Fat Calculator — US Navy Method</title>
+  <meta name="description" content="Estimate body fat percentage using the US Navy tape method with waist, neck, height, and hip (for women).">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <header class="site-header"><div class="container"><a href="../../" class="site-logo"><span class="logo-icon">=</span> 100 Calculators</a></div></header>
+  <main class="container">
+    <nav class="breadcrumb"><a href="../../">Home</a><span class="sep">/</span><a href="../../#fitness">Fitness</a><span class="sep">/</span><span>Body Fat</span></nav>
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+    <div class="page-header"><span class="badge">Fitness &amp; Health</span><h1>Body Fat Calculator</h1><p class="subtitle">Use the U.S. Navy circumference method for a fast body-fat estimate.</p></div>
+    <div class="calc-card">
+      <h2>Measurements (inches)</h2>
+      <div class="form-group"><label>Sex</label><div class="toggle-group" data-for="sex"><button type="button" class="toggle-btn active" data-value="male">Male</button><button type="button" class="toggle-btn" data-value="female">Female</button></div><input type="hidden" id="sex" value="male"></div>
+      <div class="form-row form-row--3">
+        <div class="form-group"><label for="height">Height</label><input type="number" id="height" value="70" min="48" step="0.1"></div>
+        <div class="form-group"><label for="neck">Neck</label><input type="number" id="neck" value="15" min="8" step="0.1"></div>
+        <div class="form-group"><label for="waist">Waist</label><input type="number" id="waist" value="34" min="18" step="0.1"></div>
+      </div>
+      <div class="form-group"><label for="hip">Hip (women only)</label><input type="number" id="hip" value="38" min="20" step="0.1"></div>
+      <div class="result-display"><div class="result-label">Estimated Body Fat</div><div class="result-value" id="result-bf">—</div><div class="result-unit">US Navy estimate</div></div>
+    </div>
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+    <article class="article-content"><h2>Formula</h2><p>Male: 86.010×log10(waist−neck) − 70.041×log10(height) + 36.76. Female: 163.205×log10(waist+hip−neck) − 97.684×log10(height) − 78.387.</p></article>
+  </main>
+  <footer class="site-footer"><div class="container"><p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p></div></footer>
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      function calculate() {
+        const sex = CalcCore.getToggleVal('sex') || 'male';
+        const h = CalcCore.getVal('height');
+        const n = CalcCore.getVal('neck');
+        const w = CalcCore.getVal('waist');
+        const hip = CalcCore.getVal('hip');
+        let bf = 0;
+        if (sex === 'male') {
+          const v = w - n;
+          bf = v > 0 && h > 0 ? 86.01 * Math.log10(v) - 70.041 * Math.log10(h) + 36.76 : 0;
+        } else {
+          const v = w + hip - n;
+          bf = v > 0 && h > 0 ? 163.205 * Math.log10(v) - 97.684 * Math.log10(h) - 78.387 : 0;
+        }
+        bf = Math.max(0, bf);
+        CalcCore.setResult('result-bf', CalcCore.fmt.percent(bf, 1));
+      }
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+  <div id="ad-sticky-footer" class="ad-sticky-footer"><button class="ad-sticky-close" aria-label="Close ad">&times;</button><div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div></div>
+  <script src="../../js/ads.js"></script>
+</body>
+</html>

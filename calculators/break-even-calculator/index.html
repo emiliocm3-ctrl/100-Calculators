@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Break-Even Calculator — Units and Revenue Target</title>
+  <meta name="description" content="Calculate how many units you need to sell to break even using fixed costs, unit price, and unit variable cost.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <header class="site-header"><div class="container"><a href="../../" class="site-logo"><span class="logo-icon">=</span> 100 Calculators</a></div></header>
+  <main class="container">
+    <nav class="breadcrumb"><a href="../../">Home</a><span class="sep">/</span><a href="../../#business">Business</a><span class="sep">/</span><span>Break-Even</span></nav>
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+    <div class="page-header"><span class="badge">Business &amp; Finance</span><h1>Break-Even Calculator</h1><p class="subtitle">Know exactly how many units you need to cover your costs.</p></div>
+    <div class="calc-card">
+      <h2>Business Inputs</h2>
+      <div class="form-row form-row--3">
+        <div class="form-group"><label for="fixed">Fixed Costs</label><div class="input-with-unit"><input type="number" id="fixed" value="15000" min="0"><span class="unit">$</span></div></div>
+        <div class="form-group"><label for="price">Selling Price per Unit</label><div class="input-with-unit"><input type="number" id="price" value="49" min="0.01" step="0.01"><span class="unit">$</span></div></div>
+        <div class="form-group"><label for="variable">Variable Cost per Unit</label><div class="input-with-unit"><input type="number" id="variable" value="19" min="0" step="0.01"><span class="unit">$</span></div></div>
+      </div>
+      <div class="result-display"><div class="result-label">Break-Even Units</div><div class="result-value" id="result-units">—</div><div class="result-unit">units to sell</div></div>
+      <div class="results-grid">
+        <div class="result-item"><div class="result-item-label">Contribution Margin</div><div class="result-item-value" id="result-margin">—</div></div>
+        <div class="result-item"><div class="result-item-label">Break-Even Revenue</div><div class="result-item-value" id="result-revenue">—</div></div>
+      </div>
+    </div>
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+    <article class="article-content">
+      <h2>Break-Even Formula</h2>
+      <div class="formula-box">BreakEvenUnits = FixedCosts ÷ (UnitPrice − UnitVariableCost)</div>
+      <p>The denominator is your contribution margin per unit. If margin is too small, break-even volume rises quickly.</p>
+      <h2>Use Cases</h2>
+      <ul><li>Pricing decisions before launch.</li><li>Comparing margin impact across suppliers.</li><li>Setting realistic sales targets.</li></ul>
+    </article>
+  </main>
+  <footer class="site-footer"><div class="container"><p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p></div></footer>
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      function calculate() {
+        const fixed = CalcCore.getVal('fixed');
+        const price = CalcCore.getVal('price');
+        const variable = CalcCore.getVal('variable');
+        const margin = price - variable;
+        const units = margin > 0 ? Math.ceil(fixed / margin) : 0;
+        const revenue = units * price;
+        CalcCore.setResult('result-units', margin > 0 ? CalcCore.fmt.number(units, 0) : 'N/A');
+        CalcCore.setResult('result-margin', CalcCore.fmt.currency(margin, 2));
+        CalcCore.setResult('result-revenue', CalcCore.fmt.currency(revenue, 0));
+      }
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+  <div id="ad-sticky-footer" class="ad-sticky-footer"><button class="ad-sticky-close" aria-label="Close ad">&times;</button><div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div></div>
+  <script src="../../js/ads.js"></script>
+</body>
+</html>

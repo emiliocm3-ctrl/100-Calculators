@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invoice Due Date Calculator — Net Terms</title>
+  <meta name="description" content="Calculate invoice due dates from issue date and net payment terms like Net 15, Net 30, or custom days.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <header class="site-header"><div class="container"><a href="../../" class="site-logo"><span class="logo-icon">=</span> 100 Calculators</a></div></header>
+  <main class="container">
+    <nav class="breadcrumb"><a href="../../">Home</a><span class="sep">/</span><a href="../../#business">Business</a><span class="sep">/</span><span>Invoice Due Date</span></nav>
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+    <div class="page-header"><span class="badge">Business &amp; Finance</span><h1>Invoice Due Date Calculator</h1><p class="subtitle">Get the exact due date for your invoice payment terms.</p></div>
+    <div class="calc-card">
+      <h2>Invoice Terms</h2>
+      <div class="form-row">
+        <div class="form-group"><label for="issue-date">Issue Date</label><input type="date" id="issue-date"></div>
+        <div class="form-group"><label>Terms</label><div class="toggle-group" data-for="terms"><button type="button" class="toggle-btn" data-value="15">Net 15</button><button type="button" class="toggle-btn active" data-value="30">Net 30</button><button type="button" class="toggle-btn" data-value="45">Net 45</button><button type="button" class="toggle-btn" data-value="custom">Custom</button></div><input type="hidden" id="terms" value="30"></div>
+      </div>
+      <div class="form-group"><label for="custom-days">Custom Days</label><div class="input-with-unit"><input type="number" id="custom-days" value="30" min="1" max="180"><span class="unit">days</span></div></div>
+      <div class="result-display"><div class="result-label">Payment Due Date</div><div class="result-value" id="result-date">—</div><div class="result-unit" id="result-days">—</div></div>
+    </div>
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+    <article class="article-content"><h2>How Due Date Is Calculated</h2><div class="formula-box">DueDate = IssueDate + PaymentTermDays</div><p>This uses calendar days. If your contract uses business days, account for weekends and holidays manually.</p></article>
+  </main>
+  <footer class="site-footer"><div class="container"><p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p></div></footer>
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      function formatDate(d) {
+        return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+      }
+      function calculate() {
+        const issueInput = document.getElementById('issue-date');
+        if (!issueInput.value) {
+          const now = new Date();
+          issueInput.value = now.toISOString().slice(0, 10);
+        }
+        const issue = new Date(issueInput.value + 'T00:00:00');
+        const terms = CalcCore.getToggleVal('terms') || '30';
+        const customDays = Math.max(CalcCore.getVal('custom-days'), 1);
+        const days = terms === 'custom' ? customDays : parseInt(terms, 10);
+        const due = new Date(issue.getTime());
+        due.setDate(due.getDate() + days);
+        CalcCore.setResult('result-date', formatDate(due));
+        CalcCore.setResult('result-days', 'Net ' + days + ' terms');
+      }
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+  <div id="ad-sticky-footer" class="ad-sticky-footer"><button class="ad-sticky-close" aria-label="Close ad">&times;</button><div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div></div>
+  <script src="../../js/ads.js"></script>
+</body>
+</html>

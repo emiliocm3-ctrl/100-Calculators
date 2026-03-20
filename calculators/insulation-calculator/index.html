@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insulation Calculator — Bags and Coverage</title>
+  <meta name="description" content="Estimate insulation coverage and bag count from attic or wall area, target R-value, and product coverage per bag.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <header class="site-header"><div class="container"><a href="../../" class="site-logo"><span class="logo-icon">=</span> 100 Calculators</a></div></header>
+  <main class="container">
+    <nav class="breadcrumb"><a href="../../">Home</a><span class="sep">/</span><a href="../../#home-improvement">Home Improvement</a><span class="sep">/</span><span>Insulation</span></nav>
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+    <div class="page-header"><span class="badge">Home Improvement</span><h1>Insulation Calculator</h1><p class="subtitle">Calculate how many insulation bags you need to hit your target R-value.</p></div>
+    <div class="calc-card">
+      <h2>Coverage Inputs</h2>
+      <div class="form-row form-row--3">
+        <div class="form-group"><label for="area">Area to Insulate</label><div class="input-with-unit"><input type="number" id="area" value="1200" min="1"><span class="unit">sq ft</span></div></div>
+        <div class="form-group"><label for="target-r">Target R-Value</label><div class="input-with-unit"><input type="number" id="target-r" value="38" min="11"><span class="unit">R</span></div></div>
+        <div class="form-group"><label for="bag-r">R-Value per Bag Layer</label><div class="input-with-unit"><input type="number" id="bag-r" value="19" min="5"><span class="unit">R</span></div></div>
+      </div>
+      <div class="form-group"><label for="bag-coverage">Coverage per Bag (at bag layer R)</label><div class="input-with-unit"><input type="number" id="bag-coverage" value="65" min="5"><span class="unit">sq ft/bag</span></div></div>
+      <div class="result-display"><div class="result-label">Insulation Bags Needed</div><div class="result-value" id="result-bags">—</div><div class="result-unit">bags (rounded up)</div></div>
+      <div class="results-grid">
+        <div class="result-item"><div class="result-item-label">Layer Multiplier</div><div class="result-item-value" id="result-mult">—</div></div>
+        <div class="result-item"><div class="result-item-label">Effective Area</div><div class="result-item-value" id="result-eff-area">—</div><div class="result-item-unit">sq ft</div></div>
+      </div>
+    </div>
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+    <article class="article-content">
+      <h2>How This Insulation Estimate Works</h2>
+      <div class="formula-box">Bags = (Area × (TargetR ÷ BagR)) ÷ CoveragePerBag</div>
+      <p>Coverage on bag labels changes with installed depth. This calculator uses the numbers you enter from your product label, so always verify manufacturer tables for your exact SKU.</p>
+      <h2>Installation Tips</h2>
+      <ul><li>Air-seal before insulating for better performance.</li><li>Do not block soffit vents in attics.</li><li>Buy 5–10% extra for irregular framing and missed spots.</li></ul>
+    </article>
+  </main>
+  <footer class="site-footer"><div class="container"><p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p></div></footer>
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      function calculate() {
+        const area = CalcCore.getVal('area');
+        const targetR = Math.max(CalcCore.getVal('target-r'), 0.1);
+        const bagR = Math.max(CalcCore.getVal('bag-r'), 0.1);
+        const coverage = Math.max(CalcCore.getVal('bag-coverage'), 0.1);
+        const multiplier = targetR / bagR;
+        const effectiveArea = area * multiplier;
+        const bags = Math.ceil(effectiveArea / coverage);
+        CalcCore.setResult('result-bags', CalcCore.fmt.number(bags, 0));
+        CalcCore.setResult('result-mult', CalcCore.fmt.number(multiplier, 2) + 'x');
+        CalcCore.setResult('result-eff-area', CalcCore.fmt.number(effectiveArea, 0));
+      }
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+  <div id="ad-sticky-footer" class="ad-sticky-footer"><button class="ad-sticky-close" aria-label="Close ad">&times;</button><div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div></div>
+  <script src="../../js/ads.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roofing Shingle Calculator — Squares and Bundles</title>
+  <meta name="description" content="Estimate roofing squares and shingle bundles from roof footprint, pitch factor, and waste percentage.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <header class="site-header"><div class="container"><a href="../../" class="site-logo"><span class="logo-icon">=</span> 100 Calculators</a></div></header>
+  <main class="container">
+    <nav class="breadcrumb"><a href="../../">Home</a><span class="sep">/</span><a href="../../#home-improvement">Home Improvement</a><span class="sep">/</span><span>Roofing Shingle</span></nav>
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+    <div class="page-header"><span class="badge">Home Improvement</span><h1>Roofing Shingle Calculator</h1><p class="subtitle">Estimate how many bundles you need based on area, pitch, and waste.</p></div>
+    <div class="calc-card">
+      <h2>Roof Inputs</h2>
+      <div class="form-row form-row--3">
+        <div class="form-group"><label for="footprint">Roof Footprint Area</label><div class="input-with-unit"><input type="number" id="footprint" value="1800" min="1"><span class="unit">sq ft</span></div></div>
+        <div class="form-group"><label for="pitch-factor">Pitch Factor</label><div class="input-with-unit"><input type="number" id="pitch-factor" value="1.12" min="1" step="0.01"><span class="unit">x</span></div></div>
+        <div class="form-group"><label for="waste">Waste</label><div class="input-with-unit"><input type="number" id="waste" value="12" min="5" max="25"><span class="unit">%</span></div></div>
+      </div>
+      <div class="result-display"><div class="result-label">Shingle Bundles Needed</div><div class="result-value" id="result-bundles">—</div><div class="result-unit">bundles (3 per square)</div></div>
+      <div class="results-grid">
+        <div class="result-item"><div class="result-item-label">Roof Surface Area</div><div class="result-item-value" id="result-surface">—</div><div class="result-item-unit">sq ft</div></div>
+        <div class="result-item"><div class="result-item-label">Roofing Squares</div><div class="result-item-value" id="result-squares">—</div><div class="result-item-unit">100 sq ft each</div></div>
+      </div>
+    </div>
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+    <article class="article-content">
+      <h2>Roof Bundle Formula</h2>
+      <div class="formula-box">Bundles = ((Footprint × PitchFactor) × (1 + Waste%)) ÷ 100 × 3</div>
+      <p>Roofing is sold in squares (100 sq ft). Most architectural shingles require about 3 bundles per square.</p>
+      <h2>Accuracy Notes</h2>
+      <ul><li>Complex roofs with many valleys need higher waste.</li><li>Starter strips, ridge caps, and underlayment are separate materials.</li><li>Always round up to full bundles.</li></ul>
+    </article>
+  </main>
+  <footer class="site-footer"><div class="container"><p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p></div></footer>
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      function calculate() {
+        const footprint = CalcCore.getVal('footprint');
+        const factor = Math.max(CalcCore.getVal('pitch-factor'), 1);
+        const waste = CalcCore.getVal('waste') / 100;
+        const surface = footprint * factor;
+        const squares = (surface * (1 + waste)) / 100;
+        const bundles = Math.ceil(squares * 3);
+        CalcCore.setResult('result-bundles', CalcCore.fmt.number(bundles, 0));
+        CalcCore.setResult('result-surface', CalcCore.fmt.number(surface, 0));
+        CalcCore.setResult('result-squares', CalcCore.fmt.number(squares, 2));
+      }
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+  <div id="ad-sticky-footer" class="ad-sticky-footer"><button class="ad-sticky-close" aria-label="Close ad">&times;</button><div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div></div>
+  <script src="../../js/ads.js"></script>
+</body>
+</html>

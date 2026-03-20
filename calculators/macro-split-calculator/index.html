@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Macro Split Calculator — Protein, Carbs, Fat</title>
+  <meta name="description" content="Calculate grams of protein, carbs, and fat from total calories and macro percentage split.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <header class="site-header"><div class="container"><a href="../../" class="site-logo"><span class="logo-icon">=</span> 100 Calculators</a></div></header>
+  <main class="container">
+    <nav class="breadcrumb"><a href="../../">Home</a><span class="sep">/</span><a href="../../#fitness">Fitness</a><span class="sep">/</span><span>Macro Split</span></nav>
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+    <div class="page-header"><span class="badge">Fitness &amp; Health</span><h1>Macro Split Calculator</h1><p class="subtitle">Convert your calorie target into grams of protein, carbs, and fat.</p></div>
+    <div class="calc-card">
+      <h2>Calories and Macro Percentages</h2>
+      <div class="form-row form-row--3">
+        <div class="form-group"><label for="calories">Daily Calories</label><input type="number" id="calories" value="2200" min="800"></div>
+        <div class="form-group"><label for="protein-p">Protein %</label><input type="number" id="protein-p" value="30" min="0" max="100"></div>
+        <div class="form-group"><label for="carb-p">Carbs %</label><input type="number" id="carb-p" value="40" min="0" max="100"></div>
+      </div>
+      <div class="form-group"><label for="fat-p">Fat %</label><input type="number" id="fat-p" value="30" min="0" max="100"></div>
+      <div class="result-display"><div class="result-label">Protein / Carbs / Fat</div><div class="result-value" id="result-protein">—</div><div class="result-unit">g protein per day</div></div>
+      <div class="results-grid"><div class="result-item"><div class="result-item-label">Carbs</div><div class="result-item-value" id="result-carbs">—</div></div><div class="result-item"><div class="result-item-label">Fat</div><div class="result-item-value" id="result-fat">—</div></div><div class="result-item"><div class="result-item-label">Percent Sum</div><div class="result-item-value" id="result-sum">—</div></div></div>
+    </div>
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+    <article class="article-content"><h2>Macro Conversion</h2><p>Protein and carbs are 4 kcal/g. Fat is 9 kcal/g. This tool converts your percentage split into target grams.</p></article>
+  </main>
+  <footer class="site-footer"><div class="container"><p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p></div></footer>
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      function calculate() {
+        const calories = CalcCore.getVal('calories');
+        const pp = CalcCore.getVal('protein-p');
+        const cp = CalcCore.getVal('carb-p');
+        const fp = CalcCore.getVal('fat-p');
+        const pCal = calories * (pp / 100);
+        const cCal = calories * (cp / 100);
+        const fCal = calories * (fp / 100);
+        CalcCore.setResult('result-protein', CalcCore.fmt.number(pCal / 4, 0));
+        CalcCore.setResult('result-carbs', CalcCore.fmt.number(cCal / 4, 0) + ' g');
+        CalcCore.setResult('result-fat', CalcCore.fmt.number(fCal / 9, 0) + ' g');
+        CalcCore.setResult('result-sum', CalcCore.fmt.number(pp + cp + fp, 0) + '%');
+      }
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+  <div id="ad-sticky-footer" class="ad-sticky-footer"><button class="ad-sticky-close" aria-label="Close ad">&times;</button><div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div></div>
+  <script src="../../js/ads.js"></script>
+</body>
+</html>

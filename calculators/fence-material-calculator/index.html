@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fence Material Calculator — Posts and Pickets</title>
+  <meta name="description" content="Estimate fence posts, panels, and pickets using total fence length, post spacing, and gate openings.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <header class="site-header"><div class="container"><a href="../../" class="site-logo"><span class="logo-icon">=</span> 100 Calculators</a></div></header>
+  <main class="container">
+    <nav class="breadcrumb"><a href="../../">Home</a><span class="sep">/</span><a href="../../#home-improvement">Home Improvement</a><span class="sep">/</span><span>Fence Material</span></nav>
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+    <div class="page-header"><span class="badge">Home Improvement</span><h1>Fence Material Calculator</h1><p class="subtitle">Plan your post and picket quantities before buying lumber.</p></div>
+    <div class="calc-card">
+      <h2>Fence Run</h2>
+      <div class="form-row form-row--3">
+        <div class="form-group"><label for="length">Total Fence Length</label><div class="input-with-unit"><input type="number" id="length" value="180" min="1"><span class="unit">ft</span></div></div>
+        <div class="form-group"><label for="gate-width">Total Gate Openings</label><div class="input-with-unit"><input type="number" id="gate-width" value="8" min="0"><span class="unit">ft</span></div></div>
+        <div class="form-group"><label for="post-spacing">Post Spacing</label><div class="input-with-unit"><input type="number" id="post-spacing" value="8" min="4" step="0.5"><span class="unit">ft</span></div></div>
+      </div>
+      <div class="form-group"><label for="picket-width">Picket Width</label><div class="input-with-unit"><input type="number" id="picket-width" value="5.5" min="3" step="0.1"><span class="unit">in</span></div><span class="hint">Includes nominal 1x6 pickets at 5.5 in actual width.</span></div>
+      <div class="result-display"><div class="result-label">Fence Posts Needed</div><div class="result-value" id="result-posts">—</div><div class="result-unit">posts</div></div>
+      <div class="results-grid">
+        <div class="result-item"><div class="result-item-label">Linear Feet to Cover</div><div class="result-item-value" id="result-run">—</div><div class="result-item-unit">ft</div></div>
+        <div class="result-item"><div class="result-item-label">Pickets Needed</div><div class="result-item-value" id="result-pickets">—</div><div class="result-item-unit">pieces</div></div>
+        <div class="result-item"><div class="result-item-label">8-ft Rails</div><div class="result-item-value" id="result-rails">—</div><div class="result-item-unit">pieces (3 rails/section)</div></div>
+      </div>
+    </div>
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+    <article class="article-content">
+      <h2>Fence Material Formula</h2>
+      <div class="formula-box">Posts = ceil((Length − Gate Openings) ÷ Spacing) + 1</div>
+      <p>For pickets, this tool assumes tight layout with minimal gap. Add 5–10% extra for cuts and defects.</p>
+      <h2>Before You Buy</h2>
+      <ul><li>Check local code for post depth and spacing limits.</li><li>Corner and gate posts often require heavier material.</li><li>If your yard slopes, add extra pickets and rails for step sections.</li></ul>
+    </article>
+  </main>
+  <footer class="site-footer"><div class="container"><p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p></div></footer>
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      function calculate() {
+        const length = CalcCore.getVal('length');
+        const gates = CalcCore.getVal('gate-width');
+        const spacing = Math.max(CalcCore.getVal('post-spacing'), 0.1);
+        const picketWidthIn = Math.max(CalcCore.getVal('picket-width'), 0.1);
+        const run = Math.max(length - gates, 0);
+        const posts = Math.ceil(run / spacing) + 1;
+        const pickets = Math.ceil((run * 12) / picketWidthIn * 1.05);
+        const rails = Math.ceil(run / 8) * 3;
+        CalcCore.setResult('result-posts', CalcCore.fmt.number(posts, 0));
+        CalcCore.setResult('result-run', CalcCore.fmt.number(run, 1));
+        CalcCore.setResult('result-pickets', CalcCore.fmt.number(pickets, 0));
+        CalcCore.setResult('result-rails', CalcCore.fmt.number(rails, 0));
+      }
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+  <div id="ad-sticky-footer" class="ad-sticky-footer"><button class="ad-sticky-close" aria-label="Close ad">&times;</button><div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div></div>
+  <script src="../../js/ads.js"></script>
+</body>
+</html>

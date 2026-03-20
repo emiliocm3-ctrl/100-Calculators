@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subscription Cost Calculator</title>
+  <meta name="description" content="Calculate monthly and annual total spending across all your subscriptions.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <header class="site-header"><div class="container"><a href="../../" class="site-logo"><span class="logo-icon">=</span> 100 Calculators</a></div></header>
+  <main class="container">
+    <nav class="breadcrumb"><a href="../../">Home</a><span class="sep">/</span><a href="../../#lifestyle">Lifestyle</a><span class="sep">/</span><span>Subscription Cost</span></nav>
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+    <div class="page-header"><span class="badge">Lifestyle &amp; Events</span><h1>Subscription Cost Calculator</h1><p class="subtitle">See how much all your recurring services really cost.</p></div>
+    <div class="calc-card">
+      <h2>Monthly Subscription Amounts</h2>
+      <div class="form-row form-row--3">
+        <div class="form-group"><label for="streaming">Streaming</label><div class="input-with-unit"><input type="number" id="streaming" value="35" min="0" step="0.01"><span class="unit">$</span></div></div>
+        <div class="form-group"><label for="software">Software</label><div class="input-with-unit"><input type="number" id="software" value="49" min="0" step="0.01"><span class="unit">$</span></div></div>
+        <div class="form-group"><label for="fitness">Fitness</label><div class="input-with-unit"><input type="number" id="fitness" value="25" min="0" step="0.01"><span class="unit">$</span></div></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label for="other">Other Subscriptions</label><div class="input-with-unit"><input type="number" id="other" value="40" min="0" step="0.01"><span class="unit">$</span></div></div>
+        <div class="form-group"><label for="annual">Annual-only Total (converted)</label><div class="input-with-unit"><input type="number" id="annual" value="240" min="0" step="1"><span class="unit">$/year</span></div></div>
+      </div>
+      <div class="result-display"><div class="result-label">Total Monthly Cost</div><div class="result-value" id="result-month">—</div><div class="result-unit">subscriptions</div></div>
+      <div class="results-grid"><div class="result-item"><div class="result-item-label">Total Annual Cost</div><div class="result-item-value" id="result-year">—</div></div></div>
+    </div>
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+    <article class="article-content"><div class="formula-box">MonthlyTotal = MonthlySubs + (AnnualSubs ÷ 12); AnnualTotal = MonthlyTotal × 12</div></article>
+  </main>
+  <footer class="site-footer"><div class="container"><p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p></div></footer>
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      function calculate() {
+        const monthly = CalcCore.getVal('streaming') + CalcCore.getVal('software') + CalcCore.getVal('fitness') + CalcCore.getVal('other') + (CalcCore.getVal('annual') / 12);
+        CalcCore.setResult('result-month', CalcCore.fmt.currency(monthly, 2));
+        CalcCore.setResult('result-year', CalcCore.fmt.currency(monthly * 12, 0));
+      }
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+  <div id="ad-sticky-footer" class="ad-sticky-footer"><button class="ad-sticky-close" aria-label="Close ad">&times;</button><div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div></div>
+  <script src="../../js/ads.js"></script>
+</body>
+</html>

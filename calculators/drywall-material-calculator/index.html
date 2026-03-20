@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drywall Material Calculator — Sheets and Mud</title>
+  <meta name="description" content="Calculate drywall sheets, joint compound, and screw estimates from room dimensions with waste factor included.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <header class="site-header"><div class="container"><a href="../../" class="site-logo"><span class="logo-icon">=</span> 100 Calculators</a></div></header>
+  <main class="container">
+    <nav class="breadcrumb"><a href="../../">Home</a><span class="sep">/</span><a href="../../#home-improvement">Home Improvement</a><span class="sep">/</span><span>Drywall Material</span></nav>
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+    <div class="page-header"><span class="badge">Home Improvement</span><h1>Drywall Material Calculator</h1><p class="subtitle">Estimate sheet count plus mud and screws for your wall area.</p></div>
+    <div class="calc-card">
+      <h2>Room Inputs</h2>
+      <div class="form-row form-row--3">
+        <div class="form-group"><label for="room-length">Room Length</label><div class="input-with-unit"><input type="number" id="room-length" value="14" min="1"><span class="unit">ft</span></div></div>
+        <div class="form-group"><label for="room-width">Room Width</label><div class="input-with-unit"><input type="number" id="room-width" value="12" min="1"><span class="unit">ft</span></div></div>
+        <div class="form-group"><label for="wall-height">Wall Height</label><div class="input-with-unit"><input type="number" id="wall-height" value="8" min="7" step="0.5"><span class="unit">ft</span></div></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label for="openings">Windows/Doors Area</label><div class="input-with-unit"><input type="number" id="openings" value="42" min="0"><span class="unit">sq ft</span></div></div>
+        <div class="form-group"><label for="waste">Waste Factor</label><div class="input-with-unit"><input type="number" id="waste" value="10" min="0" max="25"><span class="unit">%</span></div></div>
+      </div>
+      <div class="result-display"><div class="result-label">4×8 Drywall Sheets Needed</div><div class="result-value" id="result-sheets">—</div><div class="result-unit">sheets</div></div>
+      <div class="results-grid">
+        <div class="result-item"><div class="result-item-label">Net Wall Area</div><div class="result-item-value" id="result-net">—</div><div class="result-item-unit">sq ft</div></div>
+        <div class="result-item"><div class="result-item-label">Joint Compound</div><div class="result-item-value" id="result-mud">—</div><div class="result-item-unit">gallons est.</div></div>
+        <div class="result-item"><div class="result-item-label">Drywall Screws</div><div class="result-item-value" id="result-screws">—</div><div class="result-item-unit">pieces est.</div></div>
+      </div>
+    </div>
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+    <article class="article-content">
+      <h2>Drywall Estimation Formula</h2>
+      <div class="formula-box">Sheets = ((Perimeter × Height − Openings) × (1 + Waste%)) ÷ 32</div>
+      <p>A standard 4×8 sheet covers 32 sq ft. This tool estimates walls only; add separate ceiling area if needed.</p>
+      <h2>Quick Planning Notes</h2>
+      <ul><li>Use 10% waste for simple rectangular rooms, 15%+ for many cuts.</li><li>Joint compound estimate uses about 0.06 gal/sq ft finished area.</li><li>Screw estimate uses ~35 screws per 4×8 sheet.</li></ul>
+    </article>
+  </main>
+  <footer class="site-footer"><div class="container"><p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p></div></footer>
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      function calculate() {
+        const l = CalcCore.getVal('room-length');
+        const w = CalcCore.getVal('room-width');
+        const h = CalcCore.getVal('wall-height');
+        const openings = CalcCore.getVal('openings');
+        const wastePct = CalcCore.getVal('waste') / 100;
+        const perimeter = 2 * (l + w);
+        const wallArea = Math.max(perimeter * h - openings, 0);
+        const totalArea = wallArea * (1 + wastePct);
+        const sheets = Math.ceil(totalArea / 32);
+        const mud = totalArea * 0.06;
+        const screws = sheets * 35;
+        CalcCore.setResult('result-sheets', CalcCore.fmt.number(sheets, 0));
+        CalcCore.setResult('result-net', CalcCore.fmt.number(wallArea, 0));
+        CalcCore.setResult('result-mud', CalcCore.fmt.number(mud, 1));
+        CalcCore.setResult('result-screws', CalcCore.fmt.number(screws, 0));
+      }
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+  <div id="ad-sticky-footer" class="ad-sticky-footer"><button class="ad-sticky-close" aria-label="Close ad">&times;</button><div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div></div>
+  <script src="../../js/ads.js"></script>
+</body>
+</html>

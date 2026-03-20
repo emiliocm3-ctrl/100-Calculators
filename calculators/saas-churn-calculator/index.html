@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SaaS Churn Calculator — Churn and Retention</title>
+  <meta name="description" content="Calculate monthly SaaS customer churn rate, retention rate, and net customer growth from start, lost, and new customers.">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <header class="site-header"><div class="container"><a href="../../" class="site-logo"><span class="logo-icon">=</span> 100 Calculators</a></div></header>
+  <main class="container">
+    <nav class="breadcrumb"><a href="../../">Home</a><span class="sep">/</span><a href="../../#business">Business</a><span class="sep">/</span><span>SaaS Churn</span></nav>
+    <div class="ad-slot ad-header" data-ad-position="header-banner"></div>
+    <div class="page-header"><span class="badge">Business &amp; Finance</span><h1>SaaS Churn Calculator</h1><p class="subtitle">Measure customer churn, retention, and net growth for the month.</p></div>
+    <div class="calc-card">
+      <h2>Monthly Customer Counts</h2>
+      <div class="form-row form-row--3">
+        <div class="form-group"><label for="start">Customers at Start</label><input type="number" id="start" value="1000" min="1"></div>
+        <div class="form-group"><label for="lost">Customers Lost</label><input type="number" id="lost" value="45" min="0"></div>
+        <div class="form-group"><label for="new">New Customers Added</label><input type="number" id="new" value="70" min="0"></div>
+      </div>
+      <div class="result-display"><div class="result-label">Monthly Churn Rate</div><div class="result-value" id="result-churn">—</div><div class="result-unit">customer churn</div></div>
+      <div class="results-grid">
+        <div class="result-item"><div class="result-item-label">Retention Rate</div><div class="result-item-value" id="result-retention">—</div></div>
+        <div class="result-item"><div class="result-item-label">Customers End of Month</div><div class="result-item-value" id="result-end">—</div></div>
+        <div class="result-item"><div class="result-item-label">Net Growth Rate</div><div class="result-item-value" id="result-growth">—</div></div>
+      </div>
+    </div>
+    <div class="ad-slot ad-after-result" data-ad-position="after-result"></div>
+    <article class="article-content">
+      <h2>Churn Metrics Formula</h2>
+      <div class="formula-box">Churn% = Lost ÷ Start; Retention% = 1 − Churn%; End = Start − Lost + New</div>
+      <p>For subscription businesses, reducing churn even slightly can have a major compounding effect on long-term revenue.</p>
+    </article>
+  </main>
+  <footer class="site-footer"><div class="container"><p>&copy; 2026 100 Calculators &middot; <a href="../../">Browse All Calculators</a></p></div></footer>
+  <script src="../../js/calculator-core.js"></script>
+  <script>
+    (function () {
+      function calculate() {
+        const start = Math.max(CalcCore.getVal('start'), 1);
+        const lost = Math.max(CalcCore.getVal('lost'), 0);
+        const added = Math.max(CalcCore.getVal('new'), 0);
+        const churn = (lost / start) * 100;
+        const retention = 100 - churn;
+        const end = start - lost + added;
+        const growth = ((end - start) / start) * 100;
+        CalcCore.setResult('result-churn', CalcCore.fmt.percent(churn, 2));
+        CalcCore.setResult('result-retention', CalcCore.fmt.percent(retention, 2));
+        CalcCore.setResult('result-end', CalcCore.fmt.number(end, 0));
+        CalcCore.setResult('result-growth', CalcCore.fmt.percent(growth, 2));
+      }
+      CalcCore.initCalculator(calculate);
+    })();
+  </script>
+  <div id="ad-sticky-footer" class="ad-sticky-footer"><button class="ad-sticky-close" aria-label="Close ad">&times;</button><div class="ad-slot" data-ad-position="sticky-footer" data-ad-format="320x50"></div></div>
+  <script src="../../js/ads.js"></script>
+</body>
+</html>
