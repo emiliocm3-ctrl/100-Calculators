@@ -32,11 +32,42 @@
   };
 
   /* ---------- Input Helpers ---------- */
+  function clampToBounds(value, el) {
+    let next = value;
+    const minAttr = el.getAttribute('min');
+    const maxAttr = el.getAttribute('max');
+    if (minAttr !== null) {
+      const min = parseFloat(minAttr);
+      if (!isNaN(min)) next = Math.max(next, min);
+    }
+    if (maxAttr !== null) {
+      const max = parseFloat(maxAttr);
+      if (!isNaN(max)) next = Math.min(next, max);
+    }
+    return next;
+  }
+
+  function parseNumericInput(el) {
+    const raw = String(el.value ?? '').trim().replace(/,/g, '');
+    const parsed = parseFloat(raw);
+    if (!Number.isFinite(parsed)) return 0;
+    return clampToBounds(parsed, el);
+  }
+
+  function normalizeNumberInput(el) {
+    if (!el || (el.type !== 'number' && el.type !== 'range')) return;
+    const raw = String(el.value ?? '').trim();
+    if (!raw) return;
+    const normalized = parseNumericInput(el);
+    el.value = String(normalized);
+  }
+
   function getVal(id) {
     const el = document.getElementById(id);
     if (!el) return 0;
     if (el.type === 'checkbox') return el.checked;
-    const v = parseFloat(el.value);
+    if (el.type === 'number' || el.type === 'range') return parseNumericInput(el);
+    const v = parseFloat(String(el.value ?? '').replace(/,/g, ''));
     return isNaN(v) ? 0 : v;
   }
 
@@ -199,12 +230,21 @@
 
     // bind all inputs
     document.querySelectorAll('input, select').forEach(el => {
-      const evt = el.type === 'range' ? 'input' : 'input';
-      el.addEventListener(evt, () => calcFn());
+      if (el.type === 'number' || el.type === 'range') {
+        el.addEventListener('blur', () => {
+          normalizeNumberInput(el);
+          calcFn();
+        });
+      }
+      el.addEventListener('input', () => calcFn());
+      el.addEventListener('change', () => calcFn());
     });
 
     // listen for toggle changes
     document.addEventListener('calc:input', () => calcFn());
+
+    // normalize numeric fields first to keep calculations in valid bounds
+    document.querySelectorAll('input[type="number"], input[type="range"]').forEach(el => normalizeNumberInput(el));
 
     // initial calculation
     calcFn();

@@ -32,8 +32,9 @@
   <script>
     (function () {
       function fmtPace(minPerUnit) {
-        const min = Math.floor(minPerUnit);
-        const sec = Math.round((minPerUnit - min) * 60);
+        const totalSeconds = Math.max(0, Math.round(minPerUnit * 60));
+        const min = Math.floor(totalSeconds / 60);
+        const sec = totalSeconds % 60;
         return min + ':' + String(sec).padStart(2, '0');
       }
       function calculate() {
